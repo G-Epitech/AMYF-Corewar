@@ -15,8 +15,8 @@ unit_tests*
 *tmp*
 *.dSYM
 .DS_Store
-asm
-corewar
+asm/asm
+corewar/corewar
 .idea/
 asm_tests
 corewar_tests
