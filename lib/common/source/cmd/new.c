@@ -16,8 +16,7 @@ cmd_t *cmd_new(char *command)
     if (!cmd)
         return NULL;
     cmd->label = NULL;
-    for (size_t i = 0; i < MAX_ARGS_NUMBER; i++) {
+    for (size_t i = 0; i < MAX_ARGS_NUMBER; i++)
         cmd->parameters[i].type = P_NULL;
-    }
     return cmd;
 }
