@@ -8,7 +8,7 @@
 #include <stdbool.h>
 #include "list/list.h"
 #include "node/node.h"
-#include "command/defs.h"
+#include "cmd/defs.h"
 #include "champion/defs.h"
 
 bool champion_append_cmd(champion_t *champion, cmd_t *cmd)
@@ -21,5 +21,5 @@ bool champion_append_cmd(champion_t *champion, cmd_t *cmd)
     if (!node)
         return false;
     list_append(champion->body, node);
-    return false;
+    return true;
 }

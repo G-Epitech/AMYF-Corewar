@@ -15,7 +15,5 @@ header_t *header_new(void)
 
     if (!header)
         return NULL;
-    header->name = NULL;
-    header->comment = NULL;
     return header;
 }

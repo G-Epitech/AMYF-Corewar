@@ -18,6 +18,11 @@ SRC = 	source/list/append.c \
 		source/champion/new.c \
 		source/champion/free.c \
 		source/champion/append_cmd.c \
+		source/cmd/new.c \
+		source/cmd/append_parameter.c \
+		source/cmd/free.c \
+		source/header/new.c \
+		source/header/free.c \
 
 OBJ = $(SRC:.c=.o)
 

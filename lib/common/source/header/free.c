@@ -5,6 +5,7 @@
 ** free
 */
 
+#include <stdlib.h>
 #include "header/defs.h"
 
 void header_free(header_t *header)
