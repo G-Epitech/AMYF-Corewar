@@ -26,6 +26,6 @@ void cmd_free(cmd_t *cmd);
 * @brief Append a given parameter in a command.
 * @param cmd Command for append parameter
 * @param parameter Parameter to append
-* @return true if 
+* @return true if success else false
 */
 bool cmd_append_parameter(cmd_t *cmd, parameter_t parameter);

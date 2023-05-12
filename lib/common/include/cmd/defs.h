@@ -24,7 +24,7 @@ typedef struct s_parameter {
 
 // Represent a command.
 typedef struct s_cmd {
-    unsigned int index_cmd;                     // Index of the operator array (data structure)
+    unsigned int index_cmd;                     // Index of the operator array
     parameter_t parameters[MAX_ARGS_NUMBER];    // Parameters of the command
     char *label;                                // Label of the command
 } cmd_t;

@@ -25,7 +25,7 @@ NAME =			global_corewar
 
 all: 			$(NAME)
 
-$(NAME):		
+$(NAME):
 				$(MAKE) -C $(PATH_ASM)
 				$(MAKE) -C $(PATH_COREWAR)
 
