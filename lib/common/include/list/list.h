@@ -30,7 +30,7 @@ void list_free(list_t *list, node_freer_t freer);
 void list_append(list_t *list, node_t *node);
 
 /**
- * @brief Remove given node of given list but not free node
+ * @brief Remove given node of given list but not free node.
  * @param list List in which remove node
  * @param node Node to remove of list
  */

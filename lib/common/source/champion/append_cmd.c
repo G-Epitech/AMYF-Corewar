@@ -6,9 +6,9 @@
 */
 
 #include <stdbool.h>
+#include "cmd/defs.h"
 #include "list/list.h"
 #include "node/node.h"
-#include "cmd/defs.h"
 #include "champion/defs.h"
 
 bool champion_append_cmd(champion_t *champion, cmd_t *cmd)
