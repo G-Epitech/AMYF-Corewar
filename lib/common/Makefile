@@ -5,16 +5,19 @@
 ## @Made by Math alias T1nt1n
 ##
 
-SRC = 	list/append.c \
-		list/free.c \
-		list/new.c \
-		list/remove.c \
-		node/free.c \
-		node/new.c \
-		node/unlink.c \
-		utils/asprintf2.c \
-		utils/is_number.c \
-		utils/malloc2.c \
+SRC = 	source/list/append.c \
+		source/list/free.c \
+		source/list/new.c \
+		source/list/remove.c \
+		source/node/free.c \
+		source/node/new.c \
+		source/node/unlink.c \
+		source/utils/asprintf2.c \
+		source/utils/is_number.c \
+		source/utils/malloc2.c \
+		source/champion/new.c \
+		source/champion/free.c \
+		source/champion/append_cmd.c \
 
 OBJ = $(SRC:.c=.o)
 
