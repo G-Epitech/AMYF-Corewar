@@ -14,7 +14,7 @@ bool cmd_append_parameter(cmd_t *cmd, parameter_t parameter)
     if (!cmd)
         return false;
     for (size_t i = 0; i < MAX_ARGS_NUMBER; i++) {
-        if (cmd->parameters[i].type == P_NULL)
+        if (cmd->parameters[i].type != P_NULL)
             continue;
         cmd->parameters[i] = parameter;
         return true;
