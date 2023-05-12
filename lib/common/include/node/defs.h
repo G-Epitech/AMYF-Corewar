@@ -5,11 +5,10 @@
 ** Node definitions
 */
 
-#ifndef NODE_DEFS_H_
-    #define NODE_DEFS_H_
+#pragma once
 
-    #define NODE_DATA_FROM_PTR(ptr) ((node_data_t) (void *) ptr)
-    #define NODE_DATA_TO_PTR(data, ptrtype) ((ptrtype) data.ptr)
+#define NODE_DATA_FROM_PTR(ptr) ((node_data_t) (void *) ptr)
+#define NODE_DATA_TO_PTR(data, ptrtype) ((ptrtype) data.ptr)
 
 // Represent a node of linked list
 typedef struct s_node node_t;
@@ -28,5 +27,3 @@ typedef struct s_node {
 
 // Node freer function prototype
 typedef void (*node_freer_t)(node_data_t data);
-
-#endif /* !NODE_DEFS_H_ */

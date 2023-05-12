@@ -5,10 +5,9 @@
 ** asprintf2
 */
 
-#ifndef ASPRINTF2_H_
-    #define ASPRINTF2_H_
+#pragma once
 
-    #include <unistd.h>
+#include <unistd.h>
 
 /**
  * @brief Like printf function but store result in given strp.
@@ -18,5 +17,3 @@
  * @return Size of strp or -1 on fail
  */
 ssize_t asprintf2(char **strp, const char *format, ...);
-
-#endif /* !ASPRINTF2_H_ */

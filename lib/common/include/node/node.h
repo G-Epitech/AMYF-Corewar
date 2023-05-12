@@ -5,10 +5,9 @@
 ** node
 */
 
-#ifndef NODE_H_
-    #define NODE_H_
+#pragma once
 
-    #include "defs.h"
+#include "defs.h"
 
 /**
  * @brief Create a new with given data.
@@ -29,5 +28,3 @@ void node_free(node_t *node, node_freer_t freer);
  * @param node Node to unlink
  */
 void node_unlink(node_t *node);
-
-#endif /* !NODE_H_ */

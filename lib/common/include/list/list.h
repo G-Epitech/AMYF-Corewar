@@ -5,10 +5,9 @@
 ** list
 */
 
-#ifndef LIST_H_
-    #define LIST_H_
+#pragma once
 
-    #include "defs.h"
+#include "defs.h"
 
 /**
  * @brief Create a new linked list.
@@ -44,5 +43,3 @@ void list_remove(list_t *list, node_t *node);
  * @param freer Freer to call to free node data
  */
 void list_delete(list_t *list, node_t *node, node_freer_t freer);
-
-#endif /* !LIST_H_ */

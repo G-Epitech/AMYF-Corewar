@@ -5,16 +5,15 @@
 ** malloc2
 */
 
-#ifndef MALLOC2_H_
-    #define MALLOC2_H_
+#pragma once
 
-    #include <stdlib.h>
-    #include <stdbool.h>
+#include <stdlib.h>
+#include <stdbool.h>
 
-    #define MALLOC2_GET_MODE 0
-    #define MALLOC2_SET_MODE 1
-    #define MALLOC2_MODE_FAIL 0
-    #define MALLOC2_MODE_NORMAL 1
+#define MALLOC2_GET_MODE 0
+#define MALLOC2_SET_MODE 1
+#define MALLOC2_MODE_FAIL 0
+#define MALLOC2_MODE_NORMAL 1
 
 /**
  * @brief Set failing mode of malloc2 function.
@@ -30,5 +29,3 @@ int malloc2_mode(int action, int new_mode);
  * @return Allocated memory zone
  */
 void *malloc2(size_t size);
-
-#endif /* !MALLOC2_H_ */

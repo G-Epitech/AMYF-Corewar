@@ -5,11 +5,10 @@
 ** defs
 */
 
-#ifndef LIST_DEFS_H_
-    #define LIST_DEFS_H_
+#pragma once
 
-    #include <stdlib.h>
-    #include "node/defs.h"
+#include <stdlib.h>
+#include "node/defs.h"
 
 // Represent linked list
 typedef struct s_list {
@@ -17,5 +16,3 @@ typedef struct s_list {
     node_t *last;   //Last node of list
     size_t len;     //Length of list
 } list_t;
-
-#endif /* !LIST_DEFS_H_ */
