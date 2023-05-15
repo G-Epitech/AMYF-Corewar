@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include "list/defs.h"
-#include "header/defs.h"
+#include "../list/defs.h"
+#include "../header/defs.h"
 
 // Represente a champion file data.
 typedef struct s_champion {

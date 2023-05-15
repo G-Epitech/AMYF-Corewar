@@ -8,7 +8,7 @@
 #pragma once
 
 #include <stdlib.h>
-#include "node/defs.h"
+#include "../node/defs.h"
 
 // Represent linked list
 typedef struct s_list {
