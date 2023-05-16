@@ -8,7 +8,6 @@
 #include <stdbool.h>
 #include "parsing/parsing.h"
 #include "common/include/header/header.h"
-#include "common/include/champion/defs.h"
 
 static bool check_id(int fd)
 {

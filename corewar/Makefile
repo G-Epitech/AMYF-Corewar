@@ -5,15 +5,14 @@
 ## @Made by Math alias T1nt1n
 ##
 
-_SRC = 		corewar.c \
-			\
-			parsing/parsing.c \
+_SRC = 		parsing/parsing.c \
 			parsing/file.c \
 			parsing/header.c \
 			parsing/utils/read.c \
 			parsing/utils/display.c \
 
-_TESTS =	../main.c
+_TESTS =	../main.c \
+			parsing.c \
 
 SRCDIR =		sources/
 SRC =			$(addprefix $(SRCDIR), $(_SRC))
@@ -45,7 +44,6 @@ STYLE_GREY=\033[0;30m
 STYLE_BOLD=\033[1m
 STYLE_END=\033[0m
 
-CC = gcc
 COMPILING_O_LOG = "$(STYLE_BLUE)📑 Compiling sources -\
 $(STYLE_BOLD)$(STYLE_BOLD)[%s]$(STYLE_END)\n"
 
@@ -72,6 +70,7 @@ clean:
 			@rm -f $(SRC_OBJ)
 			@rm -f $(MAIN_OBJ)
 			@rm -f $(SRC_COVER)
+			@rm -f $(SRC_PRFL)
 			@rm -f $(TESTS_OBJ)
 			@make -C$(PATH_COMMON) clean -s
 

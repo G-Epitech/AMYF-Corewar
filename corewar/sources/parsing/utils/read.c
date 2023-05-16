@@ -6,7 +6,6 @@
 */
 
 #include <unistd.h>
-#include <stdio.h>
 
 unsigned int parsing_read_int(int fd)
 {

@@ -5,11 +5,7 @@
 ** parsing
 */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdbool.h>
 #include "parsing/parsing.h"
-#include "common/include/op/defs.h"
 #include "common/include/champion/champion.h"
 
 champion_t *parsing_champion(char *file)
