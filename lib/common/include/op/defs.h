@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include "cmd/defs.h"
+#include "common/include/cmd/defs.h"
 
 #define T_REG 1
 #define T_DIR 2

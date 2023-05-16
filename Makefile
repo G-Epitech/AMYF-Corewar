@@ -29,13 +29,13 @@ all: 			$(NAME)
 $(NAME):
 				@printf "$(STYLE_RED)🚚 Lib 'Common' Compilation...\
 				$(STYLE_END)\n"
-				@$(MAKE) -C $(PATH_COMMON)
+				@$(MAKE) -C $(PATH_COMMON) -s
 				@printf "$(STYLE_RED)\n🚚 Project 'Asm' Compilation...\
 				$(STYLE_END)\n"
-				@$(MAKE) -C $(PATH_ASM)
+				@$(MAKE) -C $(PATH_ASM) -s
 				@printf "$(STYLE_RED)\n🚚 Project 'Corewar' Compilation...\
 				$(STYLE_END)\n"
-				@$(MAKE) -C $(PATH_COREWAR)
+				@$(MAKE) -C $(PATH_COREWAR) -s
 
 docker:
 				@docker run -it --rm -v $(shell pwd):/project -w /project \
