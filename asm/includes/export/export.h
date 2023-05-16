@@ -8,7 +8,7 @@
 #pragma once
 
 #include <stdbool.h>
-#include "common/include/champion/defs.h"
+#include "common/includes/champion/defs.h"
 
 /**
  * @brief Export given champion to binary file.
