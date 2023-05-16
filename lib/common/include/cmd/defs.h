@@ -32,13 +32,13 @@ typedef struct s_cmd {
     char *label;                                // Label of the command
 } cmd_t;
 
-// Represent a operator structure
+// Represent a operator structure.
 typedef struct op_s {
-   char *mnemonique;            // Name of the command
-   char nbr_args;               // Number of arguments
-   char type[MAX_ARGS_NUMBER];  // Types of arguments
-   char code;                   // Id of the command
-   int nbr_cycles;              // Number of cycles
+    char *mnemonique;            // Name of the command
+    char nbr_args;               // Number of arguments
+    char type[MAX_ARGS_NUMBER];  // Types of arguments
+    char code;                   // Id of the command
+    int nbr_cycles;              // Number of cycles
 } op_t;
 
 op_t op_tab[] = {
