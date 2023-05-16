@@ -5,7 +5,13 @@
 ## @Made by Math alias T1nt1n
 ##
 
-_SRC = 		asm.c
+_SRC = 		asm.c \
+			\
+			parsing/parsing.c \
+			parsing/header/header.c \
+			parsing/body/body.c \
+			parsing/file.c \
+			\
 
 SRCDIR =		sources/
 SRC =			$(addprefix $(SRCDIR), $(_SRC))
@@ -16,7 +22,7 @@ FTEST_REPO = https://github.com/Atomot/ftest/
 FTEST_V = ftest-0.1.0-1.x86_64.rpm
 
 CFLAGS += -Wall -Wextra -Werror -Wno-unused-command-line-argument -g
-INC = -I./include -I../lib
+INC = -I./includes -I../lib
 LDFLAGS = -L../lib -lcommon
 OBJ = $(SRC:.c=.o)
 PATH_COMMON = ../lib/common
