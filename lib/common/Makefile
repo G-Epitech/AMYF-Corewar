@@ -56,7 +56,7 @@ $(NAME):	$(SRC_OBJ)
 %.o: %.c
 			@printf "$(STYLE_BLUE)📦 Compiling lib$(NAME) - $(BOLD_BLUE)\
 [$<]$(STYLE_END)\n"
-			@gcc $(INC) -c $< -o $@
+			@$(CC) $(INC) -c $< -o $@
 
 clean:
 			@rm -f $(SRC_OBJ)
