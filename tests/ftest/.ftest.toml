@@ -25,9 +25,9 @@ path = "lib/common/Makefile"
 target_type = "file"
 
 [[test]]
-name = "Common include folder"
+name = "Common includes folder"
 type = "path_exists"
-path = "lib/common/include"
+path = "lib/common/includes"
 target_type = "directory"
 
 # Assembler compilation
