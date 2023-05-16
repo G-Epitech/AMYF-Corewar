@@ -16,9 +16,10 @@ SRC_PRFL =		$(SRC:.c=.gcda)
 
 CFLAGS += -Wall -Wextra -Werror -Wno-unused-command-line-argument -g
 INC = -I./includes -I../lib
-LDFLAGS = -L../lib -lcommon
+LDFLAGS = -L../lib -lcommon -lmy
 OBJ = $(SRC:.c=.o)
 PATH_COMMON = ../lib/common
+PATH_MY = ../lib/my
 
 TESTSDIR = 		../tests/criterion/$(NAME)/
 TESTS =			$(addprefix $(TESTSDIR), $(_TESTS))
@@ -42,6 +43,8 @@ $(STYLE_BOLD)$(STYLE_BOLD)[%s]$(STYLE_END)\n"
 .PHONY = all clean fclean re
 
 $(NAME):	$(OBJ)
+			@printf "$(STYLE_RED)🚚 Lib 'My' Compilation...$(STYLE_END)\n"
+			@make -C$(PATH_MY)
 			@printf "$(STYLE_RED)🚚 Lib 'Common' Compilation...$(STYLE_END)\n"
 			@make -C$(PATH_COMMON)
 			@printf "$(STYLE_RED)🚚 Main Compilation...$(STYLE_END)\n"
@@ -62,9 +65,11 @@ clean:
 			@rm -f $(SRC_OBJ)
 			@rm -f $(SRC_COVER)
 			@rm -f $(TESTS_OBJ)
+			@make -C$(PATH_MY) clean -s
 			@make -C$(PATH_COMMON) clean -s
 
 fclean: 	clean
+			@make -C$(PATH_MY) fclean -s
 			@make -C$(PATH_COMMON) fclean -s
 			@printf "$(STYLE_ORANGE)🧽 Corewar was successfully clean\
 			$(STYLE_END)\n"

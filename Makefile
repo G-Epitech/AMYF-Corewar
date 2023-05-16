@@ -5,9 +5,10 @@
 ## Makefile
 ##
 
-PATH_ASM = ./asm
-PATH_COREWAR = ./corewar
-PATH_COMMON = ./lib/common
+PATH_ASM = 		./asm
+PATH_COREWAR = 	./corewar
+PATH_COMMON = 	./lib/common
+PATH_MY = 		./lib/my
 
 FTEST_REPO = 	https://github.com/Atomot/ftest/
 FTEST_V = 		ftest-0.1.0-1.x86_64.rpm
@@ -27,6 +28,9 @@ NAME =			global_corewar
 all: 			$(NAME)
 
 $(NAME):
+				@printf "$(STYLE_RED)🚚 Lib 'My' Compilation...\
+				$(STYLE_END)\n"
+				@$(MAKE) -C $(PATH_MY)
 				@printf "$(STYLE_RED)🚚 Lib 'Common' Compilation...\
 				$(STYLE_END)\n"
 				@$(MAKE) -C $(PATH_COMMON)
@@ -60,6 +64,7 @@ style:			fclean
 tests_criterion:
 				@printf "$(STYLE_RED)🚚 Lib 'Common' Compilation...\
 				$(STYLE_END)\n"
+				@$(MAKE) -C $(PATH_MY)
 				@$(MAKE) -C $(PATH_COMMON)
 				@$(MAKE) -C $(PATH_COMMON) tests_criterion
 				@$(MAKE) -C $(PATH_ASM) tests_criterion
