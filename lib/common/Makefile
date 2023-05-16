@@ -5,29 +5,31 @@
 ## @Made by Math alias T1nt1n
 ##
 
-SRC = 	sources/list/append.c \
-		sources/list/free.c \
-		sources/list/new.c \
-		sources/list/remove.c \
-		sources/node/free.c \
-		sources/node/new.c \
-		sources/node/unlink.c \
-		sources/utils/is_number.c \
-		sources/utils/malloc2.c \
-		sources/champion/new.c \
-		sources/champion/free.c \
-		sources/champion/append_cmd.c \
-		sources/cmd/new.c \
-		sources/cmd/append_parameter.c \
-		sources/cmd/free.c \
-		sources/header/new.c \
-		sources/header/free.c \
+SRC = 		list/append.c \
+			list/free.c \
+			list/new.c \
+			list/remove.c \
+			node/free.c \
+			node/new.c \
+			node/unlink.c \
+			utils/is_number.c \
+			utils/malloc2.c \
+			champion/new.c \
+			champion/free.c \
+			champion/append_cmd.c \
+			cmd/new.c \
+			cmd/append_parameter.c \
+			cmd/free.c \
+			header/new.c \
+			header/free.c \
 
 _TESTS =	../main.c \
 			champion.c
 
-SRC_OBJ = $(SRC:.c=.o)
-INC = -I./includes
+SRCDIR =		sources/
+SRC =			$(addprefix $(SRCDIR), $(_SRC))
+SRC_OBJ = 		$(SRC:.c=.o)
+INC = 			-I./includes
 
 TESTSDIR = 		../../tests/criterion/$(NAME)/
 TESTS =			$(addprefix $(TESTSDIR), $(_TESTS))
