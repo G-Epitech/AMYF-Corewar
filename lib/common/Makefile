@@ -24,25 +24,26 @@ SRC = 	source/list/append.c \
 		source/header/new.c \
 		source/header/free.c \
 
-OBJ = $(SRC:.c=.o)
+_TESTS =	../main.c
 
+OBJ = $(SRC:.c=.o)
 INC = -I./include
 
+TESTSDIR = 		../../tests/criterion/$(NAME)/
+TESTS =			$(addprefix $(TESTSDIR), $(_TESTS))
+TESTS_OBJ = 	$(TESTS:.c=.o)
+TESTS_CFLAGS =	-lcriterion --coverage
+
 NAME = common
+TESTS_NAME = common_tests
 
-COLOUR_GREEN=\033[0;32m
-
-COLOUR_ORANGE=\033[0;33m
-
-COLOUR_RED=\033[0;31m
-
-COLOUR_BLUE=\033[0;34m
-
-BOLD_BLUE=\033[1;34m
-
-COLOUR_GREY=\033[0;30m
-
-COLOUR_END=\033[0m
+STYLE_GREEN=\033[0;32m
+STYLE_ORANGE=\033[0;33m
+STYLE_RED=\033[0;31m
+STYLE_BLUE=\033[0;34m
+STYLE_GREY=\033[0;30m
+STYLE_BOLD=\033[1m
+STYLE_END=\033[0m
 
 .PHONY: all clean fclean re
 
@@ -52,15 +53,40 @@ $(NAME):	$(OBJ)
 			@ar rc lib$(NAME).a $(OBJ) $(CFLAGS)
 			@cp lib$(NAME).a ../
 %.o: %.c
-			@printf "$(COLOUR_BLUE)📦 Compiling lib$(NAME) - $(BOLD_BLUE)\
-[$<]$(COLOUR_END)\n"
+			@printf "$(STYLE_BLUE)📦 Compiling lib$(NAME) - $(BOLD_BLUE)\
+[$<]$(STYLE_END)\n"
 			@gcc $(INC) -c $< -o $@
 
 clean:
-			rm -f $(OBJ)
+			@rm -f $(OBJ)
+			@rm -f $(TESTS_NAME)
+			@rm -f $(TESTS_OBJ)
 
 fclean: 	clean
-			rm -f lib$(NAME).a
-			rm -f ../lib$(NAME).a
+			@rm -f lib$(NAME).a
+			@rm -f ../lib$(NAME).a
 
 re: 		fclean all
+
+objects:		$(SRC_OBJ)
+
+tests_objects:	$(TESTS_OBJ)
+
+tests_criterion:
+			@rm -f $(TESTS_OBJ)
+			@printf "$(STYLE_RED)🧪 Tests compilation...$(STYLE_END)\n"
+			@$(MAKE) objects CFLAGS+=--coverage -s
+			@$(MAKE) tests_objects -s
+			@$(CC) -o $(TESTS_NAME) $(SRC_OBJ) $(TESTS_OBJ) \
+			$(LDFLAGS) $(CFLAGS) $(INC) $(TESTS_CFLAGS)
+			@printf "$(STYLE_GREEN)✅ Tests were successfully built\
+			$(STYLE_END)\n"
+			@./$(TESTS_NAME)
+
+tests_run:	tests_criterion
+
+coverage:
+				@gcovr
+
+coverage_branch:
+				@gcovr --branch
