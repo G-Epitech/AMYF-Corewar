@@ -37,9 +37,9 @@ $(STYLE_BOLD)$(STYLE_BOLD)[%s]$(STYLE_END)\n"
 .PHONY = all clean fclean re
 
 $(NAME):	$(OBJ)
-			@printf "$(STYLE_RED)🚚 Lib 'Common' compliation...$(STYLE_END)\n"
+			@printf "$(STYLE_RED)🚚 Lib 'Common' Compilation...$(STYLE_END)\n"
 			@make -C$(PATH_COMMON)
-			@printf "$(STYLE_RED)🚚 Main compliation...$(STYLE_END)\n"
+			@printf "$(STYLE_RED)🚚 Main Compilation...$(STYLE_END)\n"
 			@gcc -o $(NAME) $(OBJ) $(LDFLAGS) $(INC)
 			@printf "$(STYLE_GREEN)✅ Asm was successfully built\
 			$(STYLE_END)\n"

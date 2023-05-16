@@ -27,11 +27,11 @@ NAME =			global_corewar
 all: 			$(NAME)
 
 $(NAME):
-				@printf "$(STYLE_RED)🚚 Lib 'Common' compliation...$(STYLE_END)\n"
+				@printf "$(STYLE_RED)🚚 Lib 'Common' Compilation...$(STYLE_END)\n"
 				@$(MAKE) -C $(PATH_COMMON)
-				@printf "$(STYLE_RED)\n🚚 Project 'Asm' compliation...$(STYLE_END)\n"
+				@printf "$(STYLE_RED)\n🚚 Project 'Asm' Compilation...$(STYLE_END)\n"
 				@$(MAKE) -C $(PATH_ASM)
-				@printf "$(STYLE_RED)\n🚚 Project 'Corewar' compliation...$(STYLE_END)\n"
+				@printf "$(STYLE_RED)\n🚚 Project 'Corewar' Compilation...$(STYLE_END)\n"
 				@$(MAKE) -C $(PATH_COREWAR)
 
 docker:
