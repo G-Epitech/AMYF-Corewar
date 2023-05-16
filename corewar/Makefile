@@ -7,7 +7,7 @@
 
 _SRC = 		corewar.c
 
-_TESTS =	criterion/main.c
+_TESTS =	../main.c
 
 SRCDIR =		sources/
 SRC =			$(addprefix $(SRCDIR), $(_SRC))
@@ -20,7 +20,7 @@ LDFLAGS = -L../lib -lcommon
 OBJ = $(SRC:.c=.o)
 PATH_COMMON = ../lib/common
 
-TESTSDIR = 		tests/
+TESTSDIR = 		../tests/criterion/$(NAME)/
 TESTS =			$(addprefix $(TESTSDIR), $(_TESTS))
 TESTS_OBJ = 	$(TESTS:.c=.o)
 TESTS_CFLAGS =	-lcriterion --coverage

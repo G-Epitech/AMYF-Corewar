@@ -24,12 +24,12 @@ SRC = 	source/list/append.c \
 		source/header/new.c \
 		source/header/free.c \
 
-_TESTS =	criterion/main.c
+_TESTS =	../main.c
 
 OBJ = $(SRC:.c=.o)
 INC = -I./include
 
-TESTSDIR = 		tests/
+TESTSDIR = 		../../tests/criterion/$(NAME)/
 TESTS =			$(addprefix $(TESTSDIR), $(_TESTS))
 TESTS_OBJ = 	$(TESTS:.c=.o)
 TESTS_CFLAGS =	-lcriterion --coverage
