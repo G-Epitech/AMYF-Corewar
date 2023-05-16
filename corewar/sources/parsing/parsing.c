@@ -19,6 +19,8 @@ champion_t *parsing_champion(char *file)
 
     if (!champion || fd == -1)
         return NULL;
-    parsing_header(champion, fd);
+    if (!parsing_header(champion, fd))
+        return NULL;
+    parsing_display(champion);
     return champion;
 }

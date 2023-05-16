@@ -41,3 +41,16 @@ unsigned char parsing_read_char(int fd)
     read(fd, &buffer, sizeof(char));
     return buffer;
 }
+
+unsigned long int parsing_read_long_int(int fd)
+{
+    unsigned long int nb = 0;
+    unsigned char buffer = 0;
+
+    for (int i = 0; i < 8; i++) {
+        read(fd, &buffer, sizeof(char));
+        nb = nb << 8;
+        nb |= buffer;
+    }
+    return nb;
+}

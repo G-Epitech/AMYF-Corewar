@@ -7,8 +7,6 @@
 
 #include <fcntl.h>
 
-#include <stdio.h>
-
 int parsing_file_open(char *file)
 {
     int fd = 0;

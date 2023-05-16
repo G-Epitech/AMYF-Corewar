@@ -10,7 +10,6 @@
 #include "common/include/header/header.h"
 #include "common/include/champion/defs.h"
 
-#include <stdio.h>
 static bool check_id(int fd)
 {
     unsigned int nb = parsing_read_int(fd);
@@ -25,6 +24,8 @@ bool parsing_header(champion_t *champion, int fd)
     champion->header = header_new();
     for (int i = 0; i < HEADER_NAME; i++)
         champion->header->name[i] = parsing_read_char(fd);
-    printf("Name: %s\n", champion->header->name);
+    champion->header->body_size = parsing_read_long_int(fd);
+    for (int i = 0; i < HEADER_COMMENT; i++)
+        champion->header->comment[i] = parsing_read_char(fd);
     return true;
 }

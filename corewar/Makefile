@@ -11,6 +11,7 @@ _SRC = 		corewar.c \
 			parsing/file.c \
 			parsing/header.c \
 			parsing/utils/read.c \
+			parsing/utils/display.c \
 
 _TESTS =	../main.c
 

@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include <stdbool.h>
 #include "common/include/champion/defs.h"
 
 /**
@@ -32,22 +33,35 @@ int parsing_file_open(char *file);
 bool parsing_header(champion_t *champion, int fd);
 
 /**
+ * @brief Display a Champion.
+ * @param champion Champion to display
+ */
+void parsing_display(champion_t *champion);
+
+/**
+ * @brief Read a long int from file.
+ * @param fd File Descriptor of the file
+ * @return Unsigned long int readed
+ */
+unsigned long int parsing_read_long_int(int fd);
+
+/**
  * @brief Read a char from file.
  * @param fd File Descriptor of the file
- * @return Char readed
+ * @return Unsigned char readed
  */
 unsigned char parsing_read_char(int fd);
 
 /**
  * @brief Read a int from int.
  * @param fd File Descriptor of the file
- * @return Int readed
+ * @return Unsigned int readed
  */
 unsigned int parsing_read_int(int fd);
 
 /**
  * @brief Read a char from short.
  * @param fd File Descriptor of the file
- * @return Short readed
+ * @return Unsigned short readed
  */
 unsigned short parsing_read_short(int fd);
