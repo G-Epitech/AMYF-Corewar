@@ -18,7 +18,7 @@ typedef enum e_type_parameter {
 
 // Represent a parameter of a command.
 typedef struct s_parameter {
-    unsigned int value;     // Value of the parameter
+    int value;              // Value of the parameter
     type_parameter_t type;  // Type of the parameter
 } parameter_t;
 

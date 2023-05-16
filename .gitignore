@@ -21,3 +21,4 @@ corewar/corewar
 asm_tests
 corewar_tests
 *.core
+common_tests
