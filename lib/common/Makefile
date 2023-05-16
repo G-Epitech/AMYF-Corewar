@@ -5,7 +5,7 @@
 ## @Made by Math alias T1nt1n
 ##
 
-SRC = 		list/append.c \
+_SRC = 		list/append.c \
 			list/free.c \
 			list/new.c \
 			list/remove.c \
