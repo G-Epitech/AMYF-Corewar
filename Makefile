@@ -7,6 +7,7 @@
 
 PATH_ASM = ./asm
 PATH_COREWAR = ./corewar
+PATH_COMMON = ./lib/common
 
 FTEST_REPO = 	https://github.com/Atomot/ftest/
 FTEST_V = 		ftest-0.1.0-1.x86_64.rpm
@@ -26,22 +27,30 @@ NAME =			global_corewar
 all: 			$(NAME)
 
 $(NAME):
-				$(MAKE) -C $(PATH_ASM)
-				$(MAKE) -C $(PATH_COREWAR)
+				@printf "$(STYLE_RED)🚚 Lib 'Common' Compilation...\
+				$(STYLE_END)\n"
+				@$(MAKE) -C $(PATH_COMMON)
+				@printf "$(STYLE_RED)\n🚚 Project 'Asm' Compilation...\
+				$(STYLE_END)\n"
+				@$(MAKE) -C $(PATH_ASM)
+				@printf "$(STYLE_RED)\n🚚 Project 'Corewar' Compilation...\
+				$(STYLE_END)\n"
+				@$(MAKE) -C $(PATH_COREWAR)
 
 docker:
 				@docker run -it --rm -v $(shell pwd):/project -w /project \
 				epitechcontent/epitest-docker tcsh
 
 clean:
-				$(MAKE) -C $(PATH_ASM) clean
-				$(MAKE) -C $(PATH_COREWAR) clean
+				@$(MAKE) -C $(PATH_ASM) clean
+				@$(MAKE) -C $(PATH_COREWAR) clean
 
 fclean:
-				$(MAKE) -C $(PATH_ASM) fclean
-				$(MAKE) -C $(PATH_COREWAR) fclean
+				@$(MAKE) -C $(PATH_ASM) fclean
+				@$(MAKE) -C $(PATH_COREWAR) fclean
 
-re: 			fclean all
+re:
+				@$(MAKE) all
 
 style:			fclean
 				@printf "$(STYLE_RED)🔍 Checking coding style...$(STYLE_END)\n"
@@ -49,8 +58,8 @@ style:			fclean
 				@cat coding-style-reports.log
 
 tests_criterion:
-				$(MAKE) -C $(PATH_ASM) tests_criterion
-				$(MAKE) -C $(PATH_COREWAR) tests_criterion
+				@$(MAKE) -C $(PATH_ASM) tests_criterion
+				@$(MAKE) -C $(PATH_COREWAR) tests_criterion
 
 ftest:
 				@echo "pass"

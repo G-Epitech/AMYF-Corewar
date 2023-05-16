@@ -9,7 +9,7 @@
 
 #include <stdbool.h>
 #include "defs.h"
-#include "command/defs.h"
+#include "../cmd/defs.h"
 
 /**
 * @brief Create a new empty Champion.
