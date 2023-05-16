@@ -55,7 +55,7 @@ $(NAME):	$(SRC_OBJ)
 %.o: %.c
 			@printf "$(STYLE_BLUE)📦 Compiling lib$(NAME) - $(BOLD_BLUE)\
 [$<]$(STYLE_END)\n"
-			@$(CC) $(INC) -c $< -o $@
+			@$(CC) $(INC) $(CFLAGS) -c $< -o $@
 
 clean:
 			@rm -f $(SRC_OBJ)
@@ -73,7 +73,6 @@ objects:		$(SRC_OBJ)
 tests_objects:	$(TESTS_OBJ)
 
 tests_criterion:
-			@rm -f $(TESTS_OBJ) $(SRC_OBJ)
 			@printf "$(STYLE_RED)🧪 Tests compilation...$(STYLE_END)\n"
 			@$(MAKE) objects CFLAGS+=--coverage -s
 			@$(MAKE) tests_objects -s
@@ -86,7 +85,7 @@ tests_criterion:
 tests_run:	tests_criterion
 
 coverage:
-				@gcovr
+			@gcovr
 
 coverage_branch:
-				@gcovr --branch
+			@gcovr --branch
