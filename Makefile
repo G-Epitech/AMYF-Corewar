@@ -66,7 +66,12 @@ tests_criterion:
 				@$(MAKE) -C $(PATH_COREWAR) tests_criterion
 
 ftest:
-				@echo "pass"
+				@which ftest ||\
+				(wget $(FTEST_REPO)releases/download/v0.1.0/$(FTEST_V) &&\
+				@sudo dnf -y install ftest-0.1.0-1.x86_64.rpm)
+				@rm -f ftest-0.1.0-1.x86_64.rpm
+				@cp ./tests/ftest/.ftest.toml .
+				@ftest && rm .ftest.toml
 
 tests_custom:
 				@echo "pass"

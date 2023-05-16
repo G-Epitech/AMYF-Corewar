@@ -1,0 +1,98 @@
+name = "Corewar health checks"
+always_stop_after_failure = true
+
+[defaults]
+command.expected.exit_code = 0
+
+# Repository structure
+
+[[test]]
+name = "Makefile at the root of the repository"
+type = "path_exists"
+path = "Makefile"
+target_type = "file"
+
+[[test]]
+name = "Librairy common"
+type = "path_exists"
+path = "lib/common"
+target_type = "directory"
+
+[[test]]
+name = "Makefile at in the librairy"
+type = "path_exists"
+path = "lib/common/Makefile"
+target_type = "file"
+
+[[test]]
+name = "Common include folder"
+type = "path_exists"
+path = "lib/common/include"
+target_type = "directory"
+
+# Assembler compilation
+
+[[test]]
+name = "Makefile fclean"
+type = "command"
+command = "make -C asm/ fclean"
+
+[[test]]
+name = "Standalone compilation"
+type = "command"
+command = "make"
+
+[[test]]
+name = "Executable correct name"
+type = "path_exists"
+path = "asm/asm"
+target_type = "file"
+
+# Corewar compilation
+
+[[test]]
+name = "Makefile fclean"
+type = "command"
+command = "make -C corewar/ fclean"
+
+[[test]]
+name = "Standalone compilation"
+type = "command"
+command = "make"
+
+[[test]]
+name = "Executable correct name"
+type = "path_exists"
+path = "asm/asm"
+target_type = "file"
+
+# Global compilation
+
+[[test]]
+name = "Makefile fclean"
+type = "command"
+command = "make fclean"
+
+[[test]]
+name = "Standalone compilation"
+type = "command"
+command = "make"
+
+[[test]]
+name = "Executable correct name"
+type = "path_exists"
+path = "asm/asm"
+target_type = "file"
+
+[[test]]
+name = "Executable correct name"
+type = "path_exists"
+path = "corewar/corewar"
+target_type = "file"
+
+# End cleaning
+
+[[test]]
+name = "Makefile fclean"
+type = "command"
+command = "make fclean"
