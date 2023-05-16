@@ -57,6 +57,7 @@ all: 		$(NAME)
 
 clean:
 			@rm -f $(NAME)
+			@rm -f $(TESTS_NAME)
 			@rm -f $(OBJ)
 			@rm -f $(SRC_OBJ)
 			@rm -f $(SRC_COVER)
