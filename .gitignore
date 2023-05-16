@@ -20,3 +20,4 @@ corewar/corewar
 .idea/
 asm_tests
 corewar_tests
+*.core
