@@ -7,6 +7,7 @@
 
 PATH_ASM = ./asm
 PATH_COREWAR = ./corewar
+PATH_COMMON = ./lib/common
 
 FTEST_REPO = 	https://github.com/Atomot/ftest/
 FTEST_V = 		ftest-0.1.0-1.x86_64.rpm
@@ -26,7 +27,11 @@ NAME =			global_corewar
 all: 			$(NAME)
 
 $(NAME):
+				@printf "$(STYLE_RED)🚚 Lib 'Common' compliation...$(STYLE_END)\n"
+				@$(MAKE) -C $(PATH_COMMON)
+				@printf "$(STYLE_RED)\n🚚 Project 'Asm' compliation...$(STYLE_END)\n"
 				@$(MAKE) -C $(PATH_ASM)
+				@printf "$(STYLE_RED)\n🚚 Project 'Corewar' compliation...$(STYLE_END)\n"
 				@$(MAKE) -C $(PATH_COREWAR)
 
 docker:
@@ -41,7 +46,8 @@ fclean:
 				@$(MAKE) -C $(PATH_ASM) fclean
 				@$(MAKE) -C $(PATH_COREWAR) fclean
 
-re: 			fclean all
+re:
+				@$(MAKE) all
 
 style:			fclean
 				@printf "$(STYLE_RED)🔍 Checking coding style...$(STYLE_END)\n"

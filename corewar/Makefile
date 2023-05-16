@@ -5,47 +5,47 @@
 ## @Made by Math alias T1nt1n
 ##
 
-SRC = 		sources/corewar.c
+_SRC = 		corewar.c
 
-NAME = corewar
+SRCDIR =		sources/
+SRC =			$(addprefix $(SRCDIR), $(_SRC))
+SRC_COVER =		$(SRC:.c=.gcno)
+SRC_PRFL =		$(SRC:.c=.gcda)
 
 FTEST_REPO = https://github.com/Atomot/ftest/
-
 FTEST_V = ftest-0.1.0-1.x86_64.rpm
 
 CFLAGS += -Wall -Wextra -Werror -Wno-unused-command-line-argument -g
-
 INC = -I./include -I../lib
-
 LDFLAGS = -L../lib -lcommon
-
 OBJ = $(SRC:.c=.o)
-
 PATH_COMMON = ../lib/common
 
-COLOUR_GREEN=\033[0;32m
+NAME = corewar
 
-COLOUR_ORANGE=\033[0;33m
+STYLE_GREEN=\033[0;32m
+STYLE_ORANGE=\033[0;33m
+STYLE_RED=\033[0;31m
+STYLE_BLUE=\033[0;34m
+STYLE_GREY=\033[0;30m
+STYLE_BOLD=\033[1m
+STYLE_END=\033[0m
 
-COLOUR_RED=\033[0;31m
+COMPILING_O_LOG = "$(STYLE_BLUE)📑 Compiling sources -\
+$(STYLE_BOLD)$(STYLE_BOLD)[%s]$(STYLE_END)\n"
 
-COLOUR_BLUE=\033[0;34m
-
-COLOUR_GREY=\033[0;30m
-
-COLOUR_END=\033[0m
-
+.PHONY = all clean fclean re
 
 $(NAME):	$(OBJ)
-			@printf "$(COLOUR_RED)🚚 Lib 'Common' compilation...$(COLOUR_END)\n"
+			@printf "$(STYLE_RED)🚚 Lib 'Common' compliation...$(STYLE_END)\n"
 			@make -C$(PATH_COMMON)
-			@printf "$(COLOUR_RED)🚚 Main compilation...$(COLOUR_END)\n"
+			@printf "$(STYLE_RED)🚚 Main compliation...$(STYLE_END)\n"
 			@gcc -o $(NAME) $(OBJ) $(LDFLAGS) $(INC)
-			@printf "$(COLOUR_GREEN)✅ Corewar was successfully built\
-			$(COLOUR_END)\n"
+			@printf "$(STYLE_GREEN)✅ Corewar was successfully built\
+			$(STYLE_END)\n"
 
 %.o: 		%.c
-			@printf "$(COLOUR_BLUE)📑 Compiling $(BOLD_BLUE)[$<]$(COLOUR_END)\n"
+			@printf $(COMPILING_O_LOG) $<
 			@gcc $(LDFLAGS) $(CFLAGS) $(INC) -c $< -o $@
 
 all: 		$(NAME)
@@ -53,17 +53,19 @@ all: 		$(NAME)
 clean:
 			@rm -f $(NAME)
 			@rm -f $(OBJ)
+			@rm -f $(SRC_OBJ)
+			@rm -f $(SRC_COVER)
 			@make -C$(PATH_COMMON) clean -s
 
 fclean: 	clean
 			@make -C$(PATH_COMMON) fclean -s
-			@printf "$(COLOUR_ORANGE)🧽 Corewar was successfully clean\
-			$(COLOUR_END)\n"
+			@printf "$(STYLE_ORANGE)🧽 Corewar was successfully clean\
+			$(STYLE_END)\n"
 
 re: 		fclean all
 
 style:		fclean
-			@echo "$(COLOUR_RED)🔍 Checking coding style...$(COLOUR_END)"
+			@echo "$(STYLE_RED)🔍 Checking coding style...$(STYLE_END)"
 			@coding-style . .
 			@cat coding-style-reports.log
 
@@ -81,4 +83,8 @@ tests_criterion:
 
 tests_run:	tests_criterion
 
-.PHONY = all clean fclean re
+coverage:
+				@gcovr
+
+coverage_branch:
+				@gcovr --branch
