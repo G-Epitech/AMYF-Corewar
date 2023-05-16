@@ -5,6 +5,7 @@
 ** Tests of assembler file exportation
 */
 
+#include <stdio.h>
 #include <unistd.h>
 #include <sys/resource.h>
 #include <criterion/criterion.h>

@@ -7,6 +7,7 @@
 
 #include <fcntl.h>
 #include <unistd.h>
+#include <sys/resource.h>
 #include <criterion/criterion.h>
 #include "export/defs.h"
 #include "export/export.h"
