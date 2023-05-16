@@ -11,6 +11,8 @@ _SRC = 		asm.c \
 			parsing/header/header.c \
 			parsing/body/body.c \
 			parsing/file.c \
+			parsing/utils/utils.c \
+			parsing/utils/str_to_word_array.c \
 			\
 
 _TESTS =	../main.c

@@ -23,14 +23,14 @@ champion_t *parse_champion(int argc, char **argv);
 * @param input_champion input (.s) of champion
 * @return Cmd of champion
 */
-list_t *parsing_champion_body(char *input_champion);
+list_t *parsing_champion_body(char *input_champion, file_t *file);
 
 /**
 * @brief Parse the header of champion.
 * @param input_champion input (.s) of champion
 * @return Header of champion
 */
-header_t *parsing_champion_header(char *input_champion);
+header_t *parsing_champion_header(char *input_champion, file_t *file);
 
 /**
 * @brief Parse the file for get information.
@@ -38,3 +38,10 @@ header_t *parsing_champion_header(char *input_champion);
 * @return File parsed
 */
 char *parse_file(char *file_path);
+
+/**
+* @brief Create new struct for file
+* @param input_file The file 
+* @return The struct initied
+*/
+file_t *new_file(char *input_file);
