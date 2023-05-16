@@ -26,20 +26,20 @@ NAME =			global_corewar
 all: 			$(NAME)
 
 $(NAME):
-				$(MAKE) -C $(PATH_ASM)
-				$(MAKE) -C $(PATH_COREWAR)
+				@$(MAKE) -C $(PATH_ASM)
+				# @$(MAKE) -C $(PATH_COREWAR)
 
 docker:
 				@docker run -it --rm -v $(shell pwd):/project -w /project \
 				epitechcontent/epitest-docker tcsh
 
 clean:
-				$(MAKE) -C $(PATH_ASM) clean
-				$(MAKE) -C $(PATH_COREWAR) clean
+				@$(MAKE) -C $(PATH_ASM) clean
+				# @$(MAKE) -C $(PATH_COREWAR) clean
 
 fclean:
-				$(MAKE) -C $(PATH_ASM) fclean
-				$(MAKE) -C $(PATH_COREWAR) fclean
+				@$(MAKE) -C $(PATH_ASM) fclean
+				# @$(MAKE) -C $(PATH_COREWAR) fclean
 
 re: 			fclean all
 
@@ -49,8 +49,8 @@ style:			fclean
 				@cat coding-style-reports.log
 
 tests_criterion:
-				$(MAKE) -C $(PATH_ASM) tests_criterion
-				$(MAKE) -C $(PATH_COREWAR) tests_criterion
+				@$(MAKE) -C $(PATH_ASM) tests_criterion
+				# @$(MAKE) -C $(PATH_COREWAR) tests_criterion
 
 ftest:
 				@echo "pass"
