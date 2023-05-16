@@ -15,7 +15,7 @@ SRC_COVER =		$(SRC:.c=.gcno)
 SRC_PRFL =		$(SRC:.c=.gcda)
 
 CFLAGS += -Wall -Wextra -Werror -Wno-unused-command-line-argument -g
-INC = -I./include -I../lib
+INC = -I./includes -I../lib
 LDFLAGS = -L../lib -lcommon
 OBJ = $(SRC:.c=.o)
 PATH_COMMON = ../lib/common
