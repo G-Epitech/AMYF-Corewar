@@ -5,7 +5,7 @@
 ** corewar
 */
 
-#include "common/include/champion/champion.h"
+#include "common/includes/champion/champion.h"
 
 int main(void)
 {
