@@ -5,9 +5,15 @@
 ** asm
 */
 
+#include <stdio.h>
+#include "parsing/parsing.h"
 #include "common/include/champion/champion.h"
 
-int main(void)
+int main(int argc, char **argv)
 {
-    return 0;
+    champion_t * champion = parse_champion(argc, argv);
+
+    if (!champion) {
+        printf("There is an error : 84\n");
+    }
 }

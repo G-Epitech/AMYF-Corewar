@@ -5,7 +5,13 @@
 ## @Made by Math alias T1nt1n
 ##
 
-_SRC = 		asm.c
+_SRC = 		asm.c \
+			\
+			parsing/parsing.c \
+			parsing/header/header.c \
+			parsing/body/body.c \
+			parsing/file.c \
+			\
 
 _TESTS =	../main.c
 
