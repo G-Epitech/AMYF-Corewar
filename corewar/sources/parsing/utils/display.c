@@ -6,7 +6,7 @@
 */
 
 #include <stdio.h>
-#include "common/include/champion/champion.h"
+#include "common/includes/champion/champion.h"
 
 static void display_header(champion_t *champion)
 {

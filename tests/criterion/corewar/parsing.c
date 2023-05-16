@@ -10,7 +10,7 @@
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
 #include "parsing/parsing.h"
-#include "common/include/champion/champion.h"
+#include "common/includes/champion/champion.h"
 
 static void redirect_all_stdout(void)
 {

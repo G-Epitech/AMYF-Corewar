@@ -42,15 +42,15 @@ docker:
 				epitechcontent/epitest-docker tcsh
 
 clean:
-				@$(MAKE) -C $(PATH_ASM) clean
-				@$(MAKE) -C $(PATH_COREWAR) clean
+				@$(MAKE) -C $(PATH_ASM) clean -s
+				@$(MAKE) -C $(PATH_COREWAR) clean -s
 
 fclean:
-				@$(MAKE) -C $(PATH_ASM) fclean
-				@$(MAKE) -C $(PATH_COREWAR) fclean
+				@$(MAKE) -C $(PATH_ASM) fclean -s
+				@$(MAKE) -C $(PATH_COREWAR) fclean -s
 
 re:
-				@$(MAKE) all
+				@$(MAKE) all -s
 
 style:			fclean
 				@printf "$(STYLE_RED)🔍 Checking coding style...$(STYLE_END)\n"
@@ -60,10 +60,9 @@ style:			fclean
 tests_criterion:
 				@printf "$(STYLE_RED)🚚 Lib 'Common' Compilation...\
 				$(STYLE_END)\n"
-				@$(MAKE) -C $(PATH_COMMON)
-				@$(MAKE) -C $(PATH_COMMON) tests_criterion
-				@$(MAKE) -C $(PATH_ASM) tests_criterion
-				@$(MAKE) -C $(PATH_COREWAR) tests_criterion
+				@$(MAKE) -C $(PATH_COMMON) tests_criterion -s
+				@$(MAKE) -C $(PATH_ASM) tests_criterion -s
+				@$(MAKE) -C $(PATH_COREWAR) tests_criterion -s
 
 ftest:
 				@which ftest ||\

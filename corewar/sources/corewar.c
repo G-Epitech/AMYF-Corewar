@@ -5,8 +5,7 @@
 ** corewar
 */
 
-#include "parsing/parsing.h"
-#include "common/include/champion/champion.h"
+#include "common/includes/champion/champion.h"
 
 int main(int ac, char **av)
 {

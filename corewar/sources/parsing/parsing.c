@@ -6,7 +6,7 @@
 */
 
 #include "parsing/parsing.h"
-#include "common/include/champion/champion.h"
+#include "common/includes/champion/champion.h"
 
 champion_t *parsing_champion(char *file)
 {

@@ -51,7 +51,7 @@ $(STYLE_BOLD)$(STYLE_BOLD)[%s]$(STYLE_END)\n"
 
 $(NAME):	$(SRC_OBJ) $(MAIN_OBJ)
 			@printf "$(STYLE_RED)🚚 Lib 'Common' Compilation...$(STYLE_END)\n"
-			@make -C$(PATH_COMMON)
+			@make -C$(PATH_COMMON) -s
 			@printf "$(STYLE_RED)🚚 Main Compilation...$(STYLE_END)\n"
 			@$(CC) -o $(NAME) $(SRC_OBJ) $(MAIN_OBJ) $(CFLAGS) $(LDFLAGS)\
 			$(INC)
@@ -101,7 +101,7 @@ tests_custom:
 
 tests_criterion:
 			@rm -f $(TESTS_OBJ) $(SRC_OBJ)
-			@$(MAKE) -C $(PATH_COMMON)
+			@$(MAKE) -C $(PATH_COMMON) -s
 			@printf "$(STYLE_RED)🧪 Tests compilation...$(STYLE_END)\n"
 			@$(MAKE) objects CFLAGS+=--coverage -s
 			@$(MAKE) tests_objects -s
