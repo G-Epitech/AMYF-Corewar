@@ -96,6 +96,8 @@ tests_custom:
 
 tests_criterion:
 			@rm -f $(TESTS_OBJ)
+			@rm -f $(SRC_OBJ)
+			@$(MAKE) -C $(PATH_COMMON)
 			@printf "$(STYLE_RED)🧪 Tests compilation...$(STYLE_END)\n"
 			@$(MAKE) objects CFLAGS+=--coverage -s
 			@$(MAKE) tests_objects -s
