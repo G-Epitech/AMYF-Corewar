@@ -58,12 +58,13 @@ $(NAME):	$(OBJ)
 			@gcc $(INC) -c $< -o $@
 
 clean:
-			rm -f $(OBJ)
+			@rm -f $(OBJ)
+			@rm -f $(TESTS_NAME)
 			@rm -f $(TESTS_OBJ)
 
 fclean: 	clean
-			rm -f lib$(NAME).a
-			rm -f ../lib$(NAME).a
+			@rm -f lib$(NAME).a
+			@rm -f ../lib$(NAME).a
 
 re: 		fclean all
 
