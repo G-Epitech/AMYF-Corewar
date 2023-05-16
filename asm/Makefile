@@ -8,7 +8,10 @@
 _SRC = 		export/export.c \
 			export/create_file.c \
 
-_TESTS =	../main.c
+_TESTS =	../main.c \
+			\
+			export/create_file.c \
+			export/export.c \
 
 SRCDIR =		sources/
 SRC =			$(addprefix $(SRCDIR), $(_SRC))
