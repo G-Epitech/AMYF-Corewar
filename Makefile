@@ -58,6 +58,10 @@ style:			fclean
 				@cat coding-style-reports.log
 
 tests_criterion:
+				@printf "$(STYLE_RED)🚚 Lib 'Common' Compilation...\
+				$(STYLE_END)\n"
+				@$(MAKE) -C $(PATH_COMMON)
+				@$(MAKE) -C $(PATH_COMMON) tests_criterion
 				@$(MAKE) -C $(PATH_ASM) tests_criterion
 				@$(MAKE) -C $(PATH_COREWAR) tests_criterion
 

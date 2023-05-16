@@ -7,6 +7,8 @@
 
 _SRC = 		asm.c
 
+_TESTS =	criterion/main.c
+
 SRCDIR =		sources/
 SRC =			$(addprefix $(SRCDIR), $(_SRC))
 SRC_COVER =		$(SRC:.c=.gcno)
@@ -21,7 +23,13 @@ LDFLAGS = -L../lib -lcommon
 OBJ = $(SRC:.c=.o)
 PATH_COMMON = ../lib/common
 
+TESTSDIR = 		tests/
+TESTS =			$(addprefix $(TESTSDIR), $(_TESTS))
+TESTS_OBJ = 	$(TESTS:.c=.o)
+TESTS_CFLAGS =	-lcriterion --coverage
+
 NAME = asm
+TESTS_NAME = asm_tests
 
 STYLE_GREEN=\033[0;32m
 STYLE_ORANGE=\033[0;33m
@@ -55,6 +63,7 @@ clean:
 			@rm -f $(OBJ)
 			@rm -f $(SRC_OBJ)
 			@rm -f $(SRC_COVER)
+			@rm -f $(TESTS_OBJ)
 			@make -C$(PATH_COMMON) clean -s
 
 fclean: 	clean
@@ -72,6 +81,10 @@ style:		fclean
 exec:		$(NAME)
 			./$(NAME)
 
+objects:		$(SRC_OBJ)
+
+tests_objects:	$(TESTS_OBJ)
+
 tests_ftest:
 			echo "pass"
 
@@ -79,7 +92,15 @@ tests_custom:
 			echo "pass"
 
 tests_criterion:
-			echo "pass"
+			@rm -f $(TESTS_OBJ)
+			@printf "$(STYLE_RED)🧪 Tests compliation...$(STYLE_END)\n"
+			@$(MAKE) objects CFLAGS+=--coverage -s
+			@$(MAKE) tests_objects -s
+			@$(CC) -o $(TESTS_NAME) $(SRC_OBJ) $(TESTS_OBJ) \
+			$(LDFLAGS) $(CFLAGS) $(INC) $(TESTS_CFLAGS)
+			@printf "$(STYLE_GREEN)✅ Tests were successfully built\
+			$(STYLE_END)\n"
+			@./$(TESTS_NAME)
 
 tests_run:	tests_criterion
 
