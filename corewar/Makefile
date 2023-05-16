@@ -5,9 +5,9 @@
 ## @Made by Math alias T1nt1n
 ##
 
-SRC = 		sources/asm.c
+SRC = 		sources/corewar.c
 
-NAME = asm
+NAME = corewar
 
 FTEST_REPO = https://github.com/Atomot/ftest/
 
@@ -37,11 +37,11 @@ COLOUR_END=\033[0m
 
 
 $(NAME):	$(OBJ)
-			@printf "$(COLOUR_RED)🚚 Lib 'Common' compliation...$(COLOUR_END)\n"
+			@printf "$(COLOUR_RED)🚚 Lib 'Common' compilation...$(COLOUR_END)\n"
 			@make -C$(PATH_COMMON)
-			@printf "$(COLOUR_RED)🚚 Main compliation...$(COLOUR_END)\n"
+			@printf "$(COLOUR_RED)🚚 Main compilation...$(COLOUR_END)\n"
 			@gcc -o $(NAME) $(OBJ) $(LDFLAGS) $(INC)
-			@printf "$(COLOUR_GREEN)✅ Asm was successfully built\
+			@printf "$(COLOUR_GREEN)✅ Corewar was successfully built\
 			$(COLOUR_END)\n"
 
 %.o: 		%.c
@@ -57,7 +57,7 @@ clean:
 
 fclean: 	clean
 			@make -C$(PATH_COMMON) fclean -s
-			@printf "$(COLOUR_ORANGE)🧽 Asm was successfully clean\
+			@printf "$(COLOUR_ORANGE)🧽 Corewar was successfully clean\
 			$(COLOUR_END)\n"
 
 re: 		fclean all
