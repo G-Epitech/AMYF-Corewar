@@ -24,9 +24,10 @@ SRC = 	source/list/append.c \
 		source/header/new.c \
 		source/header/free.c \
 
-_TESTS =	../main.c
+_TESTS =	../main.c \
+			champion.c
 
-OBJ = $(SRC:.c=.o)
+SRC_OBJ = $(SRC:.c=.o)
 INC = -I./include
 
 TESTSDIR = 		../../tests/criterion/$(NAME)/
@@ -49,16 +50,16 @@ STYLE_END=\033[0m
 
 all: 		$(NAME)
 
-$(NAME):	$(OBJ)
-			@ar rc lib$(NAME).a $(OBJ) $(CFLAGS)
+$(NAME):	$(SRC_OBJ)
+			@ar rc lib$(NAME).a $(SRC_OBJ) $(CFLAGS)
 			@cp lib$(NAME).a ../
 %.o: %.c
 			@printf "$(STYLE_BLUE)📦 Compiling lib$(NAME) - $(BOLD_BLUE)\
 [$<]$(STYLE_END)\n"
-			@gcc $(INC) -c $< -o $@
+			@$(CC) $(INC) -c $< -o $@
 
 clean:
-			@rm -f $(OBJ)
+			@rm -f $(SRC_OBJ)
 			@rm -f $(TESTS_NAME)
 			@rm -f $(TESTS_OBJ)
 
@@ -73,7 +74,7 @@ objects:		$(SRC_OBJ)
 tests_objects:	$(TESTS_OBJ)
 
 tests_criterion:
-			@rm -f $(TESTS_OBJ)
+			@rm -f $(TESTS_OBJ) $(SRC_OBJ)
 			@printf "$(STYLE_RED)🧪 Tests compilation...$(STYLE_END)\n"
 			@$(MAKE) objects CFLAGS+=--coverage -s
 			@$(MAKE) tests_objects -s
