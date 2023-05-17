@@ -31,6 +31,8 @@ char *parse_file(char *file_path)
     char *line_input_champion = NULL;
     size_t input_len = 0;
 
+    if (!input_champion || !fp)
+        return NULL;
     input_champion[0] = '\0';
     while (getline(&line_input_champion, &input_len, fp) != -1) {
         input_champion = strconcat(input_champion, line_input_champion);

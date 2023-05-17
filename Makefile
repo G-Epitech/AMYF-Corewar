@@ -5,10 +5,10 @@
 ## Makefile
 ##
 
-PATH_ASM = 		./asm
-PATH_COREWAR = 	./corewar
-PATH_COMMON = 	./lib/common
-PATH_MY = 		./lib/my
+PATH_ASM = ./asm
+PATH_COREWAR = ./corewar
+PATH_COMMON = ./lib/common
+PATH_MY = ./lib/my
 
 FTEST_REPO = 	https://github.com/Atomot/ftest/
 FTEST_V = 		ftest-0.1.0-1.x86_64.rpm

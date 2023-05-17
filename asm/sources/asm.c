@@ -15,5 +15,7 @@ int main(int argc, char **argv)
 {
     champion_t * champion = parse_champion(argc, argv);
 
-    (void) champion;
+    if (!champion)
+        return 84;
+    return 0;
 }
