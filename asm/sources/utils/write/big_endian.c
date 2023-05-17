@@ -14,6 +14,6 @@ ssize_t write_big_endian(int fd, const void *buff, size_t nbytes)
     ssize_t wrote = 0;
 
     for (size_t i = nbytes; i > 0; i--)
-        wrote += write(fd, &(buff[i - 1]), 1);
+        wrote += write(fd, buff + i - 1, 1);
     return wrote;
 }

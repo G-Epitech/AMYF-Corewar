@@ -14,7 +14,7 @@ static void display_header(champion_t *champion)
     printf(" == Header ==\n");
     printf("Name: %s\n", champion->header->name);
     printf("Desciption: %s\n", champion->header->comment);
-    printf("Body Size: %ld\n", champion->header->body_size);
+    printf("Body Size: %d\n", champion->header->body_size);
 }
 
 void parsing_display(champion_t *champion)

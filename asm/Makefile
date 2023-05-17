@@ -6,8 +6,8 @@
 ##
 
 _SRC = 		export/export.c \
+			export/header.c \
 			export/create_file.c \
-			export/header/header.c \
 			\
 			utils/write/big_endian.c \
 
@@ -27,7 +27,7 @@ SRC_PRFL =		$(SRC:.c=.gcda)
 
 override CFLAGS += -Wall -Wextra -Werror -Wno-unused-command-line-argument -g
 INC = -I./includes -I../lib
-LDFLAGS = -L../lib -lcommon
+LDFLAGS = -L../lib -lcommon -lmy
 PATH_COMMON = ../lib/common
 PATH_MY = ../lib/common
 
