@@ -5,7 +5,7 @@
 ** Day 06, task01
 */
 
-#include "include/my.h"
+#include "includes/my.h"
 
 char *my_strcpy(char *dest, char const *src)
 {

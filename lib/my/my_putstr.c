@@ -5,7 +5,7 @@
 ** Day 04, Task 02
 */
 
-#include "include/my.h"
+#include "includes/my.h"
 
 int my_putstr(char const *str)
 {

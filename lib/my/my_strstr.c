@@ -5,7 +5,7 @@
 ** Day 06, task05
 */
 
-#include "include/my.h"
+#include "includes/my.h"
 
 static int test (char *str, char const *to_find, int i, int x)
 {

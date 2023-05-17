@@ -5,7 +5,7 @@
 ** Day 05, Task 06
 */
 
-#include "include/my.h"
+#include "includes/my.h"
 
 int my_strcmp(char const *s1, char const *s2)
 {
