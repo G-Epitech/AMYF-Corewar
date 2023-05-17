@@ -21,4 +21,5 @@ corewar/corewar
 asm_tests
 corewar_tests
 *.cor
+!tests/utils/champions/*.cor
 common_tests
