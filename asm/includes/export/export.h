@@ -24,3 +24,17 @@ bool asm_export_champion(char *filename, champion_t *champion);
  * @return File descriptor corresponding to created file or -1 on failure
  **/
 int asm_export_create_file(char *filename);
+
+/**
+ * @brief Write magic code at start of output file.
+ * @param file File descriptor of output file
+ */
+void asm_export_champion_header_magic_code(int file);
+
+/**
+ * @brief Export given header of champion to binary file.
+ * @param header Header to export
+ * @param file File descriptor of output file
+ * @return Success of header exportation
+ */
+bool asm_export_champion_header(header_t *header, int file);

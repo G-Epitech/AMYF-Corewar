@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include "header/defs.h"
 #include "utils/malloc2.h"
+#include "my/includes/my.h"
 
 header_t *header_new(void)
 {
@@ -15,10 +16,8 @@ header_t *header_new(void)
 
     if (!header)
         return NULL;
-    for (int i = 0; i < HEADER_NAME; i++)
-        header->name[i] = '\0';
-    for (int i = 0; i < HEADER_COMMENT; i++)
-        header->comment[i] = '\0';
+    my_memset(&(header->name), '\0', HEADER_NAME_SIZE);
+    my_memset(&(header->comment), '\0', HEADER_COMMENT_SIZE);
     header->body_size = 0;
     return header;
 }

@@ -12,9 +12,8 @@
 /**
 * @brief Create a new cmd for a Champion.
 * The index_cmd is instantly refer to the command name in the array.
-* @param command Champion command to append
 */
-cmd_t *cmd_new(char *command);
+cmd_t *cmd_new(void);
 
 /**
 * @brief Free the given command Champion.
