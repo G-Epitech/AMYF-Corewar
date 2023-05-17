@@ -8,8 +8,6 @@
 _SRC = 		export/export.c \
 			export/header.c \
 			export/create_file.c \
-			\
-			utils/write/big_endian.c \
 
 _TESTS =	../main.c \
 			\

@@ -22,3 +22,4 @@ char *my_strstr(char *str, char const *to_find);
 int my_strlen(char const *str);
 int my_strcmp(char const *s1, char const *s2);
 void *my_memset(void *pointer, unsigned char value, size_t count);
+ssize_t my_write_big_endian(int fd, const void *buff, size_t nbytes);

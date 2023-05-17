@@ -1,15 +1,15 @@
 /*
 ** EPITECH PROJECT, 2023
-** Corewar
+** my
 ** File description:
-** Corewar / Assembler / Utils / Write / Big Endian: write bytes as big endian
+** big_endian
 */
 
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/types.h>
 
-ssize_t write_big_endian(int fd, const void *buff, size_t nbytes)
+ssize_t my_write_big_endian(int fd, const void *buff, size_t nbytes)
 {
     ssize_t wrote = 0;
 

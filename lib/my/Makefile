@@ -14,6 +14,7 @@ SRC = my_put_nbr.c \
       my_strlen.c \
       my_strstr.c \
       my_memset.c \
+      my_write_big_endian.c \
       error.c
 
 OBJ = $(SRC:.c=.o)
