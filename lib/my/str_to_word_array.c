@@ -5,10 +5,10 @@
 ** task04 day08
 */
 
-#include "include/my.h"
 #include <stdlib.h>
-#include <stdbool.h>
 #include <string.h>
+#include <stdbool.h>
+#include "includes/my.h"
 
 bool my_char_is_in_str(char c, char* separate)
 {
@@ -19,7 +19,7 @@ bool my_char_is_in_str(char c, char* separate)
     return false;
 }
 
-bool my_car_is_alpha(char c, char *separate)
+bool my_char_is_alpha(char c, char *separate)
 {
 
     if (my_char_is_in_str(c, separate))
@@ -33,10 +33,10 @@ int countword(char const *str, char *separate)
     int nb_word = 0;
 
     for (int i = 0; str[i] != '\0'; i++) {
-        if ((my_car_is_alpha(str[i], separate))) {
+        if ((my_char_is_alpha(str[i], separate))) {
             nb_word++;
         }
-        for (; ((my_car_is_alpha(str[i], separate))) && str[i] != '\0'; i++) {
+        for (; ((my_char_is_alpha(str[i], separate))) && str[i] != '\0'; i++) {
         }
         if (str[i] == '\0')
             i--;
@@ -48,21 +48,21 @@ int count_letter_of_word(char const *str, int *index_word, char *separate)
 {
     int nb_letter = 0;
 
-    while (str[*index_word] != '\0' && !my_car_is_alpha(str[*index_word],
+    while (str[*index_word] != '\0' && !my_char_is_alpha(str[*index_word],
     separate))
         (*index_word)++;
-    while (str[*index_word] != '\0' && my_car_is_alpha(str[*index_word],
+    while (str[*index_word] != '\0' && my_char_is_alpha(str[*index_word],
     separate)) {
         nb_letter++;
         (*index_word)++;
-        if (!((my_car_is_alpha(str[*index_word], separate)))) {
+        if (!((my_char_is_alpha(str[*index_word], separate)))) {
             return nb_letter;
         }
     }
     return nb_letter;
 }
 
-char **my_str_to_word_array_separate(char const *str, char *separate)
+char **str_to_word_array(char const *str, char *separate)
 {
     int index_word = 0;
     int nb = 0;

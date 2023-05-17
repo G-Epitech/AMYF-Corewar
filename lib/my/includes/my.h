@@ -19,3 +19,6 @@ int error(char *str);
 char *my_strstr(char *str, char const *to_find);
 int my_strlen(char const *str);
 int my_strcmp(char const *s1, char const *s2);
+char **str_to_word_array(char const *str, char *separate);
+char *strconcat(char *dest, char *src);
+void free_str_tab(char **tab);
