@@ -5,9 +5,13 @@
 ## @Made by Math alias T1nt1n
 ##
 
-_SRC =
+_SRC = 		export/export.c \
+			export/create_file.c \
 
-_TESTS =	../main.c
+_TESTS =	../main.c \
+			\
+			export/create_file.c \
+			export/export.c \
 
 SRCDIR =		sources/
 SRC =			$(addprefix $(SRCDIR), $(_SRC))
@@ -18,7 +22,7 @@ SRC_OBJ = 		$(SRC:.c=.o)
 SRC_COVER =		$(SRC:.c=.gcno)
 SRC_PRFL =		$(SRC:.c=.gcda)
 
-CFLAGS += -Wall -Wextra -Werror -Wno-unused-command-line-argument -g
+override CFLAGS += -Wall -Wextra -Werror -Wno-unused-command-line-argument -g
 INC = -I./includes -I../lib
 LDFLAGS = -L../lib -lcommon
 PATH_COMMON = ../lib/common
@@ -58,8 +62,9 @@ $(NAME):	$(SRC_OBJ) $(MAIN_OBJ)
 			$(STYLE_END)\n"
 
 %.o: 		%.c
+			@rm -rf $(<:.c=.gcda) $(<:.c=.gcno)
 			@printf $(COMPILING_O_LOG) $<
-			@$(CC) $(LDFLAGS) $(CFLAGS) $(INC) -c $< -o $@
+			$(CC) $(CFLAGS) $(LDFLAGS) $(INC) -c $< -o $@
 
 all: 		$(NAME)
 
@@ -68,7 +73,7 @@ clean:
 			@rm -f $(TESTS_NAME)
 			@rm -f $(SRC_OBJ)
 			@rm -f $(MAIN_OBJ)
-			@rm -f $(SRC_COVER)
+			@rm -f $(SRC_COVER) $(SRC_PRFL)
 			@rm -f $(TESTS_OBJ)
 			@make -C $(PATH_COMMON) clean -s
 			@make -C $(PATH_MY) clean -s
@@ -104,7 +109,7 @@ tests_criterion:
 			@$(MAKE) -C $(PATH_MY) -s
 			@$(MAKE) -C $(PATH_COMMON) -s
 			@printf "$(STYLE_RED)🧪 Tests compilation...$(STYLE_END)\n"
-			@$(MAKE) objects CFLAGS+=--coverage -s
+			@$(MAKE) objects CFLAGS+=--coverage
 			@$(MAKE) tests_objects -s
 			@$(CC) -o $(TESTS_NAME) $(SRC_OBJ) $(TESTS_OBJ) \
 			$(LDFLAGS) $(CFLAGS) $(INC) $(TESTS_CFLAGS)

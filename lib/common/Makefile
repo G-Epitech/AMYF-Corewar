@@ -29,12 +29,15 @@ _TESTS =	../main.c \
 SRCDIR =		sources/
 SRC =			$(addprefix $(SRCDIR), $(_SRC))
 SRC_OBJ = 		$(SRC:.c=.o)
-INC = 			-I./includes
+SRC_COVER =		$(SRC:.c=.gcno)
+SRC_PRFL =		$(SRC:.c=.gcda)
 
 TESTSDIR = 		../../tests/criterion/$(NAME)/
 TESTS =			$(addprefix $(TESTSDIR), $(_TESTS))
 TESTS_OBJ = 	$(TESTS:.c=.o)
 TESTS_CFLAGS =	-lcriterion --coverage
+
+INC = 			-I./includes
 
 NAME = common
 TESTS_NAME = common_tests
@@ -54,13 +57,16 @@ all: 		$(NAME)
 $(NAME):	$(SRC_OBJ)
 			@ar rc lib$(NAME).a $(SRC_OBJ) $(CFLAGS)
 			@cp lib$(NAME).a ../
+
 %.o: %.c
+			@rm -rf $(<:.c=.gcda) $(<:.c=.gcno)
 			@printf "$(STYLE_BLUE)📦 Compiling lib$(NAME) - $(BOLD_BLUE)\
 [$<]$(STYLE_END)\n"
 			@$(CC) $(INC) $(CFLAGS) -c $< -o $@
 
 clean:
 			@rm -f $(SRC_OBJ)
+			@rm -f $(SRC_COVER) $(SRC_PRFL)
 			@rm -f $(TESTS_NAME)
 			@rm -f $(TESTS_OBJ)
 

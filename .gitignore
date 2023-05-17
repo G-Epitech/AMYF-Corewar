@@ -20,4 +20,5 @@ corewar/corewar
 .idea/
 asm_tests
 corewar_tests
+*.cor
 common_tests

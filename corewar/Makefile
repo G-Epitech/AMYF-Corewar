@@ -23,7 +23,7 @@ SRC_OBJ = 		$(SRC:.c=.o)
 SRC_COVER =		$(SRC:.c=.gcno)
 SRC_PRFL =		$(SRC:.c=.gcda)
 
-CFLAGS += -Wall -Wextra -Werror -Wno-unused-command-line-argument -g
+override CFLAGS += -Wall -Wextra -Werror -Wno-unused-command-line-argument -g
 INC = -I./includes -I../lib
 LDFLAGS = -L../lib -lcommon
 PATH_COMMON = ../lib/common
@@ -62,6 +62,7 @@ $(NAME):	$(SRC_OBJ) $(MAIN_OBJ)
 			$(STYLE_END)\n"
 
 %.o: 		%.c
+			@rm -rf $(<:.c=.gcda) $(<:.c=.gcno)
 			@printf $(COMPILING_O_LOG) $<
 			@$(CC) $(LDFLAGS) $(CFLAGS) $(INC) -c $< -o $@
 
@@ -72,8 +73,7 @@ clean:
 			@rm -f $(TESTS_NAME)
 			@rm -f $(SRC_OBJ)
 			@rm -f $(MAIN_OBJ)
-			@rm -f $(SRC_COVER)
-			@rm -f $(SRC_PRFL)
+			@rm -f $(SRC_COVER) $(SRC_PRFL)
 			@rm -f $(TESTS_OBJ)
 			@make -C $(PATH_COMMON) clean -s
 			@make -C $(PATH_MY) clean -s
