@@ -23,9 +23,9 @@ champion_t *parse_champion(int argc, char **argv)
     if (!champion)
         return NULL;
     input_champion = parse_file(argv[1]);
-    file = new_file(input_champion);
-    champion->header = parsing_champion_header(input_champion, file);
-    if (!champion->header)
+    file = file_new(input_champion);
+    champion->header = parsing_champion_header(file);
+    if (champion->header == NULL)
         return NULL;
     champion->body = parsing_champion_body(input_champion, file);
     if (!champion->body)

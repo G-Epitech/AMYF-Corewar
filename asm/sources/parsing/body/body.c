@@ -13,5 +13,6 @@
 list_t *parsing_champion_body(char *input_champion, file_t *file)
 {
     (void) input_champion;
+    (void) file;
     return NULL;
 }

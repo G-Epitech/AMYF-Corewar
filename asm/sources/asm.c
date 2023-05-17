@@ -6,14 +6,12 @@
 */
 
 #include <stdio.h>
+#include "my/include/my.h"
+#include "parsing/utils.h"
 #include "parsing/parsing.h"
 #include "common/include/champion/champion.h"
 
 int main(int argc, char **argv)
 {
     champion_t * champion = parse_champion(argc, argv);
-
-    if (!champion) {
-        printf("There is an error : 84\n");
-    }
 }

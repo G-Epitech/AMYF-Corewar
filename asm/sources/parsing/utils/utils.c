@@ -13,6 +13,16 @@
 #include "parsing/utils.h"
 #include "common/include/utils/malloc2.h"
 
+void free_str_tab(char **tab)
+{
+    int index = 0;
+
+    while (tab[index] != NULL) {
+        free(tab[index]);
+    }
+    free(tab);
+}
+
 char *strconcat(char *dest, char *src)
 {
     int len_dest = my_strlen(dest);
@@ -35,21 +45,15 @@ char *strconcat(char *dest, char *src)
     return new;
 }
 
-char *filter_comment(char *input_user)
+char *parsing_filter_comment(char *input_user)
 {
     char **input_separate = NULL;
 
-    if (my_strcmp("##start\n", input_user) == 0 ||
-    my_strcmp("##end\n", input_user) == 0) {
-        return input_user;
-    } else {
-        input_separate = str_to_word_array(input_user, "#");
-        return input_separate[0];
-    }
-    return NULL;
+    input_separate = str_to_word_array(input_user, "#");
+    return input_separate[0];
 }
 
-bool is_comment(char *input_user)
+bool parsing_is_comment(char *input_user)
 {
     char *test_if_comment = NULL;
     char **input_separate = str_to_word_array(input_user, "#");
@@ -57,10 +61,17 @@ bool is_comment(char *input_user)
     test_if_comment = my_strstr(input_user, "#");
     if (test_if_comment == NULL || input_separate[1] != NULL) {
         return false;
-    } else if (my_strcmp(test_if_comment, "##start\n") == 0 ||
-    my_strcmp(test_if_comment, "##end\n") == 0) {
-        return false;
     } else {
         return true;
     }
+}
+
+bool parsing_is_empty(char *input_user)
+{
+    char **input_separate = str_to_word_array(input_user, " \t");
+
+    if (input_separate[0] == NULL)
+        return true;
+    else
+        return false;
 }

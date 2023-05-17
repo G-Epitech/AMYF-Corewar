@@ -10,6 +10,10 @@
 #include "defs.h"
 #include "common/include/champion/champion.h"
 
+#define PARSING_NAME 0
+#define PARSING_COMMENT 1
+#define PARSING_ERROR 2
+
 /**
 * @brief Parse the champion given in parameter.
 * @param argv Argument of programme
@@ -30,7 +34,7 @@ list_t *parsing_champion_body(char *input_champion, file_t *file);
 * @param input_champion input (.s) of champion
 * @return Header of champion
 */
-header_t *parsing_champion_header(char *input_champion, file_t *file);
+header_t *parsing_champion_header(file_t *file);
 
 /**
 * @brief Parse the file for get information.
@@ -41,7 +45,7 @@ char *parse_file(char *file_path);
 
 /**
 * @brief Create new struct for file
-* @param input_file The file 
+* @param input_file The file who describe the champion
 * @return The struct initied
 */
-file_t *new_file(char *input_file);
+file_t *file_new(char *input_file);

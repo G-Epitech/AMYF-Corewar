@@ -13,15 +13,15 @@
 #include "parsing/parsing.h"
 #include "common/include/utils/malloc2.h"
 
-file_t *new_file(char *input_file)
+file_t *file_new(char *input_file)
 {
-    file_t *new_file = malloc2(sizeof(file_t));
+    file_t *file_new = malloc2(sizeof(file_t));
 
-    if (!new_file)
+    if (!file_new)
         return NULL;
-    new_file->index_line = 0;
-    new_file->lines = str_to_word_array(input_file, "\n");
-    return new_file;
+    file_new->index_line = 0;
+    file_new->lines = str_to_word_array(input_file, "\n");
+    return file_new;
 }
 
 char *parse_file(char *file_path)

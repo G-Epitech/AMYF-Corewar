@@ -22,14 +22,14 @@ char *strconcat(char *dest, char *src);
 * @param input_user Line to filter
 * @return sentence whitout comment
 */
-char *filter_comment(char *input_user);
+char *parsing_filter_comment(char *input_user);
 
 /**
 * @brief Check if the line in parameter is a comment
 * @param input_user Line to check
 * @return true if the line is a comment or false
 */
-bool is_comment(char *input_user);
+bool parsing_is_comment(char *input_user);
 
 /**
 * @brief Separate the sentence by charactere.
@@ -38,3 +38,16 @@ bool is_comment(char *input_user);
 * @return Tab of word separate pas delimiter
 */
 char **str_to_word_array(char const *str, char *separate);
+
+/**
+* @brief Free a tab
+* @param tab Tab to free
+*/
+void free_str_tab(char **tab);
+
+/**
+* @brief Check if the line is empty
+* @param input_user The line to check
+* @return true if line is empty else no
+*/
+bool parsing_is_empty(char *input_user);
