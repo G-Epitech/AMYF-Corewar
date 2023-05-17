@@ -8,6 +8,7 @@
 #pragma once
 
 #include <stdbool.h>
+#include "common/includes/cmd/defs.h"
 #include "common/includes/champion/defs.h"
 
 /**
@@ -25,12 +26,28 @@ champion_t *parsing_champion(char *file);
 int parsing_file_open(char *file);
 
 /**
- * @brief Get Champions header informations.
- * @param champion Champions to fill
+ * @brief Get Champion header informations.
+ * @param champion Champion to fill
  * @param fd File descriptor of the champion file
  * @return Returns true if everything is good, otherwise false
  */
 bool parsing_header(champion_t *champion, int fd);
+
+/**
+ * @brief Get Champion body informations.
+ * @param champion Champion to fill
+ * @param fd File descriptor of the champion file
+ * @return Returns true if everything is good, otherwise false
+ */
+bool parsing_body(champion_t *champion, int fd);
+
+/**
+ * @brief Get params about Champion body.
+ * @param command Command to complete
+ * @param main_index Main index of reading
+ * @param fd File descriptor of the champion file
+ */
+void parsing_get_params(cmd_t *command, int *main_index, int fd);
 
 /**
  * @brief Display a Champion.

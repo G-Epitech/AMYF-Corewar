@@ -10,6 +10,8 @@ _SRC = 		parsing/parsing.c \
 			parsing/header.c \
 			parsing/utils/read.c \
 			parsing/utils/display.c \
+			parsing/body/body.c \
+			parsing/body/param.c \
 
 _TESTS =	../main.c \
 			parsing.c \
