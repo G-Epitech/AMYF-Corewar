@@ -25,7 +25,7 @@ SRC_PRFL =		$(SRC:.c=.gcda)
 
 override CFLAGS += -Wall -Wextra -Werror -Wno-unused-command-line-argument -g
 INC = -I./includes -I../lib
-LDFLAGS = -L../lib -lcommon
+LDFLAGS = -L../lib -lcommon -lmy
 PATH_COMMON = ../lib/common
 PATH_MY = ../lib/my
 
@@ -47,6 +47,8 @@ STYLE_END=\033[0m
 
 COMPILING_O_LOG = "$(STYLE_BLUE)📑 Compiling sources -\
 $(STYLE_BOLD)$(STYLE_BOLD)[%s]$(STYLE_END)\n"
+TESTS_LOG = "$(STYLE_GREEN)✅ Tests for '%s' were \
+successfully built $(STYLE_END)\n"
 
 .PHONY = all clean fclean re
 
@@ -113,8 +115,7 @@ tests_criterion:
 			@$(MAKE) tests_objects -s
 			@$(CC) -o $(TESTS_NAME) $(SRC_OBJ) $(TESTS_OBJ) \
 			$(LDFLAGS) $(CFLAGS) $(INC) $(TESTS_CFLAGS)
-			@printf "$(STYLE_GREEN)✅ Tests were successfully built\
-			$(STYLE_END)\n"
+			@printf $(TESTS_LOG) $(NAME)
 			@./$(TESTS_NAME)
 
 tests_run:	tests_criterion

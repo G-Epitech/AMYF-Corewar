@@ -18,6 +18,7 @@ bool asm_export_champion(char *filename, champion_t *champion)
     file = asm_export_create_file(filename);
     if (file == ASM_EXPORT_NULL_FD)
         return false;
+    asm_export_champion_header(champion->header, file);
     close(file);
     return true;
 }

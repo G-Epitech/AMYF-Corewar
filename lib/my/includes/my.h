@@ -10,6 +10,8 @@
 
 #pragma once
 
+#include <sys/types.h>
+
 int my_put_nbr (int nb);
 void my_putchar (char c);
 int my_putstr (char const *str);
@@ -19,3 +21,7 @@ int error(char *str);
 char *my_strstr(char *str, char const *to_find);
 int my_strlen(char const *str);
 int my_strcmp(char const *s1, char const *s2);
+char **str_to_word_array(char const *str, char *separate);
+char *strconcat(char *dest, char *src);
+void free_str_tab(char **tab);
+void *my_memset(void *pointer, unsigned char value, size_t count);
