@@ -17,6 +17,5 @@ char *my_strcpy(char *dest, char const *src);
 char *my_strdup (char const *src);
 int error(char *str);
 char *my_strstr(char *str, char const *to_find);
-char* nbr_to_str(int n);
 int my_strlen(char const *str);
 int my_strcmp(char const *s1, char const *s2);
