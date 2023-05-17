@@ -13,11 +13,18 @@ _SRC = 		export/export.c \
 			parsing/header/header.c \
 			parsing/utils/utils.c \
 			parsing/file.c \
+			export/header/header.c \
+			\
+			utils/write/big_endian.c \
 
 _TESTS =	../main.c \
 			\
 			export/create_file.c \
 			export/export.c \
+			\
+			parsing/header.c \
+			parsing/parsing.c \
+			\
 
 SRCDIR =		sources/
 SRC =			$(addprefix $(SRCDIR), $(_SRC))
@@ -53,6 +60,8 @@ STYLE_END=\033[0m
 CC = gcc
 COMPILING_O_LOG = "$(STYLE_BLUE)📑 Compiling sources -\
 $(STYLE_BOLD)$(STYLE_BOLD)[%s]$(STYLE_END)\n"
+TESTS_LOG = "$(STYLE_GREEN)✅ Tests for '%s' were \
+successfully built $(STYLE_END)\n"
 
 .PHONY = all clean fclean re
 
@@ -69,7 +78,7 @@ $(NAME):	$(SRC_OBJ) $(MAIN_OBJ)
 %.o: 		%.c
 			@rm -rf $(<:.c=.gcda) $(<:.c=.gcno)
 			@printf $(COMPILING_O_LOG) $<
-			$(CC) $(CFLAGS) $(LDFLAGS) $(INC) -c $< -o $@
+			@$(CC) $(CFLAGS) $(LDFLAGS) $(INC) -c $< -o $@
 
 all: 		$(NAME)
 
@@ -111,12 +120,11 @@ tests_criterion:
 			@rm -f $(TESTS_OBJ) $(SRC_OBJ)
 			@$(MAKE) -C $(PATH_COMMON) -s
 			@printf "$(STYLE_RED)🧪 Tests compilation...$(STYLE_END)\n"
-			@$(MAKE) objects CFLAGS+=--coverage
+			@$(MAKE) objects CFLAGS+=--coverage -s
 			@$(MAKE) tests_objects -s
 			@$(CC) -o $(TESTS_NAME) $(SRC_OBJ) $(TESTS_OBJ) \
 			$(LDFLAGS) $(CFLAGS) $(INC) $(TESTS_CFLAGS)
-			@printf "$(STYLE_GREEN)✅ Tests were successfully built\
-			$(STYLE_END)\n"
+			@printf $(TESTS_LOG) $(NAME)
 			@./$(TESTS_NAME)
 
 tests_run:	tests_criterion

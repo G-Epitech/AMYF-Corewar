@@ -9,7 +9,7 @@
 #include "cmd/defs.h"
 #include "utils/malloc2.h"
 
-cmd_t *cmd_new(char *command)
+cmd_t *cmd_new(void)
 {
     cmd_t *cmd = malloc2(sizeof(cmd_t));
 

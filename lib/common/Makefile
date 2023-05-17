@@ -37,7 +37,11 @@ TESTS =			$(addprefix $(TESTSDIR), $(_TESTS))
 TESTS_OBJ = 	$(TESTS:.c=.o)
 TESTS_CFLAGS =	-lcriterion --coverage
 
-INC = 			-I./includes
+INC = 			-I./includes -I..
+LDFLAGS = 		-L../ -lmy
+override CFLAGS += -Wall -Wextra -Werror -Wno-unused-command-line-argument -g
+
+PATH_MY = 		../my
 
 NAME = common
 TESTS_NAME = common_tests
@@ -50,19 +54,24 @@ STYLE_GREY=\033[0;30m
 STYLE_BOLD=\033[1m
 STYLE_END=\033[0m
 
+COMPILING_O_LOG = "$(STYLE_BLUE)📦 Compiling lib$(NAME) -\
+$(STYLE_BOLD)$(STYLE_BOLD)[%s]$(STYLE_END)\n"
+TESTS_LOG = "$(STYLE_GREEN)✅ Tests for '%s' were \
+successfully built $(STYLE_END)\n"
+
 .PHONY: all clean fclean re
 
 all: 		$(NAME)
 
 $(NAME):	$(SRC_OBJ)
-			@ar rc lib$(NAME).a $(SRC_OBJ) $(CFLAGS)
-			@cp lib$(NAME).a ../
+			@$(MAKE) -C $(PATH_MY) -s
+			@ar rc lib$(NAME).a $(SRC_OBJ)
+			@mv lib$(NAME).a ../lib$(NAME).a
 
 %.o: %.c
 			@rm -rf $(<:.c=.gcda) $(<:.c=.gcno)
-			@printf "$(STYLE_BLUE)📦 Compiling lib$(NAME) - $(BOLD_BLUE)\
-[$<]$(STYLE_END)\n"
-			@$(CC) $(INC) $(CFLAGS) -c $< -o $@
+			@printf $(COMPILING_O_LOG) $<
+			@$(CC) $(INC) $(CFLAGS) $(LDFLAGS) -c $< -o $@
 
 clean:
 			@rm -f $(SRC_OBJ)
@@ -71,7 +80,6 @@ clean:
 			@rm -f $(TESTS_OBJ)
 
 fclean: 	clean
-			@rm -f lib$(NAME).a
 			@rm -f ../lib$(NAME).a
 
 re: 		fclean all
@@ -82,12 +90,12 @@ tests_objects:	$(TESTS_OBJ)
 
 tests_criterion:
 			@printf "$(STYLE_RED)🧪 Tests compilation...$(STYLE_END)\n"
+			@$(MAKE) -C $(PATH_MY) -s
 			@$(MAKE) objects CFLAGS+=--coverage -s
 			@$(MAKE) tests_objects -s
 			@$(CC) -o $(TESTS_NAME) $(SRC_OBJ) $(TESTS_OBJ) \
 			$(LDFLAGS) $(CFLAGS) $(INC) $(TESTS_CFLAGS)
-			@printf "$(STYLE_GREEN)✅ Tests were successfully built\
-			$(STYLE_END)\n"
+			@printf $(TESTS_LOG) $(NAME)
 			@./$(TESTS_NAME)
 
 tests_run:	tests_criterion

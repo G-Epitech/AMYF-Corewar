@@ -47,6 +47,8 @@ STYLE_END=\033[0m
 
 COMPILING_O_LOG = "$(STYLE_BLUE)📑 Compiling sources -\
 $(STYLE_BOLD)$(STYLE_BOLD)[%s]$(STYLE_END)\n"
+TESTS_LOG = "$(STYLE_GREEN)✅ Tests for '%s' were \
+successfully built $(STYLE_END)\n"
 
 .PHONY = all clean fclean re
 
@@ -113,8 +115,7 @@ tests_criterion:
 			@$(MAKE) tests_objects -s
 			@$(CC) -o $(TESTS_NAME) $(SRC_OBJ) $(TESTS_OBJ) \
 			$(LDFLAGS) $(CFLAGS) $(INC) $(TESTS_CFLAGS)
-			@printf "$(STYLE_GREEN)✅ Tests were successfully built\
-			$(STYLE_END)\n"
+			@printf $(TESTS_LOG) $(NAME)
 			@./$(TESTS_NAME)
 
 tests_run:	tests_criterion

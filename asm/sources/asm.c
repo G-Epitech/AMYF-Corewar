@@ -6,8 +6,8 @@
 */
 
 #include <stdio.h>
-#include "my/includes/my.h"
 #include "parsing/utils.h"
+#include "export/export.h"
 #include "parsing/parsing.h"
 #include "common/includes/champion/champion.h"
 
@@ -17,5 +17,7 @@ int main(int argc, char **argv)
 
     if (!champion)
         return 84;
+    asm_export_champion("out.cor", champion);
+    champion_free(champion);
     return 0;
 }

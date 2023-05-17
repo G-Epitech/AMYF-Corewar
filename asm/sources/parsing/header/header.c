@@ -25,14 +25,14 @@ static int get_info_champion(char *line_champion, header_t *new_header)
     char **line_separed_comment = str_to_word_array(line_champion, "\"");
 
     if (my_strcmp(line_separed_space[0], ".name") == 0) {
-        if (my_strlen(line_separed_comment[1]) > HEADER_NAME)
+        if (my_strlen(line_separed_comment[1]) > HEADER_NAME_SIZE)
             return PARSING_ERROR;
         my_strcpy(new_header->name, line_separed_comment[1]);
         free_tabs(line_separed_space, line_separed_comment);
         return PARSING_NAME;
     }
     if (my_strcmp(line_separed_space[0], ".comment") == 0) {
-        if (my_strlen(line_separed_comment[1]) > HEADER_COMMENT)
+        if (my_strlen(line_separed_comment[1]) > HEADER_COMMENT_SIZE)
             return PARSING_ERROR;
         my_strcpy(new_header->comment, line_separed_comment[1]);
         free_tabs(line_separed_space, line_separed_comment);
