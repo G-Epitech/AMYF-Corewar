@@ -26,6 +26,7 @@ override CFLAGS += -Wall -Wextra -Werror -Wno-unused-command-line-argument -g
 INC = -I./includes -I../lib
 LDFLAGS = -L../lib -lcommon
 PATH_COMMON = ../lib/common
+PATH_MY = ../lib/common
 
 TESTSDIR = 		../tests/criterion/$(NAME)/
 TESTS =			$(addprefix $(TESTSDIR), $(_TESTS))
@@ -50,8 +51,10 @@ $(STYLE_BOLD)$(STYLE_BOLD)[%s]$(STYLE_END)\n"
 .PHONY = all clean fclean re
 
 $(NAME):	$(SRC_OBJ) $(MAIN_OBJ)
+			@printf "$(STYLE_RED)🚚 Lib 'My' Compilation...$(STYLE_END)\n"
+			@make -C $(PATH_MY) -s
 			@printf "$(STYLE_RED)🚚 Lib 'Common' Compilation...$(STYLE_END)\n"
-			@make -C$(PATH_COMMON) -s
+			@make -C $(PATH_COMMON) -s
 			@printf "$(STYLE_RED)🚚 Main Compilation...$(STYLE_END)\n"
 			@$(CC) -o $(NAME) $(SRC_OBJ) $(MAIN_OBJ) $(CFLAGS) $(LDFLAGS)\
 			$(INC)
@@ -72,10 +75,12 @@ clean:
 			@rm -f $(MAIN_OBJ)
 			@rm -f $(SRC_COVER) $(SRC_PRFL)
 			@rm -f $(TESTS_OBJ)
-			@make -C$(PATH_COMMON) clean -s
+			@make -C $(PATH_COMMON) clean -s
+			@make -C $(PATH_MY) clean -s
 
 fclean: 	clean
-			@make -C$(PATH_COMMON) fclean -s
+			@make -C $(PATH_COMMON) fclean -s
+			@make -C $(PATH_MY) fclean -s
 			@printf "$(STYLE_ORANGE)🧽 Asm was successfully clean\
 			$(STYLE_END)\n"
 
@@ -101,6 +106,7 @@ tests_custom:
 
 tests_criterion:
 			@rm -f $(TESTS_OBJ) $(SRC_OBJ)
+			@$(MAKE) -C $(PATH_MY) -s
 			@$(MAKE) -C $(PATH_COMMON) -s
 			@printf "$(STYLE_RED)🧪 Tests compilation...$(STYLE_END)\n"
 			@$(MAKE) objects CFLAGS+=--coverage
