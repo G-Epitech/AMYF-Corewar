@@ -6,11 +6,11 @@
 */
 
 #include "parsing/utils.h"
-#include "my/include/my.h"
+#include "my/includes/my.h"
 #include "parsing/parsing.h"
-#include "common/include/cmd/cmd.h"
-#include "common/include/header/header.h"
-#include "common/include/champion/champion.h"
+#include "common/includes/cmd/cmd.h"
+#include "common/includes/header/header.h"
+#include "common/includes/champion/champion.h"
 
 static int get_info_champion(char *line_champion, header_t *new_header)
 {

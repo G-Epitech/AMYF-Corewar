@@ -6,9 +6,9 @@
 */
 
 #include "parsing/parsing.h"
-#include "common/include/cmd/cmd.h"
-#include "common/include/header/header.h"
-#include "common/include/champion/champion.h"
+#include "common/includes/cmd/cmd.h"
+#include "common/includes/header/header.h"
+#include "common/includes/champion/champion.h"
 
 list_t *parsing_champion_body(char *input_champion, file_t *file)
 {

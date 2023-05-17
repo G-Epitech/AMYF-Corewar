@@ -5,34 +5,39 @@
 ## @Made by Math alias T1nt1n
 ##
 
-SRC = 	source/list/append.c \
-		source/list/free.c \
-		source/list/new.c \
-		source/list/remove.c \
-		source/node/free.c \
-		source/node/new.c \
-		source/node/unlink.c \
-		source/utils/asprintf2.c \
-		source/utils/is_number.c \
-		source/utils/malloc2.c \
-		source/champion/new.c \
-		source/champion/free.c \
-		source/champion/append_cmd.c \
-		source/cmd/new.c \
-		source/cmd/append_parameter.c \
-		source/cmd/free.c \
-		source/header/new.c \
-		source/header/free.c \
+_SRC = 		list/append.c \
+			list/free.c \
+			list/new.c \
+			list/remove.c \
+			node/free.c \
+			node/new.c \
+			node/unlink.c \
+			utils/is_number.c \
+			utils/malloc2.c \
+			champion/new.c \
+			champion/free.c \
+			champion/append_cmd.c \
+			cmd/new.c \
+			cmd/append_parameter.c \
+			cmd/free.c \
+			header/new.c \
+			header/free.c \
 
-_TESTS =	../main.c
+_TESTS =	../main.c \
+			champion.c
 
-OBJ = $(SRC:.c=.o)
-INC = -I./include
+SRCDIR =		sources/
+SRC =			$(addprefix $(SRCDIR), $(_SRC))
+SRC_OBJ = 		$(SRC:.c=.o)
+SRC_COVER =		$(SRC:.c=.gcno)
+SRC_PRFL =		$(SRC:.c=.gcda)
 
 TESTSDIR = 		../../tests/criterion/$(NAME)/
 TESTS =			$(addprefix $(TESTSDIR), $(_TESTS))
 TESTS_OBJ = 	$(TESTS:.c=.o)
 TESTS_CFLAGS =	-lcriterion --coverage
+
+INC = 			-I./includes
 
 NAME = common
 TESTS_NAME = common_tests
@@ -49,16 +54,19 @@ STYLE_END=\033[0m
 
 all: 		$(NAME)
 
-$(NAME):	$(OBJ)
-			@ar rc lib$(NAME).a $(OBJ) $(CFLAGS)
+$(NAME):	$(SRC_OBJ)
+			@ar rc lib$(NAME).a $(SRC_OBJ) $(CFLAGS)
 			@cp lib$(NAME).a ../
+
 %.o: %.c
+			@rm -rf $(<:.c=.gcda) $(<:.c=.gcno)
 			@printf "$(STYLE_BLUE)📦 Compiling lib$(NAME) - $(BOLD_BLUE)\
 [$<]$(STYLE_END)\n"
-			@gcc $(INC) -c $< -o $@
+			@$(CC) $(INC) $(CFLAGS) -c $< -o $@
 
 clean:
-			@rm -f $(OBJ)
+			@rm -f $(SRC_OBJ)
+			@rm -f $(SRC_COVER) $(SRC_PRFL)
 			@rm -f $(TESTS_NAME)
 			@rm -f $(TESTS_OBJ)
 
@@ -73,7 +81,6 @@ objects:		$(SRC_OBJ)
 tests_objects:	$(TESTS_OBJ)
 
 tests_criterion:
-			@rm -f $(TESTS_OBJ)
 			@printf "$(STYLE_RED)🧪 Tests compilation...$(STYLE_END)\n"
 			@$(MAKE) objects CFLAGS+=--coverage -s
 			@$(MAKE) tests_objects -s
@@ -86,7 +93,7 @@ tests_criterion:
 tests_run:	tests_criterion
 
 coverage:
-				@gcovr
+			@gcovr
 
 coverage_branch:
-				@gcovr --branch
+			@gcovr --branch

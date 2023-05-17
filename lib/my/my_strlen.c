@@ -5,7 +5,7 @@
 ** Day 04, Task 03
 */
 
-#include "include/my.h"
+#include "includes/my.h"
 
 int my_strlen(char const *str)
 {

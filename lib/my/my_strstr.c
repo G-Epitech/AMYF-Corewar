@@ -5,7 +5,7 @@
 ** Day 06, task05
 */
 
-#include "include/my.h"
+#include "includes/my.h"
 
 static int test (char *str, char const *to_find, int i, int x)
 {
@@ -28,13 +28,13 @@ static int find(char *str, char const *to_find, int i)
     return ok;
 }
 
-char * my_strstr(char *str, char const *to_find)
+char *my_strstr(char *str, char const *to_find)
 {
     int pass = 0;
+
     if (my_strlen(to_find) < 1) {
         return str;
     }
-
     for (int i = 0; str[i] != '\0'; i++) {
         if (find(str, to_find, i)) {
             return str + i;

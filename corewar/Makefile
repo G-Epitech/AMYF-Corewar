@@ -5,19 +5,27 @@
 ## @Made by Math alias T1nt1n
 ##
 
-_SRC = 		corewar.c
+_SRC = 		parsing/parsing.c \
+			parsing/file.c \
+			parsing/header.c \
+			parsing/utils/read.c \
+			parsing/utils/display.c \
 
-_TESTS =	../main.c
+_TESTS =	../main.c \
+			parsing.c \
 
 SRCDIR =		sources/
 SRC =			$(addprefix $(SRCDIR), $(_SRC))
+MAIN =			$(addprefix $(SRCDIR), $(NAME).c)
+MAIN_OBJ =		$(MAIN:.c=.o)
+SRC_OBJ = 		$(SRC:.c=.o)
+
 SRC_COVER =		$(SRC:.c=.gcno)
 SRC_PRFL =		$(SRC:.c=.gcda)
 
-CFLAGS += -Wall -Wextra -Werror -Wno-unused-command-line-argument -g
+override CFLAGS += -Wall -Wextra -Werror -Wno-unused-command-line-argument -g
 INC = -I./includes -I../lib
 LDFLAGS = -L../lib -lcommon -lmy
-OBJ = $(SRC:.c=.o)
 PATH_COMMON = ../lib/common
 PATH_MY = ../lib/my
 
@@ -42,35 +50,37 @@ $(STYLE_BOLD)$(STYLE_BOLD)[%s]$(STYLE_END)\n"
 
 .PHONY = all clean fclean re
 
-$(NAME):	$(OBJ)
+$(NAME):	$(SRC_OBJ) $(MAIN_OBJ)
 			@printf "$(STYLE_RED)🚚 Lib 'My' Compilation...$(STYLE_END)\n"
-			@make -C$(PATH_MY)
+			@make -C $(PATH_MY) -s
 			@printf "$(STYLE_RED)🚚 Lib 'Common' Compilation...$(STYLE_END)\n"
-			@make -C$(PATH_COMMON)
+			@make -C $(PATH_COMMON) -s
 			@printf "$(STYLE_RED)🚚 Main Compilation...$(STYLE_END)\n"
-			@gcc -o $(NAME) $(OBJ) $(LDFLAGS) $(INC)
+			@$(CC) -o $(NAME) $(SRC_OBJ) $(MAIN_OBJ) $(CFLAGS) $(LDFLAGS)\
+			$(INC)
 			@printf "$(STYLE_GREEN)✅ Corewar was successfully built\
 			$(STYLE_END)\n"
 
 %.o: 		%.c
+			@rm -rf $(<:.c=.gcda) $(<:.c=.gcno)
 			@printf $(COMPILING_O_LOG) $<
-			@gcc $(LDFLAGS) $(CFLAGS) $(INC) -c $< -o $@
+			@$(CC) $(LDFLAGS) $(CFLAGS) $(INC) -c $< -o $@
 
 all: 		$(NAME)
 
 clean:
 			@rm -f $(NAME)
 			@rm -f $(TESTS_NAME)
-			@rm -f $(OBJ)
 			@rm -f $(SRC_OBJ)
-			@rm -f $(SRC_COVER)
+			@rm -f $(MAIN_OBJ)
+			@rm -f $(SRC_COVER) $(SRC_PRFL)
 			@rm -f $(TESTS_OBJ)
-			@make -C$(PATH_MY) clean -s
-			@make -C$(PATH_COMMON) clean -s
+			@make -C $(PATH_COMMON) clean -s
+			@make -C $(PATH_MY) clean -s
 
 fclean: 	clean
-			@make -C$(PATH_MY) fclean -s
-			@make -C$(PATH_COMMON) fclean -s
+			@make -C $(PATH_COMMON) fclean -s
+			@make -C $(PATH_MY) fclean -s
 			@printf "$(STYLE_ORANGE)🧽 Corewar was successfully clean\
 			$(STYLE_END)\n"
 
@@ -95,7 +105,9 @@ tests_custom:
 			echo "pass"
 
 tests_criterion:
-			@rm -f $(TESTS_OBJ)
+			@rm -f $(TESTS_OBJ) $(SRC_OBJ)
+			@$(MAKE) -C $(PATH_MY) -s
+			@$(MAKE) -C $(PATH_COMMON) -s
 			@printf "$(STYLE_RED)🧪 Tests compilation...$(STYLE_END)\n"
 			@$(MAKE) objects CFLAGS+=--coverage -s
 			@$(MAKE) tests_objects -s

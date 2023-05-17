@@ -5,21 +5,11 @@
 ** task07
 */
 
-#include "include/my.h"
+#include "includes/my.h"
 
 static void display_specific_num(void)
 {
-    my_putchar('-');
-    my_putchar('2');
-    my_putchar('1');
-    my_putchar('4');
-    my_putchar('7');
-    my_putchar('4');
-    my_putchar('8');
-    my_putchar('3');
-    my_putchar('6');
-    my_putchar('4');
-    my_putchar('8');
+    my_putstr("-2147483648");
 }
 
 static int divide_number(long div, int nb)
@@ -55,7 +45,6 @@ int my_put_nbr(int nb)
         display_specific_num();
         return 1;
     }
-
     if (nb < 0) {
         nb *= -1;
         my_putchar('-');

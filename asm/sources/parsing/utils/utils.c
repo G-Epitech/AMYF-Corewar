@@ -9,9 +9,9 @@
 #include <stdlib.h>
 #include <stddef.h>
 #include <stdbool.h>
-#include "my/include/my.h"
+#include "my/includes/my.h"
 #include "parsing/utils.h"
-#include "common/include/utils/malloc2.h"
+#include "common/includes/utils/malloc2.h"
 
 void free_str_tab(char **tab)
 {

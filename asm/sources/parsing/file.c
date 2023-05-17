@@ -8,10 +8,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
-#include "my/include/my.h"
+#include "my/includes/my.h"
 #include "parsing/utils.h"
 #include "parsing/parsing.h"
-#include "common/include/utils/malloc2.h"
+#include "common/includes/utils/malloc2.h"
 
 file_t *file_new(char *input_file)
 {

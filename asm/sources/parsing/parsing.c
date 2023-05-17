@@ -7,9 +7,9 @@
 
 #include <stdio.h>
 #include "parsing/parsing.h"
-#include "common/include/cmd/cmd.h"
-#include "common/include/header/header.h"
-#include "common/include/champion/champion.h"
+#include "common/includes/cmd/cmd.h"
+#include "common/includes/header/header.h"
+#include "common/includes/champion/champion.h"
 
 champion_t *parse_champion(int argc, char **argv)
 {

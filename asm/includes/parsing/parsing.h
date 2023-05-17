@@ -8,7 +8,7 @@
 #pragma once
 
 #include "defs.h"
-#include "common/include/champion/champion.h"
+#include "common/includes/champion/champion.h"
 
 #define PARSING_NAME 0
 #define PARSING_COMMENT 1

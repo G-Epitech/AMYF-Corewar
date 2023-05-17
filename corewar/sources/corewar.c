@@ -5,9 +5,11 @@
 ** corewar
 */
 
-#include "common/include/champion/champion.h"
+#include "common/includes/champion/champion.h"
 
-int main(void)
+int main(int ac, char **av)
 {
+    (void)ac;
+    (void)av;
     return 0;
 }

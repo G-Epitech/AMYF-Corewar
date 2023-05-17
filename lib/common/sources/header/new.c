@@ -15,5 +15,10 @@ header_t *header_new(void)
 
     if (!header)
         return NULL;
+    for (int i = 0; i < HEADER_NAME; i++)
+        header->name[i] = '\0';
+    for (int i = 0; i < HEADER_COMMENT; i++)
+        header->comment[i] = '\0';
+    header->body_size = 0;
     return header;
 }
