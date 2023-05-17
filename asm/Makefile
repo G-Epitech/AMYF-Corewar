@@ -11,7 +11,6 @@ _SRC = 		export/export.c \
 			parsing/parsing.c \
 			parsing/body/body.c \
 			parsing/header/header.c \
-			parsing/utils/str_to_word_array.c \
 			parsing/utils/utils.c \
 			parsing/file.c \
 
