@@ -27,11 +27,7 @@ bool parsing_is_comment(char *input_user)
     char **input_separate = str_to_word_array(input_user, "#");
 
     test_if_comment = my_strstr(input_user, "#");
-    if (test_if_comment == NULL || input_separate[1] != NULL) {
-        return false;
-    } else {
-        return true;
-    }
+    return !(test_if_comment == NULL || input_separate[1] != NULL);
 }
 
 bool parsing_is_empty(char *input_user)

@@ -12,8 +12,7 @@ void free_str_tab(char **tab)
 {
     int index = 0;
 
-    while (tab[index] != NULL) {
+    while (tab[index] != NULL)
         free(tab[index]);
-    }
     free(tab);
 }

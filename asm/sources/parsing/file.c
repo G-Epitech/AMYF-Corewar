@@ -13,6 +13,11 @@
 #include "parsing/parsing.h"
 #include "common/includes/utils/malloc2.h"
 
+void file_free(file_t *file)
+{
+    free(file);
+}
+
 file_t *file_new(char *input_file)
 {
     file_t *file_new = malloc2(sizeof(file_t));
@@ -24,7 +29,7 @@ file_t *file_new(char *input_file)
     return file_new;
 }
 
-char *parse_file(char *file_path)
+char *parsing_parse_file(char *file_path)
 {
     FILE *fp = fopen(file_path, "r");
     char *input_champion = malloc2(sizeof(char) * 1);;
@@ -34,8 +39,7 @@ char *parse_file(char *file_path)
     if (!input_champion || !fp)
         return NULL;
     input_champion[0] = '\0';
-    while (getline(&line_input_champion, &input_len, fp) != -1) {
+    while (getline(&line_input_champion, &input_len, fp) != -1)
         input_champion = strconcat(input_champion, line_input_champion);
-    }
     return input_champion;
 }

@@ -5,7 +5,6 @@
 ** asm parsing
 */
 
-#include <stdio.h>
 #include "parsing/parsing.h"
 #include "common/includes/cmd/cmd.h"
 #include "common/includes/header/header.h"
@@ -20,10 +19,8 @@ champion_t *parse_champion(int argc, char **argv)
     if (argc != 2)
         return NULL;
     champion = champion_new();
-    if (!champion)
-        return NULL;
-    input_champion = parse_file(argv[1]);
-    if (!input_champion)
+    input_champion = parsing_parse_file(argv[1]);
+    if (!champion || !input_champion)
         return NULL;
     file = file_new(input_champion);
     champion->header = parsing_champion_header(file);
@@ -32,5 +29,6 @@ champion_t *parse_champion(int argc, char **argv)
     champion->body = parsing_champion_body(input_champion, file);
     if (!champion->body)
         return NULL;
+    file_free(file);
     return champion;
 }

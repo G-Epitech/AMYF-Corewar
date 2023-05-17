@@ -41,11 +41,17 @@ header_t *parsing_champion_header(file_t *file);
 * @param file_path PAthe where is located the file
 * @return File parsed
 */
-char *parse_file(char *file_path);
+char *parsing_parse_file(char *file_path);
 
 /**
-* @brief Create new struct for file
+* @brief Create new struct for file.
 * @param input_file The file who describe the champion
 * @return The struct initied
 */
 file_t *file_new(char *input_file);
+
+/**
+* @brief Free the the file structure
+* @param file File to free
+*/
+void file_free(file_t *file);

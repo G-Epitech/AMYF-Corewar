@@ -89,10 +89,10 @@ clean:
 			@rm -f $(MAIN_OBJ)
 			@rm -f $(SRC_COVER) $(SRC_PRFL)
 			@rm -f $(TESTS_OBJ)
-			@make -C$(PATH_COMMON) clean -s
+			@make -C $(PATH_COMMON) clean -s
 
 fclean: 	clean
-			@make -C$(PATH_COMMON) fclean -s
+			@make -C $(PATH_COMMON) fclean -s
 			@printf "$(STYLE_ORANGE)🧽 Asm was successfully clean\
 			$(STYLE_END)\n"
 
