@@ -21,7 +21,7 @@ Test(parsing_of_champion, simple_execution)
     int argc = 2;
     char *argv[2] = {"./asm", "../tests/utils/champions/src/pdf.s"};
 
-    cr_assert_null(parse_champion(argc, argv));
+    cr_assert_null(parsing_champion(argc, argv));
 }
 
 Test(parsing_of_champion, bad_number_arguments)
@@ -29,7 +29,7 @@ Test(parsing_of_champion, bad_number_arguments)
     int argc = 3;
     char *argv[3] = {"./asm", "../tests/utils/champions/src/pdf.s", "test"};
 
-    cr_assert_null(parse_champion(argc, argv));
+    cr_assert_null(parsing_champion(argc, argv));
 }
 
 Test(parsing_of_champion, bad_malloc)
@@ -38,7 +38,7 @@ Test(parsing_of_champion, bad_malloc)
     char *argv[2] = {"./asm", "../tests/utils/champions/src/pdf.s"};
 
     malloc2_mode(MALLOC2_SET_MODE, MALLOC2_MODE_FAIL);
-    cr_assert_null(parse_champion(argc, argv));
+    cr_assert_null(parsing_champion(argc, argv));
     malloc2_mode(MALLOC2_SET_MODE, MALLOC2_MODE_NORMAL);
 }
 
@@ -47,7 +47,7 @@ Test(parsing_of_champion, file_no_exist)
     int argc = 2;
     char *argv[2] = {"./asm", "../tests/utils/champions/src/no_exist.s"};
 
-    cr_assert_null(parse_champion(argc, argv));
+    cr_assert_null(parsing_champion(argc, argv));
 }
 
 Test(parsing_of_champion, bad_file_with_nothing)
@@ -55,5 +55,5 @@ Test(parsing_of_champion, bad_file_with_nothing)
     int argc = 2;
     char *argv[2] = {"./asm", "../tests/utils/champions/src/bad.s"};
 
-    cr_assert_null(parse_champion(argc, argv));
+    cr_assert_null(parsing_champion(argc, argv));
 }

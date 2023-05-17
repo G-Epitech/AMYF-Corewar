@@ -15,6 +15,7 @@
 
 void file_free(file_t *file)
 {
+    free(file->lines);
     free(file);
 }
 

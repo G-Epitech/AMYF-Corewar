@@ -39,6 +39,7 @@ Test(parsing_header_of_champion, basic_bill_file)
     champion->header = parsing_champion_header(file);
     cr_assert_str_eq(champion->header->name, "Bill");
     cr_assert_str_eq(champion->header->comment, "1Equilibre");
+    file_free(file);
 }
 
 Test(parsing_header_of_champion, basic_pdd_file)

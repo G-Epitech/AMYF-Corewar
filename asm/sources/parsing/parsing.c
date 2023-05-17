@@ -10,7 +10,7 @@
 #include "common/includes/header/header.h"
 #include "common/includes/champion/champion.h"
 
-champion_t *parse_champion(int argc, char **argv)
+champion_t *parsing_champion(int argc, char **argv)
 {
     champion_t *champion = NULL;
     file_t *file = NULL;

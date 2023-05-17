@@ -13,7 +13,7 @@
 
 int main(int argc, char **argv)
 {
-    champion_t * champion = parse_champion(argc, argv);
+    champion_t * champion = parsing_champion(argc, argv);
 
     if (!champion)
         return 84;
