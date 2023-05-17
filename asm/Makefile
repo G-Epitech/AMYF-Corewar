@@ -5,9 +5,26 @@
 ## @Made by Math alias T1nt1n
 ##
 
-_SRC =
+_SRC = 		export/export.c \
+			export/create_file.c \
+			\
+			parsing/parsing.c \
+			parsing/body/body.c \
+			parsing/header/header.c \
+			parsing/utils/utils.c \
+			parsing/file.c \
+			export/header/header.c \
+			\
+			utils/write/big_endian.c \
 
-_TESTS =	../main.c
+_TESTS =	../main.c \
+			\
+			export/create_file.c \
+			export/export.c \
+			\
+			parsing/header.c \
+			parsing/parsing.c \
+			\
 
 SRCDIR =		sources/
 SRC =			$(addprefix $(SRCDIR), $(_SRC))
@@ -18,10 +35,11 @@ SRC_OBJ = 		$(SRC:.c=.o)
 SRC_COVER =		$(SRC:.c=.gcno)
 SRC_PRFL =		$(SRC:.c=.gcda)
 
-CFLAGS += -Wall -Wextra -Werror -Wno-unused-command-line-argument -g
+override CFLAGS += -Wall -Wextra -Werror -Wno-unused-command-line-argument -g
 INC = -I./includes -I../lib
-LDFLAGS = -L../lib -lcommon
+LDFLAGS = -L../lib -lcommon -lmy
 PATH_COMMON = ../lib/common
+PATH_MY = ../lib/my
 
 TESTSDIR = 		../tests/criterion/$(NAME)/
 TESTS =			$(addprefix $(TESTSDIR), $(_TESTS))
@@ -42,12 +60,15 @@ STYLE_END=\033[0m
 CC = gcc
 COMPILING_O_LOG = "$(STYLE_BLUE)📑 Compiling sources -\
 $(STYLE_BOLD)$(STYLE_BOLD)[%s]$(STYLE_END)\n"
+TESTS_LOG = "$(STYLE_GREEN)✅ Tests for '%s' were \
+successfully built $(STYLE_END)\n"
 
 .PHONY = all clean fclean re
 
 $(NAME):	$(SRC_OBJ) $(MAIN_OBJ)
 			@printf "$(STYLE_RED)🚚 Lib 'Common' Compilation...$(STYLE_END)\n"
-			@make -C$(PATH_COMMON) -s
+			@make -C $(PATH_COMMON) -s
+			@make -C $(PATH_MY) -s
 			@printf "$(STYLE_RED)🚚 Main Compilation...$(STYLE_END)\n"
 			@$(CC) -o $(NAME) $(SRC_OBJ) $(MAIN_OBJ) $(CFLAGS) $(LDFLAGS)\
 			$(INC)
@@ -55,8 +76,9 @@ $(NAME):	$(SRC_OBJ) $(MAIN_OBJ)
 			$(STYLE_END)\n"
 
 %.o: 		%.c
+			@rm -rf $(<:.c=.gcda) $(<:.c=.gcno)
 			@printf $(COMPILING_O_LOG) $<
-			@$(CC) $(LDFLAGS) $(CFLAGS) $(INC) -c $< -o $@
+			@$(CC) $(CFLAGS) $(LDFLAGS) $(INC) -c $< -o $@
 
 all: 		$(NAME)
 
@@ -65,12 +87,12 @@ clean:
 			@rm -f $(TESTS_NAME)
 			@rm -f $(SRC_OBJ)
 			@rm -f $(MAIN_OBJ)
-			@rm -f $(SRC_COVER)
+			@rm -f $(SRC_COVER) $(SRC_PRFL)
 			@rm -f $(TESTS_OBJ)
-			@make -C$(PATH_COMMON) clean -s
+			@make -C $(PATH_COMMON) clean -s
 
 fclean: 	clean
-			@make -C$(PATH_COMMON) fclean -s
+			@make -C $(PATH_COMMON) fclean -s
 			@printf "$(STYLE_ORANGE)🧽 Asm was successfully clean\
 			$(STYLE_END)\n"
 
@@ -102,8 +124,7 @@ tests_criterion:
 			@$(MAKE) tests_objects -s
 			@$(CC) -o $(TESTS_NAME) $(SRC_OBJ) $(TESTS_OBJ) \
 			$(LDFLAGS) $(CFLAGS) $(INC) $(TESTS_CFLAGS)
-			@printf "$(STYLE_GREEN)✅ Tests were successfully built\
-			$(STYLE_END)\n"
+			@printf $(TESTS_LOG) $(NAME)
 			@./$(TESTS_NAME)
 
 tests_run:	tests_criterion

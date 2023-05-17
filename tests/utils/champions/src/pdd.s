@@ -1,4 +1,5 @@
 .name    "pdd"
+#salut toi
 .comment "pdd"
 
 	sti	r1, %:live, %1

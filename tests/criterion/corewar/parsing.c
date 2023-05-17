@@ -18,8 +18,29 @@ static void redirect_all_stdout(void)
     cr_redirect_stderr();
 }
 
-Test(parsing, new_champion) {
+Test(parsing, champion_bill) {
     champion_t *champion = parsing_champion("../tests/utils/champions/bill.cor");
+
+    cr_assert_not_null(champion);
+    champion_free(champion);
+}
+
+Test(parsing, champion_pdf) {
+    champion_t *champion = parsing_champion("../tests/utils/champions/pdf.cor");
+
+    cr_assert_not_null(champion);
+    champion_free(champion);
+}
+
+Test(parsing, champion_pdd) {
+    champion_t *champion = parsing_champion("../tests/utils/champions/pdd.cor");
+
+    cr_assert_not_null(champion);
+    champion_free(champion);
+}
+
+Test(parsing, champion_white) {
+    champion_t *champion = parsing_champion("../tests/utils/champions/white.cor");
 
     cr_assert_not_null(champion);
     champion_free(champion);
@@ -76,7 +97,7 @@ Test(parsing, read_char) {
 }
 
 Test(parsing, display_champion, .init=redirect_all_stdout) {
-    champion_t *champion = parsing_champion("../tests/utils/champions/bill.cor");
+    champion_t *champion = parsing_champion("../tests/utils/champions/pdf.cor");
 
     parsing_display(champion);
     cr_assert_not_null(champion);

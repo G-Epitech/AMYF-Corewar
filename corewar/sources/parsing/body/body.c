@@ -5,7 +5,6 @@
 ** body
 */
 
-#include <stdio.h>
 #include <stdbool.h>
 #include "parsing/parsing.h"
 #include "common/includes/op/defs.h"

@@ -37,9 +37,9 @@ static op_t op_tab[] = {
     {"zjmp", 1, {T_IND}, 9, 20},
     {"ldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 10, 25},
     {"sti", 3, {T_REG, T_REG | T_IND, T_IND | T_REG}, 11, 25},
-    {"fork", 1, {T_DIR}, 12, 800},
+    {"fork", 1, {T_IND}, 12, 800},
     {"lld", 2, {T_DIR | T_IND, T_REG}, 13, 10},
-    {"lldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 14, 50},
+    {"lldi", 3, {T_REG | T_IND, T_IND | T_REG, T_REG}, 14, 50},
     {"lfork", 1, {T_DIR}, 15, 1000},
     {"aff", 1, {T_REG}, 16, 2},
     {0, 0, {0}, 0, 0}

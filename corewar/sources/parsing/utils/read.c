@@ -5,7 +5,6 @@
 ** read
 */
 
-#include <stdio.h>
 #include <unistd.h>
 
 unsigned int parsing_read_int(int fd)
