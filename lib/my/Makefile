@@ -13,6 +13,9 @@ SRC = my_put_nbr.c \
       my_strdup.c \
       my_strlen.c \
       my_strstr.c \
+      str_to_word_array.c \
+      my_strconcat.c \
+      free_str_tab.c \
       my_memset.c \
       my_write_big_endian.c \
       error.c

@@ -8,11 +8,21 @@
 _SRC = 		export/export.c \
 			export/header.c \
 			export/create_file.c \
+			\
+			parsing/parsing.c \
+			parsing/body/body.c \
+			parsing/header/header.c \
+			parsing/utils/utils.c \
+			parsing/file.c \
 
 _TESTS =	../main.c \
 			\
 			export/create_file.c \
 			export/export.c \
+			\
+			parsing/header.c \
+			parsing/parsing.c \
+			\
 
 SRCDIR =		sources/
 SRC =			$(addprefix $(SRCDIR), $(_SRC))
@@ -27,7 +37,7 @@ override CFLAGS += -Wall -Wextra -Werror -Wno-unused-command-line-argument -g
 INC = -I./includes -I../lib
 LDFLAGS = -L../lib -lcommon -lmy
 PATH_COMMON = ../lib/common
-PATH_MY = ../lib/common
+PATH_MY = ../lib/my
 
 TESTSDIR = 		../tests/criterion/$(NAME)/
 TESTS =			$(addprefix $(TESTSDIR), $(_TESTS))
@@ -54,10 +64,9 @@ successfully built $(STYLE_END)\n"
 .PHONY = all clean fclean re
 
 $(NAME):	$(SRC_OBJ) $(MAIN_OBJ)
-			@printf "$(STYLE_RED)🚚 Lib 'My' Compilation...$(STYLE_END)\n"
-			@make -C $(PATH_MY) -s
 			@printf "$(STYLE_RED)🚚 Lib 'Common' Compilation...$(STYLE_END)\n"
 			@make -C $(PATH_COMMON) -s
+			@make -C $(PATH_MY) -s
 			@printf "$(STYLE_RED)🚚 Main Compilation...$(STYLE_END)\n"
 			@$(CC) -o $(NAME) $(SRC_OBJ) $(MAIN_OBJ) $(CFLAGS) $(LDFLAGS)\
 			$(INC)
@@ -79,11 +88,9 @@ clean:
 			@rm -f $(SRC_COVER) $(SRC_PRFL)
 			@rm -f $(TESTS_OBJ)
 			@make -C $(PATH_COMMON) clean -s
-			@make -C $(PATH_MY) clean -s
 
 fclean: 	clean
 			@make -C $(PATH_COMMON) fclean -s
-			@make -C $(PATH_MY) fclean -s
 			@printf "$(STYLE_ORANGE)🧽 Asm was successfully clean\
 			$(STYLE_END)\n"
 
@@ -109,10 +116,9 @@ tests_custom:
 
 tests_criterion:
 			@rm -f $(TESTS_OBJ) $(SRC_OBJ)
-			@$(MAKE) -C $(PATH_MY) -s
 			@$(MAKE) -C $(PATH_COMMON) -s
 			@printf "$(STYLE_RED)🧪 Tests compilation...$(STYLE_END)\n"
-			@$(MAKE) objects CFLAGS+=--coverage
+			@$(MAKE) objects CFLAGS+=--coverage -s
 			@$(MAKE) tests_objects -s
 			@$(CC) -o $(TESTS_NAME) $(SRC_OBJ) $(TESTS_OBJ) \
 			$(LDFLAGS) $(CFLAGS) $(INC) $(TESTS_CFLAGS)

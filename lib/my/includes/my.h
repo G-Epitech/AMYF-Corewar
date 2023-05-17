@@ -21,5 +21,8 @@ int error(char *str);
 char *my_strstr(char *str, char const *to_find);
 int my_strlen(char const *str);
 int my_strcmp(char const *s1, char const *s2);
+char **str_to_word_array(char const *str, char *separate);
+char *strconcat(char *dest, char *src);
+void free_str_tab(char **tab);
 void *my_memset(void *pointer, unsigned char value, size_t count);
 ssize_t my_write_big_endian(int fd, const void *buff, size_t nbytes);

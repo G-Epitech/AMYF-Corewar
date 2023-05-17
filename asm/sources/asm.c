@@ -5,19 +5,21 @@
 ** asm
 */
 
+#include <stdio.h>
 #include "export/export.h"
 #include "my/includes/my.h"
-#include "common/includes/header/header.h"
+#include "parsing/parsing.h"
 #include "common/includes/champion/champion.h"
 
-int main(void)
+int main(int argc, char **argv)
 {
-    champion_t *champion = champion_new();
+    champion_t * champion = parsing_champion(argc, argv);
+    int status = 0;
 
-    champion->header = header_new();
-    my_strcpy(champion->header->name, "Bill");
-    my_strcpy(champion->header->comment, "Equilibre");
-    asm_export_champion("out.cor", champion);
+    if (!champion)
+        return 84;
+    if (!asm_export_champion("out.cor", champion))
+        status = 84;
     champion_free(champion);
     return 0;
 }

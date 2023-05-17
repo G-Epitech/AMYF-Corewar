@@ -5,8 +5,8 @@
 ** char file
 */
 
-#include "includes/my.h"
 #include <unistd.h>
+#include "includes/my.h"
 
 void my_putchar(char c)
 {
