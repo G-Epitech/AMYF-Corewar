@@ -10,6 +10,8 @@ _SRC = 		parsing/parsing.c \
 			parsing/header.c \
 			parsing/utils/read.c \
 			parsing/utils/display.c \
+			parsing/body/body.c \
+			parsing/body/param.c \
 
 _TESTS =	../main.c \
 			parsing.c \
@@ -53,10 +55,10 @@ successfully built $(STYLE_END)\n"
 .PHONY = all clean fclean re
 
 $(NAME):	$(SRC_OBJ) $(MAIN_OBJ)
-			@printf "$(STYLE_RED)🚚 Lib 'My' Compilation...$(STYLE_END)\n"
-			@make -C $(PATH_MY) -s
 			@printf "$(STYLE_RED)🚚 Lib 'Common' Compilation...$(STYLE_END)\n"
 			@make -C $(PATH_COMMON) -s
+			@printf "$(STYLE_RED)🚚 Lib 'My' Compilation...$(STYLE_END)\n"
+			@make -C $(PATH_MY) -s
 			@printf "$(STYLE_RED)🚚 Main Compilation...$(STYLE_END)\n"
 			@$(CC) -o $(NAME) $(SRC_OBJ) $(MAIN_OBJ) $(CFLAGS) $(LDFLAGS)\
 			$(INC)
