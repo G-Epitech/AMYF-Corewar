@@ -19,6 +19,15 @@ Test(champion_functions, new_champion) {
     cr_assert_null(champion->header);
 }
 
+Test(champion_functions, new_champion_malloc_fail) {
+    champion_t *champion = NULL;
+
+    malloc2_mode(MALLOC2_SET_MODE, MALLOC2_MODE_FAIL);
+    champion_new();
+    malloc2_mode(MALLOC2_SET_MODE, MALLOC2_MODE_NORMAL);
+    cr_assert_null(champion);
+}
+
 Test(champion_functions, free_champion) {
     champion_t *champion = champion_new();
 

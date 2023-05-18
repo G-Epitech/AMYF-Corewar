@@ -26,6 +26,7 @@ _TESTS =	../main.c \
 			champion.c \
 			list.c \
 			node.c \
+			cmd.c
 
 SRCDIR =		sources/
 SRC =			$(addprefix $(SRCDIR), $(_SRC))
