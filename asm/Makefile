@@ -13,6 +13,10 @@ _SRC = 		export/export.c \
 			parsing/header/header.c \
 			parsing/utils/utils.c \
 			parsing/file.c \
+			\
+			parsing/body/label/handler.c \
+			parsing/body/label/new_handler.c \
+			\
 			export/header/header.c \
 			\
 			utils/write/big_endian.c \

@@ -13,6 +13,8 @@
 #define PARSING_NAME 0
 #define PARSING_COMMENT 1
 #define PARSING_ERROR 2
+#define PARSING_LABEL_COMPLETE 0
+#define PARSING_LABEL_IMCOMPLE 1
 
 /**
 * @brief Parse the champion given in parameter.
@@ -27,7 +29,7 @@ champion_t *parsing_champion(int argc, char **argv);
 * @param input_champion input (.s) of champion
 * @return Cmd of champion
 */
-list_t *parsing_champion_body(char *input_champion, file_t *file);
+bool parsing_champion_body(file_t *file, champion_t *champion);
 
 /**
 * @brief Parse the header of champion.
@@ -55,3 +57,31 @@ file_t *file_new(char *input_file);
 * @param file File to free
 */
 void file_free(file_t *file);
+
+/**
+* @brief Create new struct for label handler.
+* @return The struct initied
+*/
+label_handler_t *label_handler_new(void);
+
+/**
+* @brief Append a label in list
+* @param list_labels List of label
+* @param label Label to add in list
+* @return true if no error else false
+*/
+bool label_append(list_t *list_labels, label_t *label);
+
+/**
+* @brief Create a new label
+* @return The struct initied
+*/
+label_t *label_new(void);
+
+/**
+* @brief Find label in file of champion
+* @param list_labels Handler of label
+* @param file File where check
+* @return true if no error else false
+*/
+bool find_label(label_handler_t *handler, file_t *file);

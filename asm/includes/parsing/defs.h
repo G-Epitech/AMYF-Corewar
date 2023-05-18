@@ -11,8 +11,25 @@
 #include <stddef.h>
 #include <stdint.h>
 
-// Represent the file passed in parameter
+typedef struct s_list list_t;
+
+// Represent the file passed in parameter.
 typedef struct s_file {
     size_t index_line;          // Index lines
     char **lines;               // All line to treate
 } file_t;
+
+// Represent the label
+typedef struct s_label {
+    char *name;         // Label name
+    int line;           // Line where is the label
+} label_t;
+
+// Represent the handler of label parsing.
+typedef struct s_label_handler {
+    list_t *labels;                 // List of labels
+    int line_parsing;               // Index of body parsing
+    int index_cmd;                  // Represents index of command
+    bool status_label;              // Represent status of parsing
+    char *temp_name_label;          // Represent the temporair name of label
+} label_handler_t;
