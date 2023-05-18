@@ -29,7 +29,7 @@ int parsing_file_open(char *file);
  * @brief Get champion header informations.
  * @param champion Champion to fill
  * @param fd File descriptor of the champion file
- * @return True if everything is good, otherwise false
+ * @return true if everything is good, otherwise false
  */
 bool parsing_header(champion_t *champion, int fd);
 
@@ -37,7 +37,7 @@ bool parsing_header(champion_t *champion, int fd);
  * @brief Get Champion body informations.
  * @param champion Champion to fill
  * @param fd File descriptor of the champion file
- * @return True if everything is good, otherwise false
+ * @return true if everything is good, otherwise false
  */
 bool parsing_body(champion_t *champion, int fd);
 
