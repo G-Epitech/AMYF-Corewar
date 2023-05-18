@@ -5,6 +5,7 @@
 ** Tests of assembler file exportation
 */
 
+#include <stdio.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/resource.h>
@@ -24,6 +25,7 @@ Test(asm_export_tests, basic)
     if (file != ASM_EXPORT_NULL_FD)
         close(file);
     champion_free(champion);
+    remove("champion2.cor");
 }
 
 Test(asm_export_tests, with_null_filename)
