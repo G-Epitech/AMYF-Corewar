@@ -86,7 +86,8 @@ bool parsing_body(champion_t *champion, int fd)
     int index = 0;
     node_t *pending = NULL;
 
-    champion->body = list_new();
+    if (!champion->body)
+        champion->body = list_new();
     while (index < champion->header->body_size) {
         pending = get_cmd(&index, fd);
         if (!pending)

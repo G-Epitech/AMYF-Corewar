@@ -36,6 +36,6 @@ void parsing_get_params(cmd_t *command, int *main_index, int fd)
             command->parameters[index].value = parsing_read_short(fd);
             *main_index += 2;
         }
-        index++;
+        index += 1;
     }
 }
