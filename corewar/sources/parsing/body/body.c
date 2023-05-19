@@ -6,6 +6,7 @@
 */
 
 #include <stdbool.h>
+#include "my/includes/my.h"
 #include "parsing/parsing.h"
 #include "common/includes/op/defs.h"
 #include "common/includes/cmd/cmd.h"
@@ -62,10 +63,11 @@ static bool get_special_case(cmd_t *command, int fd, int *main_index)
 static node_t *get_cmd(int *main_index, int fd)
 {
     unsigned char cmd_id = parsing_read_char(fd);
-    int array[4] = {0, 0, 0, 0};
+    int array[4];
     cmd_t *command = cmd_new();
     int index = 0;
 
+    my_memset(&array, 0, 4);
     *main_index += 1;
     command->index_cmd = cmd_id - 1;
     if (get_special_case(command, fd, main_index))
