@@ -36,7 +36,7 @@ int asm_export_cmd_size_get_params(cmd_t *cmd)
             cmd->parameters[i].type,
             params_types[i]
         );
-    } c
+    }
     return size;
 }
 
