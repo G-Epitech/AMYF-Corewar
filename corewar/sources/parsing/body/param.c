@@ -26,13 +26,13 @@ void parsing_get_params(cmd_t *command, int *main_index, int fd)
     int index = 0;
 
     while (command->parameters[index].type != 0) {
-        if (command->parameters[index].type == P_REGISTER) {
+        if (command->parameters[index].type == T_REG) {
             command->parameters[index].value = parsing_read_char(fd);
             *main_index += 1;
         }
-        if (command->parameters[index].type == P_DIRECT)
+        if (command->parameters[index].type == T_DIR)
             special_case_indexes(command, main_index, fd, index);
-        if (command->parameters[index].type == P_INDIRECT) {
+        if (command->parameters[index].type == T_IND) {
             command->parameters[index].value = parsing_read_short(fd);
             *main_index += 2;
         }
