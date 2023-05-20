@@ -38,9 +38,7 @@ champion_t *parsing_champion(int argc, char **argv)
     if (champion->header == NULL)
         return NULL;
     remove_bad_line(file);
-    printf("Champion name : [%s] | [%s] : Champion comment\n", champion->header->name, champion->header->comment);
-    parsing_champion_body(file, champion);
-    if (!champion->body)
+    if (!parsing_champion_body(file, champion))
         return NULL;
     file_free(file);
     return champion;

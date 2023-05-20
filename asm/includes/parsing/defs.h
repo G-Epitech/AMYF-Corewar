@@ -33,3 +33,15 @@ typedef struct s_label_handler {
     bool status_label;              // Represent status of parsing
     char *temp_name_label;          // Represent the temporair name of label
 } label_handler_t;
+
+// Represent the handler of label parsing.
+typedef struct s_cmd_handler {
+    bool status_label;              // Represent status of parsing
+    char *temp_name_label;          // Represent the temporair name of label
+} cmd_handler_t;
+
+// Represent the parametre handler
+typedef struct s_param_handler {
+    bool status_param;              // Represent status of param treated
+    int index_param;                // Represent the index of param to treat
+} param_handler_t;

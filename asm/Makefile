@@ -9,13 +9,19 @@ _SRC = 		export/export.c \
 			export/create_file.c \
 			\
 			parsing/parsing.c \
-			parsing/body/body.c \
 			parsing/header/header.c \
 			parsing/utils/utils.c \
 			parsing/file.c \
 			\
+			parsing/body/body.c \
 			parsing/body/label/handler.c \
 			parsing/body/label/new_handler.c \
+			parsing/body/label/check_existing.c \
+			parsing/body/instruction.c \
+			parsing/body/arguments/arguments.c \
+			parsing/body/arguments/label.c \
+			parsing/body/arguments/number.c \
+			parsing/body/arguments/register.c \
 			\
 			export/header/header.c \
 			\
@@ -39,7 +45,8 @@ SRC_OBJ = 		$(SRC:.c=.o)
 SRC_COVER =		$(SRC:.c=.gcno)
 SRC_PRFL =		$(SRC:.c=.gcda)
 
-override CFLAGS += -Wall -Wextra -Werror -Wno-unused-command-line-argument -g
+override CFLAGS += -Wall -Wextra -Werror -Wno-unused-command-line-argument\
+-Wno-unused-variable -g
 INC = -I./includes -I../lib
 LDFLAGS = -L../lib -lcommon -lmy
 PATH_COMMON = ../lib/common

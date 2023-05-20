@@ -41,6 +41,8 @@ label_t *new_label)
     }
     new_label->name = my_strdup(line_separed[0]);
     new_label->line = handler->index_cmd;
+    if (!parsing_body_label_check_existing(handler, new_label->name))
+        return false;
     label_append(handler->labels, new_label);
     return true;
 }
@@ -52,6 +54,8 @@ label_t *new_label)
     if (handler->status_label == false) {
         new_label->name = my_strdup(handler->temp_name_label);
         new_label->line = handler->index_cmd;
+        if (!parsing_body_label_check_existing(handler, new_label->name))
+            return false;
         label_append(handler->labels, new_label);
         handler->status_label = true;
     }
@@ -67,9 +71,11 @@ static bool get_label(file_t *file, label_handler_t *handler)
     if (!new_label)
         return false;
     if (my_strstr(line_separed[0], ":") != NULL) {
-        have_label(file, handler, new_label);
+        if (!have_label(file, handler, new_label))
+            return false;
     } else {
-        no_have_label(file, handler, new_label);
+        if (!no_have_label(file, handler, new_label))
+            return false;
     }
     return true;
 }

@@ -85,3 +85,70 @@ label_t *label_new(void);
 * @return true if no error else false
 */
 bool find_label(label_handler_t *handler, file_t *file);
+
+/**
+* @brief Parse the instruction
+* @param line_separed line separed
+* @param cmd cmd structure
+* @param index_line index of line separed parsing
+* @param cmd_handler Handler of cmd
+* @return true if no error else false
+*/
+bool parsing_instruction(char **line_separed,
+cmd_t **cmd, int *index_line, cmd_handler_t *cmd_handler);
+
+/**
+* @brief Create a new structure for each cmd
+* @return The struct inited
+*/
+cmd_handler_t *cmd_handler_new(void);
+
+/**
+* @brief Check if the new label already existing
+* @param handler handler of label detection
+* @param new_label Potentiel new label
+* @return true if no error else false
+*/
+bool parsing_body_label_check_existing(label_handler_t *handler,
+char *new_label);
+
+/**
+* @brief Parse the arguments of instruction
+* @param line_separed line separed
+* @param cmd cmd structure
+* @param index_line index of line separed parsing
+* @param label_handler Label handler with list of all label
+* @return true if no error else false
+*/
+bool parsing_arguments(char **line_separed, cmd_t **cmd,
+int *index_line, label_handler_t *label_handler);
+
+/**
+* @brief Parse the register arguments
+* @param args args to treated
+* @param cmd cmd structure
+* @param args_treated true if the args is already treated else false
+* @return true if no error else false
+*/
+bool parsing_argument_register(char *args, cmd_t **cmd,
+param_handler_t *params);
+
+/**
+* @brief Parse the number arguments
+* @param args args to treated
+* @param cmd cmd structure
+* @param args_treated true if the args is already treated else false
+* @return true if no error else false
+*/
+bool parsing_argument_number(char *args, cmd_t **cmd,
+param_handler_t *params);
+
+/**
+* @brief Parse the label arguments
+* @param args args to treated
+* @param cmd cmd structure
+* @param args_treated true if the args is already treated else false
+* @return true if no error else false
+*/
+bool parsing_argument_label(char *args, cmd_t **cmd,
+label_handler_t *label_handler, param_handler_t *params);
