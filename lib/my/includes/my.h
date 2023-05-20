@@ -25,3 +25,5 @@ char **str_to_word_array(char const *str, char *separate);
 char *strconcat(char *dest, char *src);
 void free_str_tab(char **tab);
 void *my_memset(void *pointer, unsigned char value, size_t count);
+int my_getnbr(char const *str);
+int my_str_isnum(char const *str);

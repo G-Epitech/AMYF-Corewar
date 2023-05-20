@@ -152,3 +152,10 @@ param_handler_t *params);
 */
 bool parsing_argument_label(char *args, cmd_t **cmd,
 label_handler_t *label_handler, param_handler_t *params);
+
+/**
+* @brief Check if they have error in param give at cmd
+* @param champion champion structure
+* @return true if no error else false
+*/
+bool parsing_check_wrong_param(champion_t *champion);

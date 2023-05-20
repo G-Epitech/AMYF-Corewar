@@ -17,6 +17,8 @@ SRC = my_put_nbr.c \
       my_strconcat.c \
       free_str_tab.c \
       my_memset.c \
+      my_getnbr.c \
+      my_str_isnum.c \
       error.c
 
 OBJ = $(SRC:.c=.o)
