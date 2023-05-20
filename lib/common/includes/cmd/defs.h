@@ -9,17 +9,10 @@
 
 #define MAX_ARGS_NUMBER 4
 
-typedef enum e_type_parameter {
-    P_NULL = 0,
-    P_REGISTER,
-    P_DIRECT,
-    P_INDIRECT
-} type_parameter_t;
-
 // Represent a parameter of a command.
 typedef struct s_parameter {
-    int value;              // Value of the parameter
-    type_parameter_t type;  // Type of the parameter
+    int value;      // Value of the parameter
+    char type;      // Type of the parameter
 } parameter_t;
 
 // Represent a command.

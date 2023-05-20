@@ -42,17 +42,17 @@ static bool get_special_case(cmd_t *command, int fd, int *main_index)
     if (op_tab[index].nbr_args > 1)
         return false;
     if (IS_T_DIR(op_tab[index].type[0])) {
-        command->parameters[0].type = P_DIRECT;
+        command->parameters[0].type = T_DIR;
         command->parameters[0].value = parsing_read_int(fd);
         *main_index += 4;
     }
     if (IS_T_IND(op_tab[index].type[0])) {
-        command->parameters[0].type = P_INDIRECT;
+        command->parameters[0].type = T_IND;
         command->parameters[0].value = parsing_read_short(fd);
         *main_index += 2;
     }
     if (IS_T_REG(op_tab[index].type[0])) {
-        command->parameters[0].type = P_REGISTER;
+        command->parameters[0].type = T_REG;
         command->parameters[0].value = parsing_read_char(fd);
         *main_index += 1;
     }
