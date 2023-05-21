@@ -29,6 +29,24 @@ label_handler_t *label_handler)
     return -1;
 }
 
+static bool handler_label_direct(char **args,
+cmd_t **cmd, param_handler_t *params)
+{
+    (*args)++;
+    if (!IS_T_DIR(op_tab_health[(*cmd)->index_cmd].type[params->index_param]))
+        return false;
+    (*cmd)->parameters[params->index_param].type = T_DIR | T_LAB;
+    return true;
+}
+
+static bool handler_label_indirect(cmd_t **cmd, param_handler_t *params)
+{
+    if (!IS_T_IND(op_tab_health[(*cmd)->index_cmd].type[params->index_param]))
+        return false;
+    (*cmd)->parameters[params->index_param].type = T_IND | T_LAB;
+    return true;
+}
+
 bool parsing_argument_label(char *args, cmd_t **cmd,
 label_handler_t *label_handler, param_handler_t *params)
 {
@@ -37,10 +55,11 @@ label_handler_t *label_handler, param_handler_t *params)
     if (params->status_param == true || my_strstr(args, ":") == NULL)
         return true;
     if (args[0] == '%') {
-        args++;
-        (*cmd)->parameters[params->index_param].type = P_DIRECT | T_LAB;
+        if (!handler_label_direct(&args, cmd, params))
+            return false;
     } else {
-        (*cmd)->parameters[params->index_param].type = P_INDIRECT | T_LAB;
+        if (!handler_label_indirect(cmd, params))
+            return false;
     }
     args++;
     index_cmd_label = get_index_label_cmd(args, label_handler);

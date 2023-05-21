@@ -6,7 +6,9 @@
 ##
 
 _SRC = 		export/export.c \
+			export/header.c \
 			export/create_file.c \
+			export/cmd/size.c \
 			\
 			parsing/parsing.c \
 			parsing/header/header.c \
@@ -23,14 +25,12 @@ _SRC = 		export/export.c \
 			parsing/body/arguments/number.c \
 			parsing/body/arguments/register.c \
 			\
-			export/header/header.c \
-			\
-			utils/write/big_endian.c \
 
 _TESTS =	../main.c \
 			\
 			export/create_file.c \
 			export/export.c \
+			export/cmd/size.c \
 			\
 			parsing/header.c \
 			parsing/parsing.c \

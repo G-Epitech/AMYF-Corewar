@@ -8,6 +8,7 @@
 SRC = my_put_nbr.c \
       my_putchar.c \
       my_putstr.c \
+      my_printf.c \
       my_strcmp.c \
       my_strcpy.c \
       my_strdup.c \
@@ -19,6 +20,7 @@ SRC = my_put_nbr.c \
       my_memset.c \
       my_getnbr.c \
       my_str_isnum.c \
+      my_write_big_endian.c \
       error.c
 
 OBJ = $(SRC:.c=.o)

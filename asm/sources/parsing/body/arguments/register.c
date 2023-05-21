@@ -21,6 +21,8 @@ param_handler_t *params)
 
     if (args[0] != 'r')
         return true;
+    if (!IS_T_REG(op_tab_health[(*cmd)->index_cmd].type[params->index_param]))
+        return false;
     (*cmd)->parameters[params->index_param].type = T_REG;
     args++;
     if (my_str_isnum(args) == 0)

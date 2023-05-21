@@ -57,7 +57,5 @@ bool parsing_champion_body(file_t *file, champion_t *champion)
         if (!parsing_cmd(file, champion, cmd_handler, label_handler))
             return false;
     }
-    if (!parsing_check_wrong_param(champion))
-        return false;
     return true;
 }

@@ -23,8 +23,12 @@ bool parsing_header(champion_t *champion, int fd)
     champion->header = header_new();
     for (int i = 0; i < HEADER_NAME_SIZE; i++)
         champion->header->name[i] = parsing_read_char(fd);
-    champion->header->body_size = parsing_read_long_int(fd);
+    if (parsing_read_int(fd) != 0)
+        return false;
+    champion->header->body_size = parsing_read_int(fd);
     for (int i = 0; i < HEADER_COMMENT_SIZE; i++)
         champion->header->comment[i] = parsing_read_char(fd);
+    if (parsing_read_int(fd) != 0)
+        return false;
     return true;
 }

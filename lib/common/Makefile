@@ -22,6 +22,7 @@ _SRC = 		list/append.c \
 			cmd/free.c \
 			header/new.c \
 			header/free.c \
+			op.c \
 
 _TESTS =	../main.c \
 			champion.c
