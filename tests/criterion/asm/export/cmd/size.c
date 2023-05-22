@@ -14,7 +14,7 @@
 
 Test(asm_export_cmd_size_get_proto_tests, need_proto)
 {
-    cmd_t *cmd = cmd_new("sti");
+    cmd_t *cmd = cmd_new();
 
     cmd->index_cmd = 10;
     cr_assert(asm_export_cmd_size_get_proto(cmd) == PROTO_SIZE);
@@ -23,7 +23,7 @@ Test(asm_export_cmd_size_get_proto_tests, need_proto)
 
 Test(asm_export_cmd_size_get_proto_tests, not_need_proto)
 {
-    cmd_t *cmd = cmd_new("live");
+    cmd_t *cmd = cmd_new();
 
     cmd->index_cmd = 0;
     cr_assert(asm_export_cmd_size_get_proto(cmd) == 0);
@@ -55,7 +55,7 @@ Test(asm_export_cmd_size_get_param_tests, size_of_ind)
 
 Test(asm_export_cmd_size_get_params_tests, size_of_sti_params)
 {
-    cmd_t *cmd = cmd_new("sti");
+    cmd_t *cmd = cmd_new();
 
     cmd->index_cmd = 10;
     cmd->parameters[0] = (parameter_t) {1, T_REG};
@@ -66,7 +66,7 @@ Test(asm_export_cmd_size_get_params_tests, size_of_sti_params)
 
 Test(asm_export_cmd_size_get_params_tests, size_of_lld_params)
 {
-    cmd_t *cmd = cmd_new("lld");
+    cmd_t *cmd = cmd_new();
 
     cmd->index_cmd = 12;
     cmd->parameters[0] = (parameter_t) {1, T_DIR | T_LAB};
@@ -76,7 +76,7 @@ Test(asm_export_cmd_size_get_params_tests, size_of_lld_params)
 
 Test(asm_export_cmd_size_get_params_tests, size_of_ll_params)
 {
-    cmd_t *cmd = cmd_new("lld");
+    cmd_t *cmd = cmd_new();
 
     cmd->index_cmd = 12;
     cmd->parameters[0] = (parameter_t) {1, T_DIR | T_LAB};
@@ -86,7 +86,7 @@ Test(asm_export_cmd_size_get_params_tests, size_of_ll_params)
 
 Test(asm_export_cmd_size_eval_tests, size_of_sti_cmd)
 {
-    cmd_t *cmd = cmd_new("sti");
+    cmd_t *cmd = cmd_new();
 
     cmd->index_cmd = 10;
     cmd->parameters[0] = (parameter_t) {1, T_REG};

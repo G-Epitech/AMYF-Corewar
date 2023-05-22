@@ -12,20 +12,9 @@
 #include "my/includes/my.h"
 #include "common/includes/op/defs.h"
 
-int find_instruction(char *instruction)
-{
-    for (int index = 0; op_tab[index].mnemonique != 0; index++) {
-        if (my_strcmp(op_tab[index].mnemonique, instruction) == 0) {
-            return index;
-        }
-    }
-    return -1;
-}
-
-cmd_t *cmd_new(char *instruction)
+cmd_t *cmd_new(void)
 {
     cmd_t *cmd = malloc2(sizeof(cmd_t));
-    int index_instruction = 0;
 
     if (!cmd)
         return NULL;
@@ -34,9 +23,6 @@ cmd_t *cmd_new(char *instruction)
         cmd->parameters[i].type = T_NULL;
         cmd->parameters[i].value = 0;
     }
-    index_instruction = find_instruction(instruction);
-    if (index_instruction == -1)
-        return NULL;
-    cmd->index_cmd = index_instruction;
+    cmd->index_cmd = 0;
     return cmd;
 }

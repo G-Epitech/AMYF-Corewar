@@ -9,6 +9,7 @@
 #include "my/includes/my.h"
 #include "parsing/parsing.h"
 #include "common/includes/cmd/cmd.h"
+#include "common/includes/op/defs.h"
 #include "common/includes/list/list.h"
 #include "common/includes/header/header.h"
 #include "common/includes/utils/malloc2.h"
@@ -25,6 +26,16 @@ cmd_handler_t *cmd_handler_new(void)
     return new;
 }
 
+static int find_instruction(char *instruction)
+{
+    for (int index = 0; op_tab[index].mnemonique != 0; index++) {
+        if (my_strcmp(op_tab[index].mnemonique, instruction) == 0) {
+            return index;
+        }
+    }
+    return -1;
+}
+
 static bool have_label(char **line_separed, cmd_t **cmd,
 int *index_line, cmd_handler_t *cmd_handler)
 {
@@ -36,8 +47,11 @@ int *index_line, cmd_handler_t *cmd_handler)
         cmd_handler->temp_name_label = my_strdup(args1_separed[0]);
     } else {
         (*index_line)++;
-        *cmd = cmd_new(line_separed[*index_line]);
+        *cmd = cmd_new();
         if ((*cmd) == NULL)
+            return false;
+        (*cmd)->index_cmd = find_instruction(line_separed[*index_line]);
+        if ((*cmd)->index_cmd == -1)
             return false;
         (*cmd)->label = my_strdup(args1_separed[0]);
     }
@@ -51,11 +65,17 @@ int *index_line, cmd_handler_t *cmd_handler)
         *cmd = cmd_new(line_separed[*index_line]);
         if ((*cmd) == NULL)
             return false;
+        (*cmd)->index_cmd = find_instruction(line_separed[*index_line]);
+        if ((*cmd)->index_cmd == -1)
+            return false;
         (*cmd)->label = my_strdup(cmd_handler->temp_name_label);
         cmd_handler->status_label = true;
     } else {
         *cmd = cmd_new(line_separed[*index_line]);
         if ((*cmd) == NULL)
+            return false;
+        (*cmd)->index_cmd = find_instruction(line_separed[*index_line]);
+        if ((*cmd)->index_cmd == -1)
             return false;
         (*cmd)->label = NULL;
     }
