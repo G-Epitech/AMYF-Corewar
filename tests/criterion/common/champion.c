@@ -100,6 +100,7 @@ Test(champion_fighter_functions, new_champion_fighter)
     cr_assert_not_null(champion_fighter);
     cr_assert_null(champion_fighter->header);
     cr_assert(champion_fighter->cooldown == 0);
+    cr_assert(champion_fighter->pc == 0);
     cr_assert(champion_fighter->live == false);
     champion_fighter_free(champion_fighter);
 }

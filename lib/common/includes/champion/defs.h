@@ -24,4 +24,5 @@ typedef struct s_champion_fighter {
     int registers[REG_NUMBER];  // All registers of the champion
     int cooldown;               // Cooldown of the champion
     bool live;                  // Check if it said “live” since the last reset
+    unsigned int pc;            // Progam Counter
 } champion_fighter_t;

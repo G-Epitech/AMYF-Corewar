@@ -26,9 +26,10 @@ champion_fighter_t *champion_fighter_new(void)
 
     if (!champion)
         return NULL;
-    champion->header = NULL;
+    champion->pc = 0;
     champion->cooldown = 0;
     champion->live = false;
+    champion->header = NULL;
     my_memset(champion->registers, 0, REG_NUMBER);
     return champion;
 }

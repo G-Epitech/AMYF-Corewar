@@ -19,7 +19,7 @@
 typedef struct s_arena {
     unsigned char array[MEM_SIZE];  // Array of the Arena
     int cycle_to_die;               // Number of cycle availaible to say “live”
-    int total_cycle;               // Total cycle done
+    int total_cycle;                // Total cycle done
     int nbr_live;                   // Reduce cycle_to_die with cycle_delta
     list_t *champions;              // List of champions in the Arena
 } arena_t;
