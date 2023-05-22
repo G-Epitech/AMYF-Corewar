@@ -42,8 +42,6 @@ Test(asm_export_tests, basic)
     cr_assert_eq(champion->header->body_size,
     (DIR_SIZE + REG_SIZE + OP_SIZE + PROTO_SIZE + OP_SIZE + DIR_SIZE));
     cr_assert(cmd2->body_pos == DIR_SIZE + PROTO_SIZE + REG_SIZE + 2 * OP_SIZE);
-    cmd_free(cmd1);
-    cmd_free(cmd2);
     cr_assert(asm_export_champion("champion2.cor", champion));
     file = open("champion2.cor", O_WRONLY);
     cr_assert(file != ASM_EXPORT_NULL_FD);
