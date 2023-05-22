@@ -31,9 +31,8 @@ int asm_export_create_file(char *filename);
  * @brief Export given header of champion to binary file.
  * @param header Header to export
  * @param file File descriptor of output file
- * @return Success of header exportation
  */
-bool asm_export_champion_header(header_t *header, int file);
+void asm_export_champion_header(header_t *header, int file);
 
 /**
  * @brief Get size of parameters prototype for given command if needed.
