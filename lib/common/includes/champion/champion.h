@@ -17,19 +17,20 @@
 champion_t *champion_new(void);
 
 /**
-* @brief Create a new empty fighter champion.
-*/
+ * @brief Create a new empty fighter champion.
+ * @return New empty fighter champion
+ */
 champion_fighter_t *champion_fighter_new(void);
 
 /**
 * @brief Free the given champion.
-* @param champions Champion to free
+* @param champion Champion to free
 */
 void champion_free(champion_t *champion);
 
 /**
 * @brief Free the given fighter champion.
-* @param champions Champion to free
+* @param champion Champion to free
 */
 void champion_fighter_free(champion_fighter_t *champion);
 

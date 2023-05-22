@@ -18,7 +18,7 @@ typedef struct s_champion {
     list_t *body;       // Commands list of the champion
 } champion_t;
 
-// Represente a champion file data.
+// Represente a champion fighter.
 typedef struct s_champion_fighter {
     header_t *header;           // Informations of the champion
     int registers[REG_NUMBER];  // All registers of the champion

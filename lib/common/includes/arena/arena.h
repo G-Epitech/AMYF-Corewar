@@ -10,12 +10,13 @@
 #include "defs.h"
 
 /**
-* @brief Create a new Arena.
-*/
+ * @brief Create a new arena.
+ * @return New empty arena
+ */
 arena_t *arena_new(void);
 
 /**
-* @brief Free the given Arena.
+* @brief Free the given arena.
 * @param arena Arena to free
 */
 void arena_free(arena_t *arena);
