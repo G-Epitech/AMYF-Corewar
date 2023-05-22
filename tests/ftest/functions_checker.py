@@ -9,7 +9,7 @@ import os;
 
 scan_command = "nm"
 binary_array = ["asm/asm", "corewar/corewar"]
-system_prefix = "__"
+system_prefix = "_"
 authorized_functions = [
     "open",
     "fopen",
@@ -34,8 +34,13 @@ def check_function(function):
     if len(function) < 2:
         return 0
     type = function[-2]
-    name = function[-1][1:]
-    if type == "U" and name not in authorized_functions and name[:2] != system_prefix:
+    name = function[-1]
+    if name[0] == '_':
+        name = name[1:]
+    name_version = name.split("@")
+    if len(name_version):
+        name = name_version[0]
+    if type == "U" and name not in authorized_functions and name[:1] != system_prefix:
         display_banned_function(name)
         return 1
     return 0
