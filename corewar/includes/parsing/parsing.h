@@ -47,7 +47,7 @@ bool parsing_body(champion_t *champion, int fd);
  * @param main_index Main index of reading
  * @param fd File descriptor of the champion file
  */
-void parsing_get_params(cmd_t *command, int *main_index, int fd);
+void parsing_get_params(cmd_t *command, unsigned int *main_index, int fd);
 
 /**
  * @brief Display a Champion.

@@ -14,7 +14,8 @@
 #include "common/includes/list/list.h"
 #include "common/includes/champion/defs.h"
 
-static void get_two_bits(int array[4], unsigned char declaration, int *index)
+static void get_two_bits(int array[4], unsigned char declaration,
+int *index)
 {
     for (int j = 1; j < 4; j++) {
         if ((declaration & j) == j) {
@@ -24,7 +25,7 @@ static void get_two_bits(int array[4], unsigned char declaration, int *index)
     }
 }
 
-static void get_declaration(int *main_index, int fd, int array[4])
+static void get_declaration(unsigned int *main_index, int fd, int array[4])
 {
     unsigned char declaration = parsing_read_char(fd);
     int index = 3;
@@ -36,31 +37,31 @@ static void get_declaration(int *main_index, int fd, int array[4])
     }
 }
 
-static bool get_special_case(cmd_t *command, int fd, int *main_index)
+static bool get_special_case(cmd_t *command, int fd, unsigned int *main_index)
 {
     int index = command->index_cmd;
 
     if (op_tab[index].nbr_args > 1)
         return false;
     if (IS_T_DIR(op_tab[index].type[0])) {
-        command->parameters[0].type = P_DIRECT;
+        command->parameters[0].type = T_DIR;
         command->parameters[0].value = parsing_read_int(fd);
         *main_index += 4;
     }
     if (IS_T_IND(op_tab[index].type[0])) {
-        command->parameters[0].type = P_INDIRECT;
+        command->parameters[0].type = T_IND;
         command->parameters[0].value = parsing_read_short(fd);
         *main_index += 2;
     }
     if (IS_T_REG(op_tab[index].type[0])) {
-        command->parameters[0].type = P_REGISTER;
+        command->parameters[0].type = T_REG;
         command->parameters[0].value = parsing_read_char(fd);
         *main_index += 1;
     }
     return true;
 }
 
-static node_t *get_cmd(int *main_index, int fd)
+static node_t *get_cmd(unsigned int *main_index, int fd)
 {
     unsigned char cmd_id = parsing_read_char(fd);
     int array[4];
@@ -85,7 +86,7 @@ static node_t *get_cmd(int *main_index, int fd)
 
 bool parsing_body(champion_t *champion, int fd)
 {
-    int index = 0;
+    unsigned int index = 0;
     node_t *pending = NULL;
 
     champion->body = list_new();

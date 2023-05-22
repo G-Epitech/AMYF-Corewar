@@ -8,6 +8,8 @@
 _SRC = 		export/export.c \
 			export/header.c \
 			export/create_file.c \
+			export/cmd/size.c \
+			export/prepare.c \
 			\
 			parsing/parsing.c \
 			parsing/body/body.c \
@@ -19,6 +21,8 @@ _TESTS =	../main.c \
 			\
 			export/create_file.c \
 			export/export.c \
+			export/cmd/size.c \
+			export/prepare.c \
 			\
 			parsing/header.c \
 			parsing/parsing.c \
