@@ -13,7 +13,8 @@
 #include "common/includes/list/list.h"
 #include "common/includes/champion/defs.h"
 
-static void get_two_bits(int array[4], unsigned char declaration, int *index)
+static void get_two_bits(int array[4], unsigned char declaration,
+int *index)
 {
     for (int j = 1; j < 4; j++) {
         if ((declaration & j) == j) {
@@ -23,7 +24,7 @@ static void get_two_bits(int array[4], unsigned char declaration, int *index)
     }
 }
 
-static void get_declaration(int *main_index, int fd, int array[4])
+static void get_declaration(unsigned int *main_index, int fd, int array[4])
 {
     unsigned char declaration = parsing_read_char(fd);
     int index = 3;
@@ -35,7 +36,7 @@ static void get_declaration(int *main_index, int fd, int array[4])
     }
 }
 
-static bool get_special_case(cmd_t *command, int fd, int *main_index)
+static bool get_special_case(cmd_t *command, int fd, unsigned int *main_index)
 {
     int index = command->index_cmd;
 
@@ -59,7 +60,7 @@ static bool get_special_case(cmd_t *command, int fd, int *main_index)
     return true;
 }
 
-static node_t *get_cmd(int *main_index, int fd)
+static node_t *get_cmd(unsigned int *main_index, int fd)
 {
     unsigned char cmd_id = parsing_read_char(fd);
     int array[4] = {0, 0, 0, 0};
@@ -83,7 +84,7 @@ static node_t *get_cmd(int *main_index, int fd)
 
 bool parsing_body(champion_t *champion, int fd)
 {
-    int index = 0;
+    unsigned int index = 0;
     node_t *pending = NULL;
 
     champion->body = list_new();

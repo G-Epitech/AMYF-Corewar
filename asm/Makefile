@@ -9,6 +9,7 @@ _SRC = 		export/export.c \
 			export/header.c \
 			export/create_file.c \
 			export/cmd/size.c \
+			export/prepare.c \
 			\
 			parsing/parsing.c \
 			parsing/body/body.c \
