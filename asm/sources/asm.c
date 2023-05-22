@@ -11,10 +11,6 @@
 #include "parsing/parsing.h"
 #include "common/includes/champion/champion.h"
 
-
-#include "common/includes/op/defs.h"
-#include "common/includes/cmd/defs.h"
-
 int main(int argc, char **argv)
 {
     champion_t *champion = parsing_champion(argc, argv);

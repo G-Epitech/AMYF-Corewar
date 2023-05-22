@@ -80,7 +80,7 @@ static bool get_label(file_t *file, label_handler_t *handler)
     return true;
 }
 
-bool find_label(label_handler_t *handler, file_t *file)
+bool label_find(label_handler_t *handler, file_t *file)
 {
     handler->line_parsing = file->index_line;
 

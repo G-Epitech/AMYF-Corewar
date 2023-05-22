@@ -13,10 +13,10 @@
 
 typedef struct s_list list_t;
 
-// Represent the file passed in parameter.
+// Represent the file passed in parameter
 typedef struct s_file {
     size_t index_line;          // Index lines
-    char **lines;               // All line to treate
+    char **lines;               // All lines to treate
 } file_t;
 
 // Represent the label
@@ -25,7 +25,7 @@ typedef struct s_label {
     int line;           // Line where is the label
 } label_t;
 
-// Represent the handler of label parsing.
+// Represent the handler of label parsing
 typedef struct s_label_handler {
     list_t *labels;                 // List of labels
     int line_parsing;               // Index of body parsing
@@ -34,7 +34,7 @@ typedef struct s_label_handler {
     char *temp_name_label;          // Represent the temporair name of label
 } label_handler_t;
 
-// Represent the handler of label parsing.
+// Represent the handler of label parsing
 typedef struct s_cmd_handler {
     bool status_label;              // Represent status of parsing
     char *temp_name_label;          // Represent the temporair name of label

@@ -26,8 +26,8 @@ champion_t *parsing_champion(int argc, char **argv);
 
 /**
 * @brief Parse the body of champion.
-* @param input_champion input (.s) of champion
-* @return Cmd of champion
+* @param input_champion Input (.s) of champion
+* @return true if no error in parsing else false
 */
 bool parsing_champion_body(file_t *file, champion_t *champion);
 
@@ -37,6 +37,13 @@ bool parsing_champion_body(file_t *file, champion_t *champion);
 * @return Header of champion
 */
 header_t *parsing_champion_header(file_t *file);
+
+/**
+* @brief Get info about the header of champion.
+* @param input_champion Input line to treat
+* @return Header structure filled of champion info
+*/
+int parsing_header_get_info(char *line_champion, header_t *new_header);
 
 /**
 * @brief Parse the file for get information.
@@ -65,7 +72,7 @@ void file_free(file_t *file);
 label_handler_t *label_handler_new(void);
 
 /**
-* @brief Append a label in list
+* @brief Append a label in list.
 * @param list_labels List of label
 * @param label Label to add in list
 * @return true if no error else false
@@ -73,39 +80,39 @@ label_handler_t *label_handler_new(void);
 bool label_append(list_t *list_labels, label_t *label);
 
 /**
-* @brief Create a new label
+* @brief Create a new label.
 * @return The struct initied
 */
 label_t *label_new(void);
 
 /**
-* @brief Find label in file of champion
+* @brief Find label in file of champion.
 * @param list_labels Handler of label
 * @param file File where check
 * @return true if no error else false
 */
-bool find_label(label_handler_t *handler, file_t *file);
+bool label_find(label_handler_t *handler, file_t *file);
 
 /**
-* @brief Parse the instruction
-* @param line_separed line separed
-* @param cmd cmd structure
-* @param index_line index of line separed parsing
-* @param cmd_handler Handler of cmd
+* @brief Parse the instruction.
+* @param line_separed Line separed
+* @param cmd Command structure
+* @param index_line Index of line separed parsing
+* @param cmd_handler Handler of command
 * @return true if no error else false
 */
 bool parsing_instruction(char **line_separed,
 cmd_t **cmd, int *index_line, cmd_handler_t *cmd_handler);
 
 /**
-* @brief Create a new structure for each cmd
+* @brief Create a new structure for each cmd.
 * @return The struct inited
 */
 cmd_handler_t *cmd_handler_new(void);
 
 /**
-* @brief Check if the new label already existing
-* @param handler handler of label detection
+* @brief Check if the new label already existing.
+* @param handler Handler of label detection
 * @param new_label Potentiel new label
 * @return true if no error else false
 */
@@ -113,10 +120,10 @@ bool parsing_body_label_check_existing(label_handler_t *handler,
 char *new_label);
 
 /**
-* @brief Parse the arguments of instruction
-* @param line_separed line separed
-* @param cmd cmd structure
-* @param index_line index of line separed parsing
+* @brief Parse the arguments of instruction.
+* @param line_separed Line separed
+* @param cmd Command structure
+* @param index_line Index of line separed parsing
 * @param label_handler Label handler with list of all label
 * @return true if no error else false
 */
@@ -124,9 +131,9 @@ bool parsing_arguments(char **line_separed, cmd_t **cmd,
 int *index_line, label_handler_t *label_handler);
 
 /**
-* @brief Parse the register arguments
-* @param args args to treated
-* @param cmd cmd structure
+* @brief Parse the register arguments.
+* @param args Arguments to treated
+* @param cmd Command structure
 * @param args_treated true if the args is already treated else false
 * @return true if no error else false
 */
@@ -134,7 +141,7 @@ bool parsing_argument_register(char *args, cmd_t **cmd,
 param_handler_t *params);
 
 /**
-* @brief Parse the number arguments
+* @brief Parse the number arguments.
 * @param args args to treated
 * @param cmd cmd structure
 * @param args_treated true if the args is already treated else false
@@ -144,9 +151,9 @@ bool parsing_argument_number(char *args, cmd_t **cmd,
 param_handler_t *params);
 
 /**
-* @brief Parse the label arguments
-* @param args args to treated
-* @param cmd cmd structure
+* @brief Parse the label arguments.
+* @param args Arguments to treated
+* @param cmd Command structure
 * @param args_treated true if the args is already treated else false
 * @return true if no error else false
 */
@@ -154,8 +161,8 @@ bool parsing_argument_label(char *args, cmd_t **cmd,
 label_handler_t *label_handler, param_handler_t *params);
 
 /**
-* @brief Check if they have error in param give at cmd
-* @param champion champion structure
+* @brief Check if they have error in param give at cmd.
+* @param champion Champion structure
 * @return true if no error else false
 */
 bool parsing_check_wrong_param(champion_t *champion);

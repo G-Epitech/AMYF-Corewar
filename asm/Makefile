@@ -12,6 +12,7 @@ _SRC = 		export/export.c \
 			\
 			parsing/parsing.c \
 			parsing/header/header.c \
+			parsing/header/get_info.c \
 			parsing/utils/utils.c \
 			parsing/file.c \
 			\
@@ -45,8 +46,7 @@ SRC_OBJ = 		$(SRC:.c=.o)
 SRC_COVER =		$(SRC:.c=.gcno)
 SRC_PRFL =		$(SRC:.c=.gcda)
 
-override CFLAGS += -Wall -Wextra -Werror -Wno-unused-command-line-argument\
--Wno-unused-variable -g
+override CFLAGS += -Wall -Wextra -Werror -Wno-unused-command-line-argument -g
 INC = -I./includes -I../lib
 LDFLAGS = -L../lib -lcommon -lmy
 PATH_COMMON = ../lib/common

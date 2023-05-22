@@ -4,7 +4,7 @@
 ** File description:
 ** new
 */
-#include <stdio.h>
+
 #include <stdlib.h>
 #include "op/defs.h"
 #include "cmd/defs.h"

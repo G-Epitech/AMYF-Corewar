@@ -49,7 +49,7 @@ bool parsing_champion_body(file_t *file, champion_t *champion)
     champion->body = list_new();
     if (!champion->body)
         return false;
-    if (!find_label(label_handler, file))
+    if (!label_find(label_handler, file))
         return false;
     while (file->lines[file->index_line] != NULL) {
         if (parsing_wrong_line(file))

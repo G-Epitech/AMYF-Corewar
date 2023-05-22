@@ -16,7 +16,7 @@
 #include "common/includes/champion/champion.h"
 
 
-static bool parsing_categorie(param_handler_t *params, char *args,
+static bool parsing_category(param_handler_t *params, char *args,
 cmd_t **cmd, label_handler_t *label_handler)
 {
     if (!parsing_argument_register(args, cmd, params))
@@ -40,7 +40,7 @@ int *index_line, label_handler_t *label_handler)
     while (line_separed[*index_line] != NULL) {
         if (params->index_param == 4)
             return false;
-        if (!parsing_categorie(params, line_separed[*index_line],
+        if (!parsing_category(params, line_separed[*index_line],
         cmd, label_handler)) {
             return false;
         }
