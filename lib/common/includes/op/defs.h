@@ -26,8 +26,9 @@
 #define DIR_SIZE 4
 #define REG_SIZE 1
 #define PROTO_SIZE 1
+#define REG_NUMBER 16
 
-// Represent a operator structure.
+// Represent a operator structure
 typedef struct op_s {
     char *mnemonique;            // Name of the command
     char nbr_args;               // Number of arguments

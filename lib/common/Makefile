@@ -23,9 +23,12 @@ _SRC = 		list/append.c \
 			header/new.c \
 			header/free.c \
 			op.c \
+			arena/new.c \
+			arena/free.c \
 
 _TESTS =	../main.c \
-			champion.c
+			champion.c \
+			arena.c \
 
 SRCDIR =		sources/
 SRC =			$(addprefix $(SRCDIR), $(_SRC))
