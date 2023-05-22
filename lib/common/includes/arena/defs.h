@@ -15,7 +15,7 @@
 #define CYCLE_TO_DIE 1536
 #define MEM_SIZE (6 * 1024)
 
-// Represente an arena.
+// Represente an arena
 typedef struct s_arena {
     unsigned char array[MEM_SIZE];  // Array of the Arena
     int cycle_to_die;               // Number of cycle availaible to say “live”
