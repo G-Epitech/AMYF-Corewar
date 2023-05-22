@@ -19,10 +19,11 @@ cmd_t *cmd_new(void)
     if (!cmd)
         return NULL;
     cmd->label = NULL;
-    for (size_t i = 0; i < MAX_ARGS_NUMBER; i++) {
+    cmd->index_cmd = 0;
+    cmd->body_pos = 0;
+    for (size_t i = 0; i < MAX_ARGS_NUMBER; i++)
         cmd->parameters[i].type = T_NULL;
         cmd->parameters[i].value = 0;
     }
-    cmd->index_cmd = 0;
     return cmd;
 }

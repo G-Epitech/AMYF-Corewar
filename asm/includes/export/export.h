@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include <stdio.h>
 #include <stdbool.h>
 #include "common/includes/cmd/cmd.h"
 #include "common/includes/champion/defs.h"
@@ -62,3 +63,11 @@ int asm_export_cmd_size_get_params(cmd_t *cmd);
  * @return int Final size of given command
  */
 int asm_export_cmd_size_eval(cmd_t *cmd);
+
+/**
+ * @brief Prepare champion exportation.
+ * @param header Header to export
+ * @param commands List of commands to export
+ * @return Success status
+ */
+bool asm_export_prepare(header_t *header, list_t *commands);
