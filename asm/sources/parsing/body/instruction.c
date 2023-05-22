@@ -62,7 +62,7 @@ static bool no_have_label(char **line_separed, cmd_t **cmd,
 int *index_line, cmd_handler_t *cmd_handler)
 {
     if (cmd_handler->status_label == false) {
-        *cmd = cmd_new(line_separed[*index_line]);
+        *cmd = cmd_new();
         if ((*cmd) == NULL)
             return false;
         (*cmd)->index_cmd = find_instruction(line_separed[*index_line]);
@@ -71,7 +71,7 @@ int *index_line, cmd_handler_t *cmd_handler)
         (*cmd)->label = my_strdup(cmd_handler->temp_name_label);
         cmd_handler->status_label = true;
     } else {
-        *cmd = cmd_new(line_separed[*index_line]);
+        *cmd = cmd_new();
         if ((*cmd) == NULL)
             return false;
         (*cmd)->index_cmd = find_instruction(line_separed[*index_line]);
