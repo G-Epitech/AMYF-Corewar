@@ -21,7 +21,7 @@ static void remove_bad_line(file_t *file)
     }
 }
 
-champion_t *parsing_champion(int argc, char **argv)
+champion_t *asm_parsing_champion(int argc, char **argv)
 {
     champion_t *champion = NULL;
     file_t *file = NULL;

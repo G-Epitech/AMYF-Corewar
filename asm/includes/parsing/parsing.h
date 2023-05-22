@@ -22,7 +22,7 @@
 * @param argv Number of argument in programme
 * @return The struct initied, NULL if error
 */
-champion_t *parsing_champion(int argc, char **argv);
+champion_t *asm_parsing_champion(int argc, char **argv);
 
 /**
 * @brief Parse the body of champion.
