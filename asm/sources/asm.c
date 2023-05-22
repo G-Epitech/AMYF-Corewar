@@ -13,7 +13,7 @@
 
 int main(int argc, char **argv)
 {
-    champion_t *champion = parsing_champion(argc, argv);
+    champion_t *champion = asm_parsing_champion(argc, argv);
     int status = 0;
 
     if (!champion)

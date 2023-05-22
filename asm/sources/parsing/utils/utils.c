@@ -11,7 +11,10 @@
 #include <stdbool.h>
 #include "parsing/utils.h"
 #include "my/includes/my.h"
+#include "parsing/parsing.h"
 #include "common/includes/utils/malloc2.h"
+#include "common/includes/header/header.h"
+#include "common/includes/champion/champion.h"
 
 char *parsing_filter_comment(char *input_user)
 {
@@ -38,4 +41,17 @@ bool parsing_is_empty(char *input_user)
         return true;
     else
         return false;
+}
+
+bool parsing_wrong_line(file_t *file)
+{
+    if (parsing_is_empty(file->lines[file->index_line])) {
+        file->index_line++;
+        return true;
+    }
+    if (parsing_is_comment(file->lines[file->index_line])) {
+        file->index_line++;
+        return true;
+    }
+    return false;
 }
