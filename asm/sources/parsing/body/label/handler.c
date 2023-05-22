@@ -31,9 +31,9 @@ static bool have_label(file_t *file, label_handler_t *handler,
 label_t *new_label)
 {
     char **line_separed = NULL;
+    char *line = file->lines[handler->line_parsing];
 
-    line_separed =
-    str_to_word_array(file->lines[handler->line_parsing], ": \t");
+    line_separed = str_to_word_array(line, ": \t");
     if (line_separed[1] == NULL) {
         handler->status_label = false;
         handler->temp_name_label = my_strdup(line_separed[0]);
@@ -47,10 +47,9 @@ label_t *new_label)
     return true;
 }
 
-static bool no_have_label(file_t *file, label_handler_t *handler,
+static bool no_have_label(label_handler_t *handler,
 label_t *new_label)
 {
-    (void) file;
     if (handler->status_label == false) {
         new_label->name = my_strdup(handler->temp_name_label);
         new_label->line = handler->index_cmd;
@@ -64,8 +63,8 @@ label_t *new_label)
 
 static bool get_label(file_t *file, label_handler_t *handler)
 {
-    char **line_separed =
-    str_to_word_array(file->lines[handler->line_parsing], " \t,");
+    char *line = file->lines[handler->line_parsing];
+    char **line_separed = str_to_word_array(line, " \t,");
     label_t *new_label = label_new();
 
     if (!new_label)
@@ -74,7 +73,7 @@ static bool get_label(file_t *file, label_handler_t *handler)
         if (!have_label(file, handler, new_label))
             return false;
     } else {
-        if (!no_have_label(file, handler, new_label))
+        if (!no_have_label(handler, new_label))
             return false;
     }
     return true;
