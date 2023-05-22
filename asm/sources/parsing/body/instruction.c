@@ -28,10 +28,12 @@ cmd_handler_t *cmd_handler_new(void)
 
 static int find_instruction(char *instruction)
 {
-    for (int index = 0; op_tab[index].mnemonique != 0; index++) {
-        if (my_strcmp(op_tab[index].mnemonique, instruction) == 0) {
+    int index = 0;
+
+    while (op_tab[index].mnemonique != 0) {
+        if (my_strcmp(op_tab[index].mnemonique, instruction) == 0)
             return index;
-        }
+        index++;
     }
     return -1;
 }

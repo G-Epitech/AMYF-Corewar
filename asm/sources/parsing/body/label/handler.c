@@ -83,7 +83,6 @@ static bool get_label(file_t *file, label_handler_t *handler)
 bool label_find(label_handler_t *handler, file_t *file)
 {
     handler->line_parsing = file->index_line;
-
     while (file->lines[handler->line_parsing] != NULL) {
         if (parsing_label_wrong_line(file, &handler->line_parsing))
             continue;
