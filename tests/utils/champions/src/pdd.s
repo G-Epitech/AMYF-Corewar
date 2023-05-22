@@ -1,6 +1,6 @@
 .name    "pdd"
 #salut toi
-.comment "pdd"
+.comment "pdd"#comment
 
 	sti	r1, %:live, %1
 	fork	%:live

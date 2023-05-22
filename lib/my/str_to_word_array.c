@@ -21,7 +21,6 @@ bool my_char_is_in_str(char c, char* separate)
 
 bool my_char_is_alpha(char c, char *separate)
 {
-
     if (my_char_is_in_str(c, separate))
         return false;
     else

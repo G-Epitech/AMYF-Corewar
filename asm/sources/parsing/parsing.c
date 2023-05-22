@@ -5,12 +5,23 @@
 ** asm parsing
 */
 
+#include "parsing/utils.h"
+#include "my/includes/my.h"
 #include "parsing/parsing.h"
 #include "common/includes/cmd/cmd.h"
 #include "common/includes/header/header.h"
 #include "common/includes/champion/champion.h"
 
-champion_t *parsing_champion(int argc, char **argv)
+static void remove_bad_line(file_t *file)
+{
+    while (file->lines[file->index_line] != NULL) {
+        if (!parsing_wrong_line(file))
+            return;
+        file->index_line++;
+    }
+}
+
+champion_t *asm_parsing_champion(int argc, char **argv)
 {
     champion_t *champion = NULL;
     file_t *file = NULL;
@@ -26,8 +37,8 @@ champion_t *parsing_champion(int argc, char **argv)
     champion->header = parsing_champion_header(file);
     if (champion->header == NULL)
         return NULL;
-    champion->body = parsing_champion_body(input_champion, file);
-    if (!champion->body)
+    remove_bad_line(file);
+    if (!parsing_champion_body(file, champion))
         return NULL;
     file_free(file);
     return champion;

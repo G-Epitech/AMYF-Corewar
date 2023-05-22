@@ -90,6 +90,13 @@ type = "path_exists"
 path = "corewar/corewar"
 target_type = "file"
 
+# Banned function
+
+[[test]]
+name = "Function checker"
+type = "command"
+command = "python3 tests/ftest/functions_checker.py"
+
 # End cleaning
 
 [[test]]

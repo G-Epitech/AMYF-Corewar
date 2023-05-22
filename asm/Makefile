@@ -12,10 +12,21 @@ _SRC = 		export/export.c \
 			export/prepare.c \
 			\
 			parsing/parsing.c \
-			parsing/body/body.c \
 			parsing/header/header.c \
+			parsing/header/get_info.c \
 			parsing/utils/utils.c \
 			parsing/file.c \
+			\
+			parsing/body/body.c \
+			parsing/body/label/handler.c \
+			parsing/body/label/new_handler.c \
+			parsing/body/label/check_existing.c \
+			parsing/body/instruction.c \
+			parsing/body/arguments/arguments.c \
+			parsing/body/arguments/label.c \
+			parsing/body/arguments/number.c \
+			parsing/body/arguments/register.c \
+			\
 
 _TESTS =	../main.c \
 			\
