@@ -21,7 +21,7 @@ Test(parsing_of_champion, simple_execution)
     int argc = 2;
     char *argv[2] = {"./asm", "../tests/utils/champions/src/pdf.s"};
 
-    cr_assert_null(!asm_parsing_champion(argc, argv));
+    cr_assert_not_null(asm_parsing_champion(argc, argv));
 }
 
 Test(parsing_of_champion, bad_number_arguments)
