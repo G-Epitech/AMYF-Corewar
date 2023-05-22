@@ -28,10 +28,10 @@ bool asm_export_prepare(header_t *header, list_t *commands)
     node_t *node = commands ? commands->first : NULL;
     cmd_t *cmd = NULL;
 
-    if (!header)
+    if (!header || !commands)
         return false;
     while (node && success) {
-        cmd = node ? NODE_DATA_TO_PTR(node->data, cmd_t *) : NULL;
+        cmd = NODE_DATA_TO_PTR(node->data, cmd_t *);
         success &= asm_export_prepare_cmd(size, cmd);
         size += cmd ? asm_export_cmd_size_eval(cmd) : 0;
         node = node->next;
