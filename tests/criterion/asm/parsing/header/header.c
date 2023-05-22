@@ -123,3 +123,35 @@ Test(parsing_of_champion, file_not_exist)
 {
     cr_assert_null(parsing_parse_file("not exist"));
 }
+
+Test(parsing_of_champion, bad_first_quote_name)
+{
+    int argc = 2;
+    char *argv[3] = {"./asm", "../tests/utils/champions/src/bad_quote/first_name.s"};
+
+    cr_assert_null(asm_parsing_champion(argc, argv));
+}
+
+Test(parsing_of_champion, bad_second_quote_name)
+{
+    int argc = 2;
+    char *argv[3] = {"./asm", "../tests/utils/champions/src/bad_quote/second_name.s"};
+
+    cr_assert_null(asm_parsing_champion(argc, argv));
+}
+
+Test(parsing_of_champion, bad_first_quote_comment)
+{
+    int argc = 2;
+    char *argv[3] = {"./asm", "../tests/utils/champions/src/bad_quote/first_comment.s"};
+
+    cr_assert_null(asm_parsing_champion(argc, argv));
+}
+
+Test(parsing_of_champion, bad_second_quote_comment)
+{
+    int argc = 2;
+    char *argv[3] = {"./asm", "../tests/utils/champions/src/bad_quote/second_comment.s"};
+
+    cr_assert_null(asm_parsing_champion(argc, argv));
+}
