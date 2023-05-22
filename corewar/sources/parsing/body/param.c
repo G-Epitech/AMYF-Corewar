@@ -9,8 +9,8 @@
 #include "common/includes/op/defs.h"
 #include "common/includes/cmd/defs.h"
 
-static void special_case_indexes(cmd_t *command, int *main_index, int fd,
-int index)
+static void special_case_indexes(cmd_t *command, unsigned int *main_index,
+int fd, int index)
 {
     if (!IS_T_DIR(op_tab[command->index_cmd].type[index])) {
         command->parameters[index].value = parsing_read_short(fd);
@@ -21,7 +21,7 @@ int index)
     }
 }
 
-void parsing_get_params(cmd_t *command, int *main_index, int fd)
+void parsing_get_params(cmd_t *command, unsigned int *main_index, int fd)
 {
     int index = 0;
 
