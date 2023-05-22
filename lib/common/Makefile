@@ -12,7 +12,6 @@ _SRC = 		list/append.c \
 			node/free.c \
 			node/new.c \
 			node/unlink.c \
-			utils/is_number.c \
 			utils/malloc2.c \
 			champion/new.c \
 			champion/free.c \
@@ -28,6 +27,10 @@ _SRC = 		list/append.c \
 
 _TESTS =	../main.c \
 			champion.c \
+			list.c \
+			node.c \
+			cmd.c \
+			header.c \
 			arena.c \
 
 SRCDIR =		sources/
