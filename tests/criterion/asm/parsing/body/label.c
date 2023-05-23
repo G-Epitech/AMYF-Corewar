@@ -31,7 +31,7 @@ Test(create_label, bad_list_argument)
     label_t *new = label_new();
 
     malloc2_mode(MALLOC2_SET_MODE, MALLOC2_MODE_FAIL);
-    cr_assert_null(label_append(NULL, new));
+    cr_assert_not(label_append(NULL, new));
     malloc2_mode(MALLOC2_SET_MODE, MALLOC2_MODE_NORMAL);
 }
 
@@ -40,7 +40,7 @@ Test(create_label, bad_label_argument)
     list_t *new = list_new();
 
     malloc2_mode(MALLOC2_SET_MODE, MALLOC2_MODE_FAIL);
-    cr_assert_null(label_append(new, NULL));
+    cr_assert_not(label_append(new, NULL));
     malloc2_mode(MALLOC2_SET_MODE, MALLOC2_MODE_NORMAL);
 }
 
@@ -50,7 +50,7 @@ Test(create_label, bad_malloc)
     label_t *new_label = label_new();
 
     malloc2_mode(MALLOC2_SET_MODE, MALLOC2_MODE_FAIL);
-    cr_assert_null(label_append(new_list, new_label));
+    cr_assert_not(label_append(new_list, new_label));
     malloc2_mode(MALLOC2_SET_MODE, MALLOC2_MODE_NORMAL);
 }
 
@@ -83,6 +83,6 @@ Test(create_label, bad_malloc_label_find)
     file_t *file = file_new("../tests/utils/champions/src/abel.s");
 
     malloc2_mode(MALLOC2_SET_MODE, MALLOC2_MODE_FAIL);
-    cr_assert_null(label_find(label_handler, file));
+    cr_assert_not(label_find(label_handler, file));
     malloc2_mode(MALLOC2_SET_MODE, MALLOC2_MODE_NORMAL);
 }
