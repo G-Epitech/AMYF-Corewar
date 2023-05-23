@@ -42,7 +42,11 @@ _TESTS =	../main.c \
 			export/cmd/size.c \
 			export/prepare.c \
 			\
-			parsing/header.c \
+			parsing/header/header.c \
+			parsing/body/body.c \
+			parsing/body/label.c \
+			parsing/body/instruction.c \
+			parsing/body/arguments.c \
 			parsing/parsing.c \
 			\
 
