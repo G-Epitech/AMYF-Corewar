@@ -5,21 +5,26 @@
 ** sort
 */
 
-static void swap_number(int array[], int j)
-{
-    int temp = 0;
+#include <stdlib.h>
+#include "utils/defs.h"
 
-    if (array[j] > array[j + 1]) {
-        temp = array[j];
-        array[j] = array[j + 1];
-        array[j + 1] = temp;
+static void swap_number(utils_fighter_t *utils[4], int j)
+{
+    utils_fighter_t *temp = NULL;
+
+    if (utils[j]->prog_number > utils[j + 1]->prog_number) {
+        temp = utils[j];
+        utils[j] = utils[j + 1];
+        utils[j + 1] = temp;
     }
 }
 
-void utils_array_sort(int array[], int size)
+void utils_array_sort(utils_fighter_t *utils[4])
 {
+    int size = 4;
+
     for (int i = 0; i < size - 1; i++) {
         for (int j = 0; j < size - i - 1; j++)
-            swap_number(array, j);
+            swap_number(utils, j);
     }
 }

@@ -28,6 +28,5 @@ int main(int ac, char **av)
 
     arena = arena_init(ac, av);
     display_arena_champions(arena);
-    (void)arena;
     return 0;
 }

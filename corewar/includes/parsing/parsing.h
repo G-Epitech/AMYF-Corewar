@@ -59,25 +59,25 @@ void parsing_display(champion_t *champion);
  * @param fd File Descriptor of the file
  * @return Unsigned long int readed
  */
-unsigned long int parsing_read_long_int(int fd);
+long int parsing_read_long_int(int fd);
 
 /**
  * @brief Read a char from file.
  * @param fd File Descriptor of the file
  * @return Unsigned char readed
  */
-unsigned char parsing_read_char(int fd);
+char parsing_read_char(int fd);
 
 /**
  * @brief Read a int from int.
  * @param fd File Descriptor of the file
  * @return Unsigned int readed
  */
-unsigned int parsing_read_int(int fd);
+int parsing_read_int(int fd);
 
 /**
  * @brief Read a char from short.
  * @param fd File Descriptor of the file
  * @return Unsigned short readed
  */
-unsigned short parsing_read_short(int fd);
+short parsing_read_short(int fd);

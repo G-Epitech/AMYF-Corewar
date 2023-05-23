@@ -23,11 +23,10 @@ utils_fighter_t *utils_fighter_new(void);
 void utils_fighter_free(utils_fighter_t *utils);
 
 /**
- * @brief Sort an int array.
- * @param array Array to sort
- * @param size Size of the array
+ * @brief Sort utils array.
+ * @param utils Array utils to sort
  */
-void utils_array_sort(int array[], int size);
+void utils_array_sort(utils_fighter_t *utils[4]);
 
 /**
  * @brief Display a fighter champion.

@@ -11,7 +11,7 @@
 
 static bool check_id(int fd)
 {
-    unsigned int nb = parsing_read_int(fd);
+    int nb = parsing_read_int(fd);
 
     return nb == HEADER_MAGIC_CODE;
 }

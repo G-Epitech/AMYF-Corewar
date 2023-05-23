@@ -27,7 +27,7 @@ int *index)
 
 static void get_declaration(unsigned int *main_index, int fd, int array[4])
 {
-    unsigned char declaration = parsing_read_char(fd);
+    char declaration = parsing_read_char(fd);
     int index = 3;
 
     *main_index += 1;
@@ -63,7 +63,7 @@ static bool get_special_case(cmd_t *command, int fd, unsigned int *main_index)
 
 static node_t *get_cmd(unsigned int *main_index, int fd)
 {
-    unsigned char cmd_id = parsing_read_char(fd);
+    char cmd_id = parsing_read_char(fd);
     int array[4];
     cmd_t *command = cmd_new();
     int index = 0;

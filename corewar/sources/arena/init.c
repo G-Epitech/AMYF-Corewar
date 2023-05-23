@@ -5,6 +5,8 @@
 ** init
 */
 
+#include <unistd.h>
+#include <stdio.h>
 #include "utils/utils.h"
 #include "arena/arena.h"
 #include "my/includes/my.h"
@@ -25,7 +27,8 @@ static champion_fighter_t *new_champion(utils_fighter_t *champion_utils)
     return champion;
 }
 
-void setup_champion_in_arena(arena_t *arena, utils_fighter_t *champion_utils)
+static void setup_champion_in_arena(arena_t *arena,
+utils_fighter_t *champion_utils[4])
 {
     (void)arena;
     (void)champion_utils;
@@ -74,6 +77,7 @@ arena_t *arena_init(int ac, char **av)
     if (!arena_utils_init(ac, av, utils))
         return NULL;
     arena->champions = list_new();
+    utils_array_sort(utils);
     for (int i = 0; i < 4; i++) {
         if (!utils[i]->file)
             continue;
@@ -81,5 +85,6 @@ arena_t *arena_init(int ac, char **av)
         arena_append_champion(arena, champion);
     }
     set_champion_id(arena);
+    setup_champion_in_arena(arena, utils);
     return arena;
 }
