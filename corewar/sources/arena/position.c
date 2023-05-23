@@ -13,6 +13,8 @@
 
 static void write_body(arena_t *arena, utils_fighter_t *utils, int position)
 {
+    while (position >= MEM_SIZE)
+        position -= MEM_SIZE;
     for (unsigned int i = 0; i < utils->body_size; i++)
         arena->array[i + position] = utils->body[i];
 }
@@ -36,20 +38,27 @@ static int get_nb_pos(arena_t *arena, utils_fighter_t *utils[4], int array[4])
 }
 
 static void write_all(arena_t *arena, utils_fighter_t *utils[4],
-int number_champions)
+int number_champions, int array[4])
 {
     int index_mem = 0;
     int index_utils = 0;
+    int position = 0;
+    int delta = 0;
 
     while (index_mem < number_champions) {
-        if (!utils[index_utils]->file ||
-        utils[index_utils]->load_address != -1) {
+        if (!utils[index_utils]->file) {
+            index_utils += 1;
+            continue;
+        }
+        if (array[index_mem] != 0) {
+            delta = array[index_mem];
             index_mem += 1;
             continue;
         }
-        write_body(arena, utils[index_utils],
-        index_mem * (MEM_SIZE / number_champions));
+        position = (index_mem * (MEM_SIZE / number_champions)) + delta;
+        write_body(arena, utils[index_utils], position);
         index_mem += 1;
+        index_utils += 1;
     }
 }
 
@@ -59,8 +68,8 @@ void arena_init_champion_position(arena_t *arena, utils_fighter_t *utils[4])
     int number_defines = 0;
     int number_champions = arena->champions->len;
 
-    my_memset(array, 0, 4);
+    my_memset(array, 0, sizeof(int) * 4);
     number_defines = get_nb_pos(arena, utils, array);
-    if (number_defines == 0)
-        return write_all(arena, utils, number_champions);
+    if (number_defines == 0 || number_defines == 1)
+        return write_all(arena, utils, number_champions, array);
 }
