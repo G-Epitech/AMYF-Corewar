@@ -24,6 +24,7 @@ _SRC = 		list/append.c \
 			op.c \
 			arena/new.c \
 			arena/free.c \
+			arena/append.c \
 
 _TESTS =	../main.c \
 			champion.c \

@@ -27,11 +27,10 @@ int parsing_file_open(char *file);
 
 /**
  * @brief Get champion header informations.
- * @param champion Champion to fill
  * @param fd File descriptor of the champion file
- * @return true if everything is good, otherwise false
+ * @return New header
  */
-bool parsing_header(champion_t *champion, int fd);
+header_t *parsing_header(int fd);
 
 /**
  * @brief Get Champion body informations.

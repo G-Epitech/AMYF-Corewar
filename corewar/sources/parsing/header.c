@@ -16,19 +16,21 @@ static bool check_id(int fd)
     return nb == HEADER_MAGIC_CODE;
 }
 
-bool parsing_header(champion_t *champion, int fd)
+header_t *parsing_header(int fd)
 {
+    header_t *header = NULL;
+
     if (!check_id(fd))
-        return false;
-    champion->header = header_new();
+        return NULL;
+    header = header_new();
     for (int i = 0; i < HEADER_NAME_SIZE; i++)
-        champion->header->name[i] = parsing_read_char(fd);
+        header->name[i] = parsing_read_char(fd);
     if (parsing_read_int(fd) != 0)
-        return false;
-    champion->header->body_size = parsing_read_int(fd);
+        return NULL;
+    header->body_size = parsing_read_int(fd);
     for (int i = 0; i < HEADER_COMMENT_SIZE; i++)
-        champion->header->comment[i] = parsing_read_char(fd);
+        header->comment[i] = parsing_read_char(fd);
     if (parsing_read_int(fd) != 0)
-        return false;
-    return true;
+        return NULL;
+    return header;
 }
