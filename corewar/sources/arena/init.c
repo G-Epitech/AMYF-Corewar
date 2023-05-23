@@ -13,6 +13,7 @@
 #include "parsing/parsing.h"
 #include "common/includes/list/list.h"
 #include "common/includes/arena/arena.h"
+#include "common/includes/utils/malloc2.h"
 #include "common/includes/champion/champion.h"
 
 static champion_fighter_t *new_champion(utils_fighter_t *champion_utils)
@@ -24,14 +25,15 @@ static champion_fighter_t *new_champion(utils_fighter_t *champion_utils)
         return NULL;
     champion->header = parsing_header(fd);
     champion->registers[0] = champion_utils->prog_number;
+    champion_utils->body_size = champion->header->body_size;
+    champion_utils->body =
+    malloc2(sizeof(unsigned char) * champion->header->body_size);
+    if (!champion_utils->body)
+        return NULL;
+    my_memset(champion_utils->body, '\0',
+    sizeof(unsigned char) * champion->header->body_size);
+    read(fd, champion_utils->body, champion->header->body_size);
     return champion;
-}
-
-static void setup_champion_in_arena(arena_t *arena,
-utils_fighter_t *champion_utils[4])
-{
-    (void)arena;
-    (void)champion_utils;
 }
 
 static void array_remove_possibility(int array[4], int nb_to_remove)
@@ -85,6 +87,6 @@ arena_t *arena_init(int ac, char **av)
         arena_append_champion(arena, champion);
     }
     set_champion_id(arena);
-    setup_champion_in_arena(arena, utils);
+    arena_init_champion_position(arena, utils);
     return arena;
 }

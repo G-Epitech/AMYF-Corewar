@@ -25,6 +25,4 @@ typedef struct s_champion_fighter {
     int cooldown;               // Cooldown of the champion
     bool live;                  // Check if it said “live” since the last reset
     unsigned int pc;            // Progam Counter
-    int body_size;              // Size of the body
-    char *body;                 // Body of the Champion
 } champion_fighter_t;

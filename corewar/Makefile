@@ -7,6 +7,7 @@
 
 _SRC = 		arena/init.c \
 			arena/utils.c \
+			arena/position.c \
 			\
 			parsing/parsing.c \
 			parsing/file.c \

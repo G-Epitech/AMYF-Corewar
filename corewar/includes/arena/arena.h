@@ -27,3 +27,10 @@ arena_t *arena_init(int ac, char **av);
  * @return True if success or False if error found.
  */
 bool arena_utils_init(int ac, char **av, utils_fighter_t *utils[4]);
+
+/**
+ * @brief Fill arena with champion body.
+ * @param arena Arena to fill
+ * @param utils Utils with champions fighter
+ */
+void arena_init_champion_position(arena_t *arena, utils_fighter_t *utils[4]);
