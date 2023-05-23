@@ -15,9 +15,8 @@ static int get_start_of_filename(char *src_file, int len)
 {
     int i = len - 1;
 
-    while (i > 0 && src_file[i] != '/') {
+    while (i > 0 && src_file[i] != '/')
         i -= 1;
-    }
     if (src_file[i] == '/')
         i += 1;
     return i;
