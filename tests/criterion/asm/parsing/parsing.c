@@ -58,7 +58,7 @@ Test(parsing_of_champion, bad_file_with_nothing)
     cr_assert_null(asm_parsing_champion(argc, argv));
 }
 
-Test(parsing_of_champion, parsing_pdd_file)
+Test(parsing_of_champion, parsing_abel_file)
 {
     int argc = 2;
     char *argv[2] = {"./asm", "../tests/utils/champions/src/abel.s"};
@@ -119,7 +119,7 @@ Test(parsing_of_champion, parsing_pdd_file)
     cr_assert_eq(NODE_DATA_TO_PTR(champion->body->first->next->next->next->data, cmd_t *)->parameters[3].value, 0);
 }
 
-Test(parsing_of_champion, parsing_abel_file)
+Test(parsing_of_champion, parsing_pdd_file)
 {
     int argc = 2;
     char *argv[2] = {"./asm", "../tests/utils/champions/src/pdd.s"};
