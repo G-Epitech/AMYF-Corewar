@@ -7,7 +7,6 @@
 
 #pragma once
 
-#include <stdio.h>
 #include <stdbool.h>
 #include "common/includes/cmd/cmd.h"
 #include "common/includes/champion/defs.h"
