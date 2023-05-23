@@ -45,6 +45,6 @@ Test(cmd_handler, bad_malloc_parsing_body)
     champion_t *test = champion_new();
 
     malloc2_mode(MALLOC2_SET_MODE, MALLOC2_MODE_FAIL);
-    cr_assert_null(parsing_champion_body(NULL, test));
+    cr_assert_not(parsing_champion_body(NULL, test));
     malloc2_mode(MALLOC2_SET_MODE, MALLOC2_MODE_NORMAL);
 }

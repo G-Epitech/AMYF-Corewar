@@ -16,6 +16,7 @@ int my_put_nbr (int nb);
 void my_putchar (char c);
 int my_putstr (char const *str);
 char *my_strcpy(char *dest, char const *src);
+char *my_strncpy(char *dest, char const *src, int n);
 char *my_strdup (char const *src);
 int error(char *str);
 char *my_strstr(char *str, char const *to_find);

@@ -18,8 +18,8 @@
 
 /**
 * @brief Parse the champion given in parameter.
-* @param argv Argument of programme
-* @param argv Number of argument in programme
+* @param argc Argument of programm
+* @param argv Number of argument in programm
 * @return The struct initied, NULL if error
 */
 champion_t *asm_parsing_champion(int argc, char **argv);

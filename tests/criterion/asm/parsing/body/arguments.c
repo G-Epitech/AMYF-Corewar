@@ -99,6 +99,6 @@ Test(test_indirect_number, bad_placement_indirect_label)
 Test(test_indirect_number, bad_malloc_argument)
 {
     malloc2_mode(MALLOC2_SET_MODE, MALLOC2_MODE_FAIL);
-    cr_assert_null(parsing_arguments(NULL, NULL, NULL, NULL));
+    cr_assert_not(parsing_arguments(NULL, NULL, NULL, NULL));
     malloc2_mode(MALLOC2_SET_MODE, MALLOC2_MODE_NORMAL);
 }
