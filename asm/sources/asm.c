@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 
     if (!champion)
         return 84;
-    if (!asm_export_champion("out.cor", champion))
+    if (!asm_export_champion(argv[1], champion))
         status = 84;
     champion_free(champion);
     return status;

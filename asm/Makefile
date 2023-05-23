@@ -7,9 +7,16 @@
 
 _SRC = 		export/export.c \
 			export/header.c \
+			export/body.c \
 			export/create_file.c \
+			export/cmd/cmd.c \
+			export/cmd/filename.c \
+			export/cmd/get_by_index.c \
+			export/cmd/params.c \
+			export/cmd/prototype.c \
 			export/cmd/size.c \
 			export/prepare.c \
+			export/label.c \
 			\
 			parsing/parsing.c \
 			parsing/header/header.c \
