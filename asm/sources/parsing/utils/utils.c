@@ -43,6 +43,23 @@ bool parsing_is_empty(char *input_user)
         return false;
 }
 
+bool parsing_full_comment(char *input_user)
+{
+    bool result = false;
+    char **input_separate_space = str_to_word_array(input_user, " \t");
+    int nb_args = 0;
+    int nb_args_comment = 0;
+
+    while (input_separate_space[nb_args] != NULL) {
+        if (input_separate_space[nb_args][0] == '#')
+            nb_args_comment++;
+        nb_args++;
+    }
+    if (nb_args == nb_args_comment)
+        result = true;
+    return result;
+}
+
 bool parsing_wrong_line(file_t *file)
 {
     if (parsing_is_empty(file->lines[file->index_line])) {
@@ -50,6 +67,10 @@ bool parsing_wrong_line(file_t *file)
         return true;
     }
     if (parsing_is_comment(file->lines[file->index_line])) {
+        file->index_line++;
+        return true;
+    }
+    if (parsing_full_comment(file->lines[file->index_line])) {
         file->index_line++;
         return true;
     }
