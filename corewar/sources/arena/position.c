@@ -42,7 +42,8 @@ int number_champions)
     int index_utils = 0;
 
     while (index_mem < number_champions) {
-        if (!utils[index_utils]->file) {
+        if (!utils[index_utils]->file ||
+        utils[index_utils]->load_address != -1) {
             index_mem += 1;
             continue;
         }
