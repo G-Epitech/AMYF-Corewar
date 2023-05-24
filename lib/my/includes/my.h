@@ -30,3 +30,6 @@ int my_getnbr(char const *str);
 int my_str_isnum(char const *str);
 int my_printf(const char *format, ...);
 ssize_t my_write_big_endian(int fd, const void *buff, size_t nbytes);
+char *my_revstr(char  *src);
+int my_putnbr_base(unsigned int nbr, char const *base);
+int my_putnbr_base_len(unsigned int nbr, char const *base);

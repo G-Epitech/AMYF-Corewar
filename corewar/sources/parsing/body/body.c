@@ -27,7 +27,7 @@ int *index)
 
 static void get_declaration(unsigned int *main_index, int fd, int array[4])
 {
-    unsigned char declaration = parsing_read_char(fd);
+    char declaration = parsing_read_char(fd);
     int index = 3;
 
     *main_index += 1;
@@ -63,12 +63,12 @@ static bool get_special_case(cmd_t *command, int fd, unsigned int *main_index)
 
 static node_t *get_cmd(unsigned int *main_index, int fd)
 {
-    unsigned char cmd_id = parsing_read_char(fd);
+    char cmd_id = parsing_read_char(fd);
     int array[4];
     cmd_t *command = cmd_new();
     int index = 0;
 
-    my_memset(&array, 0, 4);
+    my_memset(array, 0, sizeof(int) * 4);
     *main_index += 1;
     command->index_cmd = cmd_id - 1;
     if (get_special_case(command, fd, main_index))
@@ -77,7 +77,7 @@ static node_t *get_cmd(unsigned int *main_index, int fd)
     for (int i = 0; i < 4; i++) {
         if (array[i] != 0) {
             command->parameters[index].type = array[i];
-            index++;
+            index += 1;
         }
     }
     parsing_get_params(command, main_index, fd);

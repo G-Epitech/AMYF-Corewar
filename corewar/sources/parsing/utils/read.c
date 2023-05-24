@@ -5,9 +5,10 @@
 ** read
 */
 
+#include <stdio.h>
 #include <unistd.h>
 
-unsigned int parsing_read_int(int fd)
+int parsing_read_int(int fd)
 {
     unsigned int nb = 0;
     unsigned char buffer = 0;
@@ -20,7 +21,7 @@ unsigned int parsing_read_int(int fd)
     return nb;
 }
 
-unsigned short parsing_read_short(int fd)
+short parsing_read_short(int fd)
 {
     unsigned short nb = 0;
     unsigned char buffer = 0;
@@ -33,7 +34,7 @@ unsigned short parsing_read_short(int fd)
     return nb;
 }
 
-unsigned char parsing_read_char(int fd)
+char parsing_read_char(int fd)
 {
     unsigned char buffer = 0;
 

@@ -22,4 +22,6 @@ typedef struct s_arena {
     int total_cycle;                // Total cycle done
     int nbr_live;                   // Reduce cycle_to_die with cycle_delta
     list_t *champions;              // List of champions in the Arena
+    int dump;                       // Number of cycle before dump memory
+    int live_cycle;                 // Actual live cycle of the champion
 } arena_t;

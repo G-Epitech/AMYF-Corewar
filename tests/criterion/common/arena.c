@@ -17,7 +17,7 @@ Test(arena_functions, new_arena)
     cr_assert_null(arena->champions);
     cr_assert(arena->nbr_live == 0);
     cr_assert(arena->total_cycle == 0);
-    cr_assert(arena->cycle_to_die == 0);
+    cr_assert(arena->cycle_to_die == CYCLE_TO_DIE);
     arena_free(arena);
 }
 
