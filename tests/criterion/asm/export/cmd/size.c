@@ -6,7 +6,6 @@
 ** Evaluate the total output size of a command
 */
 
-#include <criterion/theories.h>
 #include <criterion/criterion.h>
 #include "export/export.h"
 #include "common/includes/op/defs.h"
