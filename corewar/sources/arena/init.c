@@ -6,7 +6,6 @@
 */
 
 #include <unistd.h>
-#include <stdio.h>
 #include "utils/utils.h"
 #include "arena/arena.h"
 #include "my/includes/my.h"

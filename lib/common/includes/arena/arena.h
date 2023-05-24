@@ -26,6 +26,6 @@ void arena_free(arena_t *arena);
  * @brief Append a champion in the list Arena.
  * @param arena Arena to append champion
  * @param champion Champion to append to arena
- * @return True on success or false if error
+ * @return true on success or false if error
  */
 bool arena_append_champion(arena_t *arena, champion_fighter_t *champion);

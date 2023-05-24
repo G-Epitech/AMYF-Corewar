@@ -28,6 +28,7 @@ _SRC = 		arena/init.c \
 
 _TESTS =	../main.c \
 			parsing.c \
+			execution.c \
 
 SRCDIR =		sources/
 SRC =			$(addprefix $(SRCDIR), $(_SRC))

@@ -24,7 +24,7 @@ arena_t *arena_init(int ac, char **av);
  * @param ac Number of args
  * @param av Table of args
  * @param utils Array of utils fighter
- * @return True if success or False if error found.
+ * @return true if success or false if error found.
  */
 bool arena_utils_init(int ac, char **av, utils_fighter_t *utils[4]);
 

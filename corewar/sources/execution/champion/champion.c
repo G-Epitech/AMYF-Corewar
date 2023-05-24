@@ -27,7 +27,7 @@ static bool get_special_case(char command,
 parameter_t parameters[MAX_ARGS_NUMBER], arena_t *arena,
 champion_fighter_t *champion)
 {
-    int index = (int)command;
+    int index = (int) command;
     unsigned int *pc = &champion->pc;
 
     my_printf("Command code: %d\n", command + 1);

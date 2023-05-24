@@ -18,6 +18,7 @@ void corewar_execute_arena(arena_t *arena);
 
 /**
  * @brief Execute a champion.
+ * @param arena Arena to execute the given champion
  * @param champion Champion to execute
  */
 void corewar_execute_champion(arena_t *arena, champion_fighter_t *champion);
