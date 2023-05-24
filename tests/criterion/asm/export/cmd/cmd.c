@@ -29,6 +29,11 @@ static unsigned short read_short_as_big_endian(int fd)
     return nb;
 }
 
+static void cmd_node_freer(node_data_t data)
+{
+    cmd_free(NODE_DATA_TO_PTR(data, cmd_t *));
+}
+
 Test(asm_export_cmd_tests, basic)
 {
     int pseudofile[2];
@@ -81,6 +86,7 @@ Test(asm_export_cmd_tests, basic)
     cr_assert(read_short_as_big_endian(pseudofile[0]) == 0x18);
     cr_assert(read_short_as_big_endian(pseudofile[0]) == 0x1);
     close(pseudofile[0]);
+    list_free(cmds, &cmd_node_freer);
 }
 
 
@@ -89,6 +95,7 @@ Test(asm_export_cmd_tests, cmd_and_null_body)
     cmd_t *cmd = cmd_new();
 
     cr_assert_not(asm_export_cmd(cmd, NULL, 1));
+    cmd_free(cmd);
 }
 
 Test(asm_export_cmd_tests, null_cmd_and_body)
@@ -96,6 +103,7 @@ Test(asm_export_cmd_tests, null_cmd_and_body)
     list_t *cmds = list_new();
 
     cr_assert_not(asm_export_cmd(NULL, cmds, 1));
+    list_free(cmds, NULL);
 }
 
 Test(asm_export_cmd_tests, null_cmd_and_null_body)

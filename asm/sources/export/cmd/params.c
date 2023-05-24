@@ -10,7 +10,7 @@
 #include "my/includes/my.h"
 #include "common/includes/op/defs.h"
 
-static void asm_export_cmd_param_write(int value, char type, int file)
+void asm_export_cmd_param_write(int value, char type, int file)
 {
     REG_SIZE_TYPE reg = (REG_SIZE_TYPE) value;
     IND_SIZE_TYPE ind = (IND_SIZE_TYPE) value;
@@ -29,7 +29,7 @@ static void asm_export_cmd_param_write(int value, char type, int file)
     }
 }
 
-static bool asm_export_cmd_param(cmd_t *cmd, int param_index, list_t *cmds,
+bool asm_export_cmd_param(cmd_t *cmd, int param_index, list_t *cmds,
 int file)
 {
     char allowed = op_tab[cmd->index_cmd].type[param_index];

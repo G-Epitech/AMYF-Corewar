@@ -29,7 +29,7 @@ static int get_end_of_filename(char *src_file, int len)
     if (src_file[i] != 's')
         return 0;
     i -= 1;
-    if (i >= 0 && src_file[i] != '.')
+    if (i < 0 || src_file[i] != '.')
         return 0;
     return 2;
 }

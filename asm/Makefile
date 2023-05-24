@@ -41,6 +41,9 @@ _TESTS =	../main.c \
 			export/export.c \
 			export/cmd/size.c \
 			export/cmd/cmd.c \
+			export/cmd/params.c \
+			export/cmd/prototype.c \
+			export/cmd/get_by_index.c \
 			export/prepare.c \
 			export/filename.c \
 			\

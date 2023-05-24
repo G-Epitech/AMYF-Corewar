@@ -88,10 +88,31 @@ bool asm_export_cmd(cmd_t *cmd, list_t *cmds, int file);
 bool asm_export_cmd_proto(cmd_t *cmd, int file);
 
 /**
+ * @brief Export parameter at given index position from given command.
+ * @param cmd Command of which export parameter
+ * @param param_index Index of parameter to export
+ * @param cmds List of all champion's commands
+ * @param file File descriptor of output file
+ * @return Status of exportation success
+ */
+bool asm_export_cmd_param(cmd_t *cmd, int param_index, list_t *cmds,
+int file);
+
+
+/**
+ * @brief Write value of parameter to given file.
+ * @param value Value of parameter to write
+ * @param type Type of parameter to write
+ * @param file File in which write
+ */
+void asm_export_cmd_param_write(int value, char type, int file);
+
+/**
  * @brief Export parameters of given command.
  * @param cmd Command of which export parameters
  * @param cmds List of all champion's commands
  * @param file File descriptor of output file
+ * @return Status of exportation success
  */
 bool asm_export_cmd_params(cmd_t *cmd, list_t *cmds, int file);
 
