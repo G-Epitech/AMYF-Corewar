@@ -22,11 +22,14 @@ static void write_body(arena_t *arena, utils_fighter_t *utils, int position)
 static int get_nb_pos(arena_t *arena, utils_fighter_t *utils[4], int array[4])
 {
     node_t *tmp = arena->champions->first;
+    champion_fighter_t *champion = NULL;
     int index = 0;
     int nb = 0;
 
     while (index < 4 && tmp) {
         if (utils[index]->load_address != -1) {
+            champion = NODE_DATA_TO_PTR(tmp->data, champion_fighter_t *);
+            champion->pc = utils[index]->load_address;
             write_body(arena, utils[index], utils[index]->load_address);
             array[nb] = utils[index]->load_address;
             nb += 1;
@@ -37,28 +40,39 @@ static int get_nb_pos(arena_t *arena, utils_fighter_t *utils[4], int array[4])
     return nb;
 }
 
+static void write_pos(arena_t *arena, utils_fighter_t *utils[4], node_t *node,
+int array[4])
+{
+    int position = 0;
+
+    position = (array[0] * (MEM_SIZE / array[3])) + array[2];
+    NODE_DATA_TO_PTR(node->data, champion_fighter_t *)->pc = position;
+    write_body(arena, utils[array[1]], position);
+    array[0] += 1;
+    array[1] += 1;
+}
+
 static void write_all(arena_t *arena, utils_fighter_t *utils[4],
 int number_champions, int array[4])
 {
-    int index_mem = 0;
-    int index_utils = 0;
-    int position = 0;
-    int delta = 0;
+    node_t *node = arena->champions->first;
+    int ind_array[4];
 
-    while (index_mem < number_champions) {
-        if (!utils[index_utils]->file) {
-            index_utils += 1;
+    my_memset(ind_array, 0, sizeof(int) * 4);
+    ind_array[3] = number_champions;
+    while (ind_array[0] < number_champions && node) {
+        if (!utils[ind_array[1]]->file) {
+            ind_array[1] += 1;
+            node = node->next;
             continue;
         }
-        if (array[index_mem] != 0) {
-            delta = array[index_mem];
-            index_mem += 1;
+        if (array[ind_array[0]] != 0) {
+            ind_array[2] = array[ind_array[0]];
+            ind_array[0] += 1;
             continue;
         }
-        position = (index_mem * (MEM_SIZE / number_champions)) + delta;
-        write_body(arena, utils[index_utils], position);
-        index_mem += 1;
-        index_utils += 1;
+        write_pos(arena, utils, node, ind_array);
+        node = node->next;
     }
 }
 

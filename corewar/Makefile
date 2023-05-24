@@ -9,6 +9,11 @@ _SRC = 		arena/init.c \
 			arena/utils.c \
 			arena/position.c \
 			\
+			execution/execution.c \
+			execution/champion/champion.c \
+			execution/champion/kill.c \
+			execution/champion/params.c \
+			\
 			parsing/parsing.c \
 			parsing/file.c \
 			parsing/header.c \
