@@ -9,13 +9,7 @@
 
 #include <stdbool.h>
 
-/**
-* @brief Parse the champion given in parameter.
-* @param argv Argument of programme
-* @param argv Number of argument in programme
-* @return The struct initied, NULL if error
-*/
-char *strconcat(char *dest, char *src);
+typedef struct s_file file_t;
 
 /**
 * @brief Remove comment in the line.
@@ -32,14 +26,6 @@ char *parsing_filter_comment(char *input_user);
 bool parsing_is_comment(char *input_user);
 
 /**
-* @brief Separate the sentence by charactere.
-* @param str The sentence to separate
-* @param separate Delimiter for separate
-* @return Tab of word separate pas delimiter
-*/
-char **str_to_word_array(char const *str, char *separate);
-
-/**
 * @brief Free a tab.
 * @param tab Tab to free
 */
@@ -51,3 +37,10 @@ void free_str_tab(char **tab);
 * @return true if line is empty else no
 */
 bool parsing_is_empty(char *input_user);
+
+/**
+* @brief Check if the line is not wrong.
+* @param file File structure with file and index
+* @return true if line is not good else false
+*/
+bool parsing_wrong_line(file_t *file);

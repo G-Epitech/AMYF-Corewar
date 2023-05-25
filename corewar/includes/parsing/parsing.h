@@ -27,11 +27,10 @@ int parsing_file_open(char *file);
 
 /**
  * @brief Get champion header informations.
- * @param champion Champion to fill
  * @param fd File descriptor of the champion file
- * @return true if everything is good, otherwise false
+ * @return New header
  */
-bool parsing_header(champion_t *champion, int fd);
+header_t *parsing_header(int fd);
 
 /**
  * @brief Get Champion body informations.
@@ -47,7 +46,7 @@ bool parsing_body(champion_t *champion, int fd);
  * @param main_index Main index of reading
  * @param fd File descriptor of the champion file
  */
-void parsing_get_params(cmd_t *command, int *main_index, int fd);
+void parsing_get_params(cmd_t *command, unsigned int *main_index, int fd);
 
 /**
  * @brief Display a Champion.
@@ -58,27 +57,27 @@ void parsing_display(champion_t *champion);
 /**
  * @brief Read a long int from file.
  * @param fd File Descriptor of the file
- * @return Unsigned long int readed
+ * @return long int readed
  */
-unsigned long int parsing_read_long_int(int fd);
+long int parsing_read_long_int(int fd);
 
 /**
  * @brief Read a char from file.
  * @param fd File Descriptor of the file
- * @return Unsigned char readed
+ * @return char readed
  */
-unsigned char parsing_read_char(int fd);
+char parsing_read_char(int fd);
 
 /**
  * @brief Read a int from int.
  * @param fd File Descriptor of the file
- * @return Unsigned int readed
+ * @Unsigned int readed
  */
-unsigned int parsing_read_int(int fd);
+int parsing_read_int(int fd);
 
 /**
  * @brief Read a char from short.
  * @param fd File Descriptor of the file
- * @return Unsigned short readed
+ * @return short readed
  */
-unsigned short parsing_read_short(int fd);
+short parsing_read_short(int fd);

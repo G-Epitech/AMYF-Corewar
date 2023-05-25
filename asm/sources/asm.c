@@ -13,12 +13,12 @@
 
 int main(int argc, char **argv)
 {
-    champion_t *champion = parsing_champion(argc, argv);
+    champion_t *champion = asm_parsing_champion(argc, argv);
     int status = 0;
 
     if (!champion)
         return 84;
-    if (!asm_export_champion("out.cor", champion))
+    if (!asm_export_champion(argv[1], champion))
         status = 84;
     champion_free(champion);
     return status;

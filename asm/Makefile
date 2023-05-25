@@ -7,20 +7,52 @@
 
 _SRC = 		export/export.c \
 			export/header.c \
+			export/body.c \
 			export/create_file.c \
+			export/cmd/cmd.c \
+			export/cmd/get_by_index.c \
+			export/cmd/params.c \
+			export/cmd/prototype.c \
+			export/cmd/size.c \
+			export/prepare.c \
+			export/filename.c \
 			\
 			parsing/parsing.c \
-			parsing/body/body.c \
 			parsing/header/header.c \
+			parsing/header/get_info.c \
 			parsing/utils/utils.c \
 			parsing/file.c \
+			\
+			parsing/body/body.c \
+			parsing/body/label/handler.c \
+			parsing/body/label/new_handler.c \
+			parsing/body/label/check_existing.c \
+			parsing/body/instruction.c \
+			parsing/body/arguments/arguments.c \
+			parsing/body/arguments/label.c \
+			parsing/body/arguments/number.c \
+			parsing/body/arguments/register.c \
+			\
 
 _TESTS =	../main.c \
 			\
 			export/create_file.c \
 			export/export.c \
+			export/cmd/size.c \
+			export/cmd/cmd.c \
+			export/cmd/params.c \
+			export/cmd/prototype.c \
+			export/cmd/get_by_index.c \
+			export/prepare.c \
+			export/filename.c \
+			export/header.c \
+			export/body.c \
 			\
-			parsing/header.c \
+			parsing/header/header.c \
+			parsing/body/body.c \
+			parsing/body/label.c \
+			parsing/body/instruction.c \
+			parsing/body/arguments.c \
 			parsing/parsing.c \
 			\
 
@@ -34,7 +66,7 @@ SRC_COVER =		$(SRC:.c=.gcno)
 SRC_PRFL =		$(SRC:.c=.gcda)
 
 override CFLAGS += -Wall -Wextra -Werror -Wno-unused-command-line-argument -g
-INC = -I./includes -I../lib
+INC = -I./includes -I../lib -I../
 LDFLAGS = -L../lib -lcommon -lmy
 PATH_COMMON = ../lib/common
 PATH_MY = ../lib/my

@@ -9,7 +9,7 @@
 #include <unistd.h>
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
-#include "parsing/parsing.h"
+#include "../corewar/includes/parsing/parsing.h"
 #include "common/includes/champion/champion.h"
 
 static void redirect_all_stdout(void)
@@ -66,7 +66,7 @@ Test(parsing, wrong_file) {
 
 Test(parsing, read_short) {
     int fd = open("../tests/utils/champions/bill.cor", O_RDONLY);
-    unsigned short test = parsing_read_short(fd);
+    short test = parsing_read_short(fd);
 
     cr_assert(test == 0x00ea);
     close(fd);
@@ -74,7 +74,7 @@ Test(parsing, read_short) {
 
 Test(parsing, read_int) {
     int fd = open("../tests/utils/champions/bill.cor", O_RDONLY);
-    unsigned int test = parsing_read_int(fd);
+    int test = parsing_read_int(fd);
 
     cr_assert(test == 0x00ea83f3);
     close(fd);
@@ -90,7 +90,7 @@ Test(parsing, read_long_int) {
 
 Test(parsing, read_char) {
     int fd = open("../tests/utils/champions/bill.cor", O_RDONLY);
-    unsigned char test = parsing_read_char(fd);
+    char test = parsing_read_char(fd);
 
     cr_assert(test == 0x00);
     close(fd);

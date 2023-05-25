@@ -12,8 +12,11 @@
 
 void champion_free(champion_t *champion)
 {
-    if (!champion)
-        return;
+    free(champion);
+}
+
+void champion_fighter_free(champion_fighter_t *champion)
+{
     header_free(champion->header);
     list_free(champion->body, &cmd_node_freer);
     free(champion);

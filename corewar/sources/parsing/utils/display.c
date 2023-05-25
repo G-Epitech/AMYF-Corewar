@@ -44,3 +44,17 @@ void parsing_display(champion_t *champion)
     if (champion->body)
         display_body(champion);
 }
+
+void champion_fighter_display(champion_fighter_t *champion)
+{
+    if (!champion)
+        return;
+    if (champion->header)
+        display_header((champion_t *)champion);
+    my_printf(" == Registers ==\n");
+    for (int i = 0; i < REG_NUMBER; i++)
+        my_printf("Registre n°%d: [%d]\n", i, champion->registers[i]);
+    my_printf("Cooldown: %d\n", champion->live);
+    my_printf("Live: %d\n", champion->live);
+    my_printf("PC: %d\n", champion->pc);
+}
