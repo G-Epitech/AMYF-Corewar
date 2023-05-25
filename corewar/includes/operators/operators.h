@@ -83,6 +83,24 @@ parameter_t params[MAX_ARGS_NUMBER]);
 bool corewar_operators_and(arena_t *arena, champion_fighter_t *champion,
 parameter_t params[MAX_ARGS_NUMBER]);
 
+/**
+ * @brief Operator of corewar (lldi).
+ * @param champion Champion that use this operator
+ * @param command Specific command structure of the operator
+ * @return true if the function success, false otherwise
+ */
+bool corewar_operators_lldi(arena_t *arena, champion_fighter_t *champion,
+parameter_t params[MAX_ARGS_NUMBER]);
+
+/**
+ * @brief Operator of corewar (lld).
+ * @param champion Champion that use this operator
+ * @param command Specific command structure of the operator
+ * @return true if the function success, false otherwise
+ */
+bool corewar_operators_lld(arena_t *arena, champion_fighter_t *champion,
+parameter_t params[MAX_ARGS_NUMBER]);
+
 static const operator_t operators_tab[] = {
     &corewar_operators_live,
     &corewar_operators_ld,
@@ -92,5 +110,7 @@ static const operator_t operators_tab[] = {
     &corewar_operators_and,
     &corewar_operators_zjump,
     &corewar_operators_ldi,
+    &corewar_operators_lldi,
+    &corewar_operators_lld,
     NULL
 };
