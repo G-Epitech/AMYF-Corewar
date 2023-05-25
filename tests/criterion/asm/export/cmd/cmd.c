@@ -29,11 +29,6 @@ static unsigned short read_short_as_big_endian(int fd)
     return nb;
 }
 
-static void cmd_node_freer(node_data_t data)
-{
-    cmd_free(NODE_DATA_TO_PTR(data, cmd_t *));
-}
-
 Test(asm_export_cmd_tests, basic)
 {
     int pseudofile[2];

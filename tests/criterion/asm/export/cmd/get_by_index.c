@@ -12,11 +12,6 @@
 #include "common/includes/list/list.h"
 #include "common/includes/node/node.h"
 
-static void cmd_node_freer(node_data_t data)
-{
-    cmd_free(NODE_DATA_TO_PTR(data, cmd_t *));
-}
-
 Test(asm_export_get_cmd_by_index_tests, basic)
 {
     cmd_t *cmd1 = cmd_new();

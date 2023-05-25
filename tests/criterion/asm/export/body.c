@@ -16,11 +16,6 @@
 #include "common/includes/node/node.h"
 #include "common/includes/header/header.h"
 
-static void cmd_node_freer(node_data_t data)
-{
-    cmd_free(NODE_DATA_TO_PTR(data, cmd_t *));
-}
-
 Test(asm_export_champion_body_tests, basic)
 {
     int file[2];
