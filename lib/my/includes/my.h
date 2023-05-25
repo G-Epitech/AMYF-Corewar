@@ -18,7 +18,7 @@ int my_putstr (char const *str);
 char *my_strcpy(char *dest, char const *src);
 char *my_strncpy(char *dest, char const *src, int n);
 char *my_strdup (char const *src);
-int error(char *str);
+int my_put_error(char *str);
 char *my_strstr(char *str, char const *to_find);
 int my_strlen(char const *str);
 int my_strcmp(char const *s1, char const *s2);

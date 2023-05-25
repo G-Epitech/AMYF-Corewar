@@ -9,14 +9,8 @@
 #include <unistd.h>
 #include "includes/my.h"
 
-static int my_put_error(char const *str)
+int my_put_error(char *str)
 {
     write(2, str, my_strlen(str));
     return 0;
-}
-
-int error(char *str)
-{
-    my_put_error(str);
-    return 84;
 }

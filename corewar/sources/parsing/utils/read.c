@@ -19,7 +19,7 @@ int parsing_read_int(int fd)
     for (int i = 0; i < 4; i++) {
         readed = read(fd, &buffer, sizeof(char));
         if (readed == -1) {
-            error("Incorrect Body Size.\n");
+            my_put_error("Incorrect Body Size.\n");
             exit(84);
         }
         nb = nb << 8;
@@ -37,7 +37,7 @@ short parsing_read_short(int fd)
     for (int i = 0; i < 2; i++) {
         readed = read(fd, &buffer, sizeof(char));
         if (readed == -1) {
-            error("Incorrect Body Size.\n");
+            my_put_error("Incorrect Body Size.\n");
             exit(84);
         }
         nb = nb << 8;
@@ -53,7 +53,7 @@ char parsing_read_char(int fd)
 
     readed = read(fd, &buffer, sizeof(char));
     if (readed == -1) {
-        error("Incorrect Body Size.\n");
+        my_put_error("Incorrect Body Size.\n");
         exit(84);
     }
     return buffer;
@@ -68,7 +68,7 @@ unsigned long int parsing_read_long_int(int fd)
     for (int i = 0; i < 8; i++) {
         readed = read(fd, &buffer, sizeof(char));
         if (readed == -1) {
-            error("Incorrect Body Size.\n");
+            my_put_error("Incorrect Body Size.\n");
             exit(84);
         }
         nb = nb << 8;

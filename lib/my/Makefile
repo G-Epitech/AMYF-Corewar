@@ -22,7 +22,7 @@ SRC = my_put_nbr.c \
       my_getnbr.c \
       my_str_isnum.c \
       my_write_big_endian.c \
-      error.c \
+      my_put_error.c \
       my_putnbr_base.c \
       my_revstr.c \
 
