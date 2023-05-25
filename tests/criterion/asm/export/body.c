@@ -5,8 +5,8 @@
 ** Tests of assembler file exportation
 */
 
-#include <unistd.h>
 #include <fcntl.h>
+#include <unistd.h>
 #include <string.h>
 #include <criterion/criterion.h>
 #include "export/export.h"
