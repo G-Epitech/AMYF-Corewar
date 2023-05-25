@@ -22,6 +22,7 @@ int *addition)
     } else {
         (*addition) += value;
     }
+    return true;
 }
 
 bool corewar_operators_sti(arena_t *arena, champion_fighter_t *champion,

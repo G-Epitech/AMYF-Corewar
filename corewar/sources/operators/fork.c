@@ -5,13 +5,13 @@
 ** fork
 */
 
-#include "list/list.h"
-#include "node/node.h"
-#include "arena/arena.h"
-#include "header/header.h"
 #include "my/includes/my.h"
 #include "operators/defs.h"
-#include "champion/champion.h"
+#include "common/includes/node/node.h"
+#include "common/includes/list/list.h"
+#include "common/includes/arena/arena.h"
+#include "common/includes/header/header.h"
+#include "common/includes/champion/champion.h"
 
 static void dup_registers(int registers[16], champion_fighter_t *new)
 {
