@@ -10,13 +10,12 @@ _SRC = 		export/export.c \
 			export/body.c \
 			export/create_file.c \
 			export/cmd/cmd.c \
-			export/cmd/filename.c \
 			export/cmd/get_by_index.c \
 			export/cmd/params.c \
 			export/cmd/prototype.c \
 			export/cmd/size.c \
 			export/prepare.c \
-			export/label.c \
+			export/filename.c \
 			\
 			parsing/parsing.c \
 			parsing/header/header.c \
@@ -40,7 +39,14 @@ _TESTS =	../main.c \
 			export/create_file.c \
 			export/export.c \
 			export/cmd/size.c \
+			export/cmd/cmd.c \
+			export/cmd/params.c \
+			export/cmd/prototype.c \
+			export/cmd/get_by_index.c \
 			export/prepare.c \
+			export/filename.c \
+			export/header.c \
+			export/body.c \
 			\
 			parsing/header/header.c \
 			parsing/body/body.c \
@@ -60,7 +66,7 @@ SRC_COVER =		$(SRC:.c=.gcno)
 SRC_PRFL =		$(SRC:.c=.gcda)
 
 override CFLAGS += -Wall -Wextra -Werror -Wno-unused-command-line-argument -g
-INC = -I./includes -I../lib
+INC = -I./includes -I../lib -I../
 LDFLAGS = -L../lib -lcommon -lmy
 PATH_COMMON = ../lib/common
 PATH_MY = ../lib/my

@@ -15,6 +15,7 @@
 #include "common/includes/node/node.h"
 #include "common/includes/list/list.h"
 #include "common/includes/header/header.h"
+#include "common/includes/utils/malloc2.h"
 #include "common/includes/champion/champion.h"
 
 Test(asm_export_tests, basic)
@@ -105,5 +106,15 @@ Test(asm_export_tests, with_null_command_in_body)
     list_append(champion->body, node_new(NODE_DATA_FROM_PTR(cmd1)));
     list_append(champion->body, node_new(NODE_DATA_FROM_PTR(NULL)));
     cr_assert(!asm_export_champion("champion12.cor", champion));
+    champion_free(champion);
+}
+
+Test(asm_export_tests, with_filename_fail)
+{
+    champion_t *champion = champion_new();
+
+    malloc2_mode(MALLOC2_SET_MODE, MALLOC2_MODE_FAIL);
+    cr_assert_not(asm_export_champion("champion12.s", champion));
+    malloc2_mode(MALLOC2_SET_MODE, MALLOC2_MODE_NORMAL);
     champion_free(champion);
 }
