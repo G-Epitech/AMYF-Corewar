@@ -34,3 +34,10 @@ bool arena_utils_init(int ac, char **av, utils_fighter_t *utils[4]);
  * @param utils Utils with champions fighter
  */
 void arena_init_champion_position(arena_t *arena, utils_fighter_t *utils[4]);
+
+/**
+ * @brief Compute real address of given address.
+ * @param addr Address to compute
+ * @return Computed address
+ */
+short arena_get_real_addr(int addr);

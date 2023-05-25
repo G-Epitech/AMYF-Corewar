@@ -8,6 +8,7 @@
 _SRC = 		arena/init.c \
 			arena/utils.c \
 			arena/position.c \
+			arena/address.c \
 			\
 			execution/execution.c \
 			execution/champion/champion.c \

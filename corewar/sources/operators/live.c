@@ -6,13 +6,13 @@
 */
 
 #include "my/includes/my.h"
-#include "common/includes/cmd/defs.h"
-#include "common/includes/champion/defs.h"
+#include "operators/defs.h"
 
-bool corewar_operators_live(champion_fighter_t *champion, cmd_t *command)
+bool corewar_operators_live(arena_t *arena, champion_fighter_t *champion,
+parameter_t params[MAX_ARGS_NUMBER])
 {
     champion->live = true;
-    my_printf("The player %d(%s)is alive.\n", command->parameters[0].value,
+    my_printf("The player %d(%s)is alive.\n", params[0].value,
     champion->header->name);
     return true;
 }

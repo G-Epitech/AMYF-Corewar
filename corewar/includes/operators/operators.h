@@ -15,10 +15,12 @@
  * @brief Operator of corewar (live).
  * @param champion Champion that use this operator
  * @param command Specific command structure of the operator
- * @return true if the function success
+ * @return true if the function success, false otherwise
  */
-bool corewar_operators_live(champion_fighter_t *champion, cmd_t *command);
+bool corewar_operators_live(arena_t *arena, champion_fighter_t *champion,
+parameter_t params[MAX_ARGS_NUMBER]);
 
 static const operator_t operators_tab[] = {
+    &corewar_operators_live,
     NULL
 };
