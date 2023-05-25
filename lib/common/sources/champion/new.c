@@ -30,6 +30,6 @@ champion_fighter_t *champion_fighter_new(void)
     champion->cooldown = 0;
     champion->live = false;
     champion->header = NULL;
-    my_memset(champion->registers, 0, REG_NUMBER);
+    my_memset(champion->registers, 0, sizeof(int) * REG_NUMBER);
     return champion;
 }

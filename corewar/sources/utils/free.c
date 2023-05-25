@@ -10,5 +10,9 @@
 
 void utils_fighter_free(utils_fighter_t *utils)
 {
+    if (!utils)
+        return;
+    free(utils->file);
+    free(utils->body);
     free(utils);
 }

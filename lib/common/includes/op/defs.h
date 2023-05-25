@@ -48,5 +48,7 @@ typedef struct op_s {
     bool proto;                  // Prototype of parameter is needed
 } op_t;
 
+#define COMMANDS_NUMBER 16
+
 extern const op_t op_tab[];
 extern const op_t op_tab_health[];

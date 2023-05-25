@@ -10,6 +10,7 @@
 #include "utils/utils.h"
 #include "my/includes/my.h"
 #include "execution/execution.h"
+#include "common/includes/arena/arena.h"
 #include "common/includes/champion/champion.h"
 
 static void display_arena(arena_t *arena)
@@ -51,5 +52,6 @@ int main(int ac, char **av)
     display_arena_champion(arena);
     display_arena(arena);
     corewar_execute_arena(arena);
+    arena_free(arena);
     return 0;
 }
