@@ -16,8 +16,7 @@ static bool asm_export_prepare_cmd(unsigned int size, cmd_t *cmd)
 {
     if (!cmd)
         return false;
-    if (cmd->label)
-        cmd->body_pos = size + OP_SIZE;
+    cmd->body_pos = size + OP_SIZE;
     return true;
 }
 

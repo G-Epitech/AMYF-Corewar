@@ -24,6 +24,8 @@ char **line_wh_space, header_t *new_header)
 {
     int last_word = 0;
 
+    if (line_wh_comment[1] == NULL)
+        return false;
     if (line_wh_space[1][0] != '\"')
         return false;
     while (line_wh_space[last_word + 1] != NULL)
@@ -44,6 +46,8 @@ char **line_wh_space, header_t *new_header)
 {
     int last_word = 0;
 
+    if (line_wh_comment[1] == NULL)
+        return false;
     if (line_wh_space[1][0] != '\"')
         return false;
     while (line_wh_space[last_word + 1] != NULL)

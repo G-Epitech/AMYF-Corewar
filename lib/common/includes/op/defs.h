@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include <stdbool.h>
 #include "common/includes/cmd/defs.h"
 
 #define T_NULL 0
@@ -21,12 +22,21 @@
 #define IS_T_LAB(p) (p & T_LAB)
 #define IS_T_VALID(type, proto) (proto & type)
 
+#define REG_SIZE_TYPE char
+#define DIR_SIZE_TYPE int
+#define IND_SIZE_TYPE short
+
 #define OP_SIZE 1
-#define IND_SIZE 2
-#define DIR_SIZE 4
-#define REG_SIZE 1
+#define IND_SIZE sizeof(IND_SIZE_TYPE)
+#define DIR_SIZE sizeof(DIR_SIZE_TYPE)
+#define REG_SIZE sizeof(REG_SIZE_TYPE)
 #define PROTO_SIZE 1
 #define REG_NUMBER 16
+
+#define NULL_PROTO 0
+#define REG_PROTO 1
+#define DIR_PROTO 2
+#define IND_PROTO 3
 
 // Represent a operator structure
 typedef struct op_s {
@@ -35,6 +45,7 @@ typedef struct op_s {
     char type[MAX_ARGS_NUMBER];  // Types of arguments
     char code;                   // Id of the command
     int nbr_cycles;              // Number of cycles
+    bool proto;                  // Prototype of parameter is needed
 } op_t;
 
 extern const op_t op_tab[];

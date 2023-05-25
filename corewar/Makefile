@@ -5,16 +5,30 @@
 ## @Made by Math alias T1nt1n
 ##
 
-_SRC = 		parsing/parsing.c \
+_SRC = 		arena/init.c \
+			arena/utils.c \
+			arena/position.c \
+			\
+			execution/execution.c \
+			execution/champion/champion.c \
+			execution/champion/kill.c \
+			execution/champion/params.c \
+			\
+			parsing/parsing.c \
 			parsing/file.c \
 			parsing/header.c \
 			parsing/utils/read.c \
 			parsing/utils/display.c \
 			parsing/body/body.c \
 			parsing/body/param.c \
+			\
+			utils/new.c \
+			utils/sort.c \
+			utils/free.c \
 
 _TESTS =	../main.c \
 			parsing.c \
+			execution.c \
 
 SRCDIR =		sources/
 SRC =			$(addprefix $(SRCDIR), $(_SRC))

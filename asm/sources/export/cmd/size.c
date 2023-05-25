@@ -11,7 +11,7 @@
 
 int asm_export_cmd_size_get_proto(cmd_t *cmd)
 {
-    if (op_tab[cmd->index_cmd].nbr_args <= 1)
+    if (!op_tab[cmd->index_cmd].proto)
         return 0;
     return PROTO_SIZE;
 }

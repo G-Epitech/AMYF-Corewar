@@ -17,8 +17,10 @@ arena_t *arena_new(void)
         return NULL;
     my_memset(arena->array, 0, MEM_SIZE);
     arena->champions = NULL;
-    arena->cycle_to_die = 0;
+    arena->cycle_to_die = CYCLE_TO_DIE;
     arena->nbr_live = 0;
     arena->total_cycle = 0;
+    arena->dump = -1;
+    arena->live_cycle = 0;
     return arena;
 }
