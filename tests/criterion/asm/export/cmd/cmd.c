@@ -5,8 +5,8 @@
 ** Corewar / Tests / Assembler / Export / Cmd
 */
 
-#include <unistd.h>
 #include <fcntl.h>
+#include <unistd.h>
 #include <criterion/criterion.h>
 #include "export/export.h"
 #include "my/includes/my.h"
