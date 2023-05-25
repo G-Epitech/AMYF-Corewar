@@ -10,6 +10,7 @@
 #include <stdbool.h>
 #include "utils/defs.h"
 #include "common/includes/arena/defs.h"
+#include "common/includes/champion/defs.h"
 
 /**
  * @brief Init arena with champions files.
@@ -34,3 +35,21 @@ bool arena_utils_init(int ac, char **av, utils_fighter_t *utils[4]);
  * @param utils Utils with champions fighter
  */
 void arena_init_champion_position(arena_t *arena, utils_fighter_t *utils[4]);
+
+/**
+ * @brief Compute real address of given address.
+ * @param addr Address to compute
+ * @return Computed address
+ */
+short arena_get_real_addr(int addr);
+
+/**
+ * @brief Get value from memory depeding on parameter type.
+ * @param value Variable in which store value
+ * @param param Parameter on which base recuperation
+ * @param champion Champion object
+ * @param arena Arena object
+ * @return Status of getting
+ */
+bool arena_get_val(int *value, parameter_t *param,
+champion_fighter_t *champion, arena_t *arena);

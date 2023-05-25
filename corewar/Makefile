@@ -8,11 +8,28 @@
 _SRC = 		arena/init.c \
 			arena/utils.c \
 			arena/position.c \
+			arena/address.c \
 			\
 			execution/execution.c \
 			execution/champion/champion.c \
 			execution/champion/kill.c \
 			execution/champion/params.c \
+			\
+			operators/add.c \
+			operators/and.c \
+			operators/ld.c \
+			operators/lld.c \
+			operators/or.c \
+			operators/xor.c \
+			operators/live.c \
+			operators/st.c \
+			operators/sub.c \
+			operators/zjump.c \
+			operators/ldi.c \
+			operators/lldi.c \
+			operators/sti.c \
+			operators/fork.c \
+			operators/lfork.c \
 			\
 			parsing/parsing.c \
 			parsing/file.c \
