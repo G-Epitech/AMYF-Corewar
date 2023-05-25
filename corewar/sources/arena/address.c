@@ -28,10 +28,11 @@ champion_fighter_t *champion, arena_t *arena)
         *value = champion->registers[pval];
         return true;
     }
-    if (IS_T_IND(param->type))
+    if (IS_T_IND(param->type)) {
         addr = arena_get_real_addr(champion->pc + pval % IDX_MOD);
-    else
-        addr = arena_get_real_addr(pval);
-    *value = arena->array[addr];
+        *value = arena->array[addr];
+    } else {
+        *value = pval;
+    }
     return true;
 }
