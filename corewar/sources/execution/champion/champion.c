@@ -75,14 +75,16 @@ int array[4])
 
 void corewar_execute_champion(arena_t *arena, champion_fighter_t *champion)
 {
-    char command = corewar_execute_champion_read_char(arena, &champion->pc);
+    char cmd = corewar_execute_champion_read_char(arena, &champion->pc);
     parameter_t parameters[MAX_ARGS_NUMBER];
     int index = 0;
     int array[4];
 
+    if (cmd < 1 || cmd >= COMMANDS_NUMBER)
+        return;
     my_memset(parameters, 0, sizeof(parameter_t) * 4);
     my_memset(array, 0, sizeof(int) * 4);
-    if (get_special_case(command - 1, parameters, arena, champion))
+    if (get_special_case(cmd - 1, parameters, arena, champion))
         return;
     get_declaration(champion, arena, array);
     for (int i = 0; i < 4; i++) {
@@ -91,7 +93,6 @@ void corewar_execute_champion(arena_t *arena, champion_fighter_t *champion)
             index += 1;
         }
     }
-    corewar_execute_champion_read_params(arena, champion, parameters,
-    command - 1);
+    corewar_execute_champion_read_params(arena, champion, parameters, cmd - 1);
     temp_execution(arena, champion, parameters);
 }
