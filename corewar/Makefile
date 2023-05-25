@@ -20,6 +20,8 @@ _SRC = 		arena/init.c \
 			operators/live.c \
 			operators/st.c \
 			operators/sub.c \
+			operators/zjump.c \
+			operators/ldi.c \
 			\
 			parsing/parsing.c \
 			parsing/file.c \
