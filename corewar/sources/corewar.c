@@ -13,11 +13,28 @@
 #include "common/includes/arena/arena.h"
 #include "common/includes/champion/champion.h"
 
+static void display_arena_line(int line)
+{
+    char *hexa = "0123456789ABCDEF";
+    int len = 0;
+
+    if (line == MEM_SIZE)
+        return;
+    len = my_putnbr_base(line, hexa);
+    while (len < 5) {
+        my_putchar(' ');
+        len += 1;
+    }
+    my_putstr(" : ");
+}
+
 static void display_arena(arena_t *arena)
 {
     char *hexa = "0123456789ABCDEF";
     int break_line = 0;
+    int line = 0;
 
+    my_putstr("0    : ");
     for (int i = 0; i < MEM_SIZE; i++) {
         if (my_putnbr_base_len(arena->array[i], hexa) < 3)
             my_putchar('0');
@@ -25,6 +42,8 @@ static void display_arena(arena_t *arena)
         break_line += 1;
         if (break_line == 32) {
             my_putchar('\n');
+            line += 32;
+            display_arena_line(line);
             break_line = 0;
         } else {
             my_putchar(' ');

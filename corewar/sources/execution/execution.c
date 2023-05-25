@@ -6,6 +6,7 @@
 */
 
 #include <stdbool.h>
+#include "my/includes/my.h"
 #include "execution/execution.h"
 #include "common/includes/node/defs.h"
 #include "common/includes/arena/defs.h"
@@ -36,6 +37,8 @@ void corewar_execute_arena(arena_t *arena)
             arena->nbr_live = 0;
         }
         if (arena->champions->len == 1 || arena->total_cycle > temp_dump)
+            break;
+        if (arena->total_cycle == arena->dump)
             break;
         arena->total_cycle += 1;
         arena->nbr_live += 1;

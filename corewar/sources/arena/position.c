@@ -82,6 +82,10 @@ void arena_init_champion_position(arena_t *arena, utils_fighter_t *utils[4])
     int number_defines = 0;
     int number_champions = arena->champions->len;
 
+    for (int i = 0; i < 4; i++) {
+        if (utils[i]->dump > -1)
+            arena->dump = utils[i]->dump;
+    }
     my_memset(array, 0, sizeof(int) * 4);
     number_defines = get_nb_pos(arena, utils, array);
     if (number_defines == 0 || number_defines == 1)
