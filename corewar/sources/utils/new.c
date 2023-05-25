@@ -19,5 +19,6 @@ utils_fighter_t *utils_fighter_new(void)
     utils->prog_number = -1;
     utils->body = NULL;
     utils->body_size = 0;
+    utils->dump = -1;
     return utils;
 }

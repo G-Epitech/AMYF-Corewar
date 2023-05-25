@@ -35,6 +35,8 @@ int main)
         utils[main]->load_address = my_getnbr(str);
     if (av[*index][1] == 'n')
         utils[main]->prog_number = my_getnbr(str);
+    if (my_strcmp(av[*index], "-dump") == 0)
+        utils[main]->dump = my_getnbr(str);
     *index += 1;
     return true;
 }
