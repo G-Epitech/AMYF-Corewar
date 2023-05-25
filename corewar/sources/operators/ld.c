@@ -20,4 +20,5 @@ parameter_t params[MAX_ARGS_NUMBER])
     if (!arena_get_val(&value, &(params[0]), champion, arena))
         return false;
     champion->registers[reg] = value;
+    return true;
 }
