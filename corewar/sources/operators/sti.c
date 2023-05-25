@@ -32,12 +32,12 @@ parameter_t params[MAX_ARGS_NUMBER])
     int register_value = champion->registers[register_index];
     int addition = 0;
     int address = 0;
-    int pval = 0;
 
     if (!add_valude(params[1].type, params[1].value, champion, &addition))
         return false;
     if (!add_valude(params[2].type, params[2].value, champion, &addition))
         return false;
     address = arena_get_real_addr(champion->pc + addition % IDX_MOD);
+    arena->array[address] = register_value;
     return false;
 }
