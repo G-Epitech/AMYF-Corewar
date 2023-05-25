@@ -15,7 +15,6 @@ _SRC = 		export/export.c \
 			export/cmd/prototype.c \
 			export/cmd/size.c \
 			export/prepare.c \
-			export/label.c \
 			export/filename.c \
 			\
 			parsing/parsing.c \
@@ -46,6 +45,8 @@ _TESTS =	../main.c \
 			export/cmd/get_by_index.c \
 			export/prepare.c \
 			export/filename.c \
+			export/header.c \
+			export/body.c \
 			\
 			parsing/header/header.c \
 			parsing/body/body.c \

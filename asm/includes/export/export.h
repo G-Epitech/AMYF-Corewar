@@ -124,8 +124,8 @@ bool asm_export_cmd_params(cmd_t *cmd, list_t *cmds, int file);
  * @param cmds List of all champion commands
  * @return Status of finding success
  */
-bool asm_export_get_labeled_param(parameter_t *param, unsigned int cmd_pos,
-int *dist, list_t *cmds);
+bool asm_export_cmd_get_labeled_param(parameter_t *param,
+unsigned int cmd_pos, int *dist, list_t *cmds);
 
 /**
  * @brief Get command at given index if exists in given commands.

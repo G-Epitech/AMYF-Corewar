@@ -10,6 +10,17 @@
 #include "my/includes/my.h"
 #include "common/includes/op/defs.h"
 
+bool asm_export_cmd_get_labeled_param(parameter_t *param,
+unsigned int cmd_pos, int *dist, list_t *cmds)
+{
+    cmd_t *target = asm_export_get_cmd_by_index(param->value, cmds);
+
+    if (!target)
+        return false;
+    *dist = target->body_pos - cmd_pos;
+    return true;
+}
+
 void asm_export_cmd_param_write(int value, char type, int file)
 {
     REG_SIZE_TYPE reg = (REG_SIZE_TYPE) value;
@@ -38,7 +49,7 @@ int file)
     int value = param->value;
 
     if (IS_T_LAB(param->type)) {
-        if (!asm_export_get_labeled_param(param, cmd->body_pos,
+        if (!asm_export_cmd_get_labeled_param(param, cmd->body_pos,
             &value, cmds)) {
             return false;
         }
