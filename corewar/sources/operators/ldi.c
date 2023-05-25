@@ -12,11 +12,22 @@
 bool corewar_operators_ldi(arena_t *arena, champion_fighter_t *champion,
 parameter_t params[MAX_ARGS_NUMBER])
 {
-    int value = 0;
+    int ind_size = 0;
+    int idx_mod = params[1].value;
+    int reg_size = 0;
+    int reg = params[2].value - 1;
+    parameter_t sum = {
+        .type = T_IND,
+        .value = 0
+    };
 
-    if (!arena_get_val(&value, &(params[0]), champion, arena))
+    if (!arena_get_val(&ind_size, &(params[0]), champion, arena))
         return false;
-    if (champion->carry == 1)
-        champion->pc = (unsigned int) value;
+    sum.value = ind_size + idx_mod;
+    if (!arena_get_val(&reg_size, &(sum), champion, arena))
+        return false;
+    if (reg < 0 || reg >= REG_NUMBER)
+        return false;
+    champion->registers[params[2].value - 1] = reg_size;
     return true;
 }
