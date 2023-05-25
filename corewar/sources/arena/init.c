@@ -67,6 +67,12 @@ void set_champion_id(arena_t *arena)
     }
 }
 
+static void free_utils(utils_fighter_t *utils[4])
+{
+    for (int i = 0; i < 4; i++)
+        utils_fighter_free(utils[i]);
+}
+
 arena_t *arena_init(int ac, char **av)
 {
     arena_t *arena = arena_new();
@@ -87,5 +93,6 @@ arena_t *arena_init(int ac, char **av)
     }
     set_champion_id(arena);
     arena_init_champion_position(arena, utils);
+    free_utils(utils);
     return arena;
 }

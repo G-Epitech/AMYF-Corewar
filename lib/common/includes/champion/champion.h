@@ -35,6 +35,12 @@ void champion_free(champion_t *champion);
 void champion_fighter_free(champion_fighter_t *champion);
 
 /**
+ * @brief Free a fighter champion in a list.
+ * @param data Node data of champion fighter
+ */
+void champion_fighter_node_free(node_data_t data);
+
+/**
 * @brief Append a given command in a champion.
 * @param champions Champion in which append the command
 * @param cmd Command to append
