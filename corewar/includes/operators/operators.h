@@ -112,5 +112,6 @@ static const operator_t operators_tab[] = {
     &corewar_operators_ldi,
     &corewar_operators_lldi,
     &corewar_operators_lld,
+    &corewar_operators_sti,
     NULL
 };
