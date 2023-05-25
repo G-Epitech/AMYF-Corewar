@@ -7,7 +7,9 @@
 
 #pragma once
 
+#include <stdbool.h>
 #include "defs.h"
+#include "../node/node.h"
 
 /**
 * @brief Create a new cmd for a Champion.
@@ -20,6 +22,12 @@ cmd_t *cmd_new(void);
 * @param cmd Command to free
 */
 void cmd_free(cmd_t *cmd);
+
+/**
+ * @brief Free node cmd in a list.
+ * @param data Node data to free
+ */
+void cmd_node_freer(node_data_t data);
 
 /**
 * @brief Append a given parameter in a command.
