@@ -31,7 +31,7 @@ champion_fighter_t *champion, arena_t *arena)
     return true;
 }
 
-bool corewar_operators_ld(arena_t *arena, champion_fighter_t *champion,
+bool corewar_operators_lld(arena_t *arena, champion_fighter_t *champion,
 parameter_t params[MAX_ARGS_NUMBER])
 {
     int reg = params[1].value - 1;

@@ -16,6 +16,7 @@ _SRC = 		arena/init.c \
 			execution/champion/params.c \
 			\
 			operators/add.c \
+			operators/and.c \
 			operators/ld.c \
 			operators/lld.c \
 			operators/live.c \
