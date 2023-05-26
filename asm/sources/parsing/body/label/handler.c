@@ -20,7 +20,7 @@ static bool parsing_label_wrong_line(file_t *file, int *label_index)
         (*label_index)++;
         return true;
     }
-    if (parsing_is_comment(file->lines[*label_index])) {
+    if (parsing_full_comment(file->lines[*label_index])) {
         (*label_index)++;
         return true;
     }
