@@ -30,6 +30,7 @@ _SRC = 		arena/init.c \
 			operators/sti.c \
 			operators/fork.c \
 			operators/lfork.c \
+			operators/aff.c \
 			\
 			parsing/parsing.c \
 			parsing/file.c \

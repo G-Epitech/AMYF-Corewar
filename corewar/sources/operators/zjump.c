@@ -12,11 +12,8 @@
 bool corewar_operators_zjump(arena_t *arena, champion_fighter_t *champion,
 parameter_t params[MAX_ARGS_NUMBER])
 {
-    int value = 0;
-
-    if (!arena_get_val(&value, &(params[0]), champion, arena))
-        return false;
+    (void) arena;
     if (champion->carry == 1)
-        champion->pc = (unsigned int) value;
+        champion->pc = (champion->pc + params[0].value % IDX_MOD) - 1;
     return true;
 }

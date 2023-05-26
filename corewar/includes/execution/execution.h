@@ -43,23 +43,26 @@ champion_fighter_t *champion, parameter_t *parameters, int cmd_index);
 /**
  * @brief Read int params champion.
  * @param arena Arena to read params
- * @param pos Pointer to position of champion to read (self updated)
+ * @param champion To read position (self updated)
  * @return Number size of int
  */
-int corewar_execute_champion_read_int(arena_t *arena, unsigned int *pos);
+int corewar_execute_champion_read_int(arena_t *arena,
+champion_fighter_t *champion);
 
 /**
  * @brief Read short params champion.
  * @param arena Arena to read params
- * @param pos Pointer to position of champion to read (self updated)
+ * @param champion To read position (self updated)
  * @return Number size of short
  */
-short corewar_execute_champion_read_short(arena_t *arena, unsigned int *pos);
+short corewar_execute_champion_read_short(arena_t *arena,
+champion_fighter_t *champion);
 
 /**
  * @brief Read char params champion.
  * @param arena Arena to read params
- * @param pos Pointer to position of champion to read (self updated)
+ * @param champion To read position (self updated)
  * @return Number size of char
  */
-char corewar_execute_champion_read_char(arena_t *arena, unsigned int *pos);
+char corewar_execute_champion_read_char(arena_t *arena,
+champion_fighter_t *champion);
