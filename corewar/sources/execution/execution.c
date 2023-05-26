@@ -44,10 +44,18 @@ static void champion(arena_t *arena, node_t *tmp)
         corewar_kill_champion(arena, tmp);
 }
 
+static void update_variables(arena_t *arena)
+{
+    if (arena->live_cycle == arena->cycle_to_die)
+        arena->live_cycle = 0;
+    arena->total_cycle += 1;
+    arena->live_cycle += 1;
+    arena->nbr_live += 1;
+}
+
 void corewar_execute_arena(arena_t *arena)
 {
     node_t *tmp = NULL;
-    int dump_max = 5000;
 
     while (true) {
         tmp = arena->champions->first;
@@ -59,11 +67,10 @@ void corewar_execute_arena(arena_t *arena)
             arena->cycle_to_die -= CYCLE_DELTA;
             arena->nbr_live = 0;
         }
-        if (arena->champions->len == 1)
+        if (corewar_execution_winner(arena) ||
+        arena->total_cycle == arena->dump) {
             break;
-        if (arena->total_cycle == arena->dump || arena->total_cycle == dump_max)
-            break;
-        arena->total_cycle += 1;
-        arena->nbr_live += 1;
+        }
+        update_variables(arena);
     }
 }
