@@ -20,10 +20,13 @@ typedef struct s_champion {
 
 // Represent a champion fighter
 typedef struct s_champion_fighter {
-    header_t *header;           // Informations of the champion
-    int registers[REG_NUMBER];  // All registers of the champion
-    int cooldown;               // Cooldown of the champion
-    bool live;                  // Check if it said “live” since the last reset
-    unsigned int pc;            // Progam Counter
-    int carry;                  // Success of the previous operation
+    header_t *header;                        // Informations of the champion
+    int registers[REG_NUMBER];               // All registers of the champion
+    int cooldown;                            // Cooldown of the champion
+    bool live;                               // Check if it said “live”
+    unsigned int pc;                         // Progam Counter
+    int carry;                               // Success of previous operation
+    int readed;                              // Number bytes the champion read
+    int pending_cmd;                         // Command execute after cooldown
+    parameter_t parameters[MAX_ARGS_NUMBER]; // Parameters of pending command
 } champion_fighter_t;

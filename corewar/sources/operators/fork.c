@@ -23,12 +23,9 @@ static void dup_registers(int registers[16], champion_fighter_t *new)
 bool corewar_operators_fork(arena_t *arena, champion_fighter_t *champion,
 parameter_t params[MAX_ARGS_NUMBER])
 {
-    int new_pc = 0;
     champion_fighter_t *new = champion_fighter_new();
 
-    if (!arena_get_val(&new_pc, &params[0], champion, arena))
-        return false;
-    new->pc = (unsigned int) new_pc;
+    new->pc = (unsigned int) (champion->pc + params[0].value % IDX_MOD) - 1;
     new->carry = champion->carry;
     new->cooldown = new->cooldown;
     dup_registers(champion->registers, new);

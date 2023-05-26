@@ -30,6 +30,10 @@ champion_fighter_t *champion_fighter_new(void)
     champion->cooldown = 0;
     champion->live = false;
     champion->header = NULL;
+    champion->carry = 0;
+    champion->readed = 0;
+    champion->pending_cmd = -2;
     my_memset(champion->registers, 0, sizeof(int) * REG_NUMBER);
+    my_memset(champion->parameters, 0, sizeof(parameter_t) * MAX_ARGS_NUMBER);
     return champion;
 }
