@@ -56,12 +56,14 @@ static void update_variables(arena_t *arena)
 void corewar_execute_arena(arena_t *arena)
 {
     node_t *tmp = NULL;
+    node_t *next = NULL;
 
     while (true) {
         tmp = arena->champions->first;
         while (tmp) {
+            next = tmp->next;
             champion(arena, tmp);
-            tmp = tmp->next;
+            tmp = next;
         }
         if (arena->nbr_live == NBR_LIVE) {
             arena->cycle_to_die -= CYCLE_DELTA;

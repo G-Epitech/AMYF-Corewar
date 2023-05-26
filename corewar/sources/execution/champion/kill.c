@@ -17,5 +17,6 @@ void corewar_kill_champion(arena_t *arena, node_t *node)
     champion = NODE_DATA_TO_PTR(node->data, champion_fighter_t *);
     if (!champion->live)
         list_delete(arena->champions, node, &champion_fighter_node_free);
-    champion->live = false;
+    else
+        champion->live = false;
 }
