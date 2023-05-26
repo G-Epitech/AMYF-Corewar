@@ -11,8 +11,8 @@ if __name__ == '__main__':
     tester = Tester()
 
     tester.addSuite(basic.suite)
-    #tester.addSuite(body.suite)
-    #tester.addSuite(header.suite)
+    tester.addSuite(body.suite)
+    tester.addSuite(header.suite)
 
     if tester.execute():
         exit(0)
