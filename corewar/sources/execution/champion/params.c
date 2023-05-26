@@ -73,14 +73,16 @@ champion_fighter_t *champion, parameter_t *parameters, int cmd_index)
     my_memset(index_array, 0, sizeof(int) * 2);
     while (index < MAX_ARGS_NUMBER && parameters[index].type != 0) {
         index_array[1] = index;
-        if (parameters[index].type == T_REG)
+        if (parameters[index].type == T_REG) {
             parameters[index].value =
             corewar_execute_champion_read_char(arena, champion);
+        }
         if (parameters[index].type == T_DIR)
             special_case_indexes(arena, champion, parameters, index_array);
-        if (parameters[index].type == T_IND)
+        if (parameters[index].type == T_IND) {
             parameters[index].value =
             corewar_execute_champion_read_short(arena, champion);
+        }
         index += 1;
     }
 }
