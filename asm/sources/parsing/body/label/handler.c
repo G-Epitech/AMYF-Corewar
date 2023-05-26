@@ -37,6 +37,10 @@ label_t *new_label)
     if (line_separed[1] == NULL) {
         handler->status_label = false;
         handler->temp_name_label = my_strdup(line_separed[0]);
+        if (!parsing_body_label_check_existing(handler,
+        handler->temp_name_label)) {
+            return false;
+        }
         return true;
     }
     new_label->name = my_strdup(line_separed[0]);
