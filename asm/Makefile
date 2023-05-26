@@ -78,6 +78,7 @@ TESTS_CFLAGS =	-lcriterion --coverage
 
 NAME = asm
 TESTS_NAME = asm_tests
+TESTS_CUSTOM = ../tests/custom/asm/launch.py
 
 STYLE_GREEN=\033[0;32m
 STYLE_ORANGE=\033[0;33m
@@ -144,7 +145,10 @@ tests_ftest:
 			echo "pass"
 
 tests_custom:
-			echo "pass"
+				@$(MAKE) fclean -s
+				@$(MAKE) $(NAME) -s
+				@printf "\n"
+				@./$(TESTS_CUSTOM)
 
 tests_criterion:
 			@rm -f $(TESTS_OBJ) $(SRC_OBJ)

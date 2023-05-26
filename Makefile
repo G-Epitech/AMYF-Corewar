@@ -77,7 +77,7 @@ ftest:
 				@ftest && rm .ftest.toml
 
 tests_custom:
-				@echo "pass"
+				@$(MAKE) -C $(PATH_ASM) tests_custom -s
 
 tests_run: 		tests_criterion
 
