@@ -25,6 +25,14 @@ int *addition)
     return true;
 }
 
+static void fill_array(arena_t *arena, int value, int address)
+{
+    arena->array[address] = (value >> 24) & 0xFF;
+    arena->array[address - 1] = (value >> 16) & 0xFF;
+    arena->array[address - 2] = (value >> 8) & 0xFF;
+    arena->array[address - 3] = value & 0xFF;
+}
+
 bool corewar_operators_sti(arena_t *arena, champion_fighter_t *champion,
 parameter_t params[MAX_ARGS_NUMBER])
 {
@@ -38,6 +46,6 @@ parameter_t params[MAX_ARGS_NUMBER])
     if (!add_valude(params[2].type, params[2].value, champion, &addition))
         return false;
     address = arena_get_real_addr(champion->pc + addition % IDX_MOD);
-    arena->array[address] = register_value;
+    fill_array(arena, register_value, address);
     return false;
 }
