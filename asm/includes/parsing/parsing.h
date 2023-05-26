@@ -166,3 +166,10 @@ label_handler_t *label_handler, param_handler_t *params);
 * @return true if no error else false
 */
 bool parsing_check_wrong_param(champion_t *champion);
+
+/**
+* @brief Check if the line is just a comment.
+* @param input_user Line to treat
+* @return true if yes else false
+*/
+bool parsing_full_comment(char *input_user);
