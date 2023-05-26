@@ -55,12 +55,13 @@ champion_fighter_t *champion)
 static void special_case_indexes(arena_t *arena, champion_fighter_t *champion,
 parameter_t *parameters, int index[2])
 {
-    if (!IS_T_DIR(op_tab[index[0]].type[index[1]]))
+    if (!IS_T_DIR(op_tab[index[0]].type[index[1]])) {
         parameters[index[1]].value =
         corewar_execute_champion_read_short(arena, champion);
-    else
+    } else {
         parameters[index[1]].value =
         corewar_execute_champion_read_int(arena, champion);
+    }
 }
 
 void corewar_execute_champion_read_params(arena_t *arena,
