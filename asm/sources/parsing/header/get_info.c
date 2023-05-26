@@ -5,6 +5,7 @@
 ** asm parsing header
 */
 
+#include <stdio.h>
 #include "parsing/utils.h"
 #include "my/includes/my.h"
 #include "parsing/parsing.h"
@@ -22,6 +23,11 @@ char **line_separed_comment)
 static bool parsing_get_name(char **line_wh_comment,
 char **line_wh_space, header_t *new_header)
 {
+    if (my_strcmp("\"\"", line_wh_space[1]) == 0) {
+        my_strcpy(new_header->name, "\0");
+        free_tabs(line_wh_space, line_wh_comment);
+        return true;
+    }
     if (line_wh_comment[1] == NULL)
         return false;
     if (my_strlen(line_wh_comment[1]) > HEADER_NAME_SIZE)
@@ -34,6 +40,11 @@ char **line_wh_space, header_t *new_header)
 static bool parsing_get_comment(char **line_wh_comment,
 char **line_wh_space, header_t *new_header)
 {
+    if (my_strcmp("\"\"", line_wh_space[1]) == 0) {
+        my_strcpy(new_header->comment, "\0");
+        free_tabs(line_wh_space, line_wh_comment);
+        return true;
+    }
     if (line_wh_comment[1] == NULL)
         return false;
     if (my_strlen(line_wh_comment[1]) > HEADER_COMMENT_SIZE)
