@@ -66,3 +66,10 @@ champion_fighter_t *champion);
  */
 char corewar_execute_champion_read_char(arena_t *arena,
 champion_fighter_t *champion);
+
+/**
+ * @brief Check if there is a winner.
+ * @param arena Arena to check fighters
+ * @return true if there is a winner, otherwise false
+ */
+bool corewar_execution_winner(arena_t *arena);
