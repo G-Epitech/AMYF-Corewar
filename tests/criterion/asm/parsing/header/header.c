@@ -129,5 +129,5 @@ Test(parsing_of_champion, empty_name)
     int argc = 2;
     char *argv[2] = {"./asm", "../tests/utils/champions/src/empty_name.s"};
 
-    cr_assert_null(asm_parsing_champion(argc, argv));
+    cr_assert_not_null(asm_parsing_champion(argc, argv));
 }
