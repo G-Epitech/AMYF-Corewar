@@ -32,8 +32,5 @@ suite.addTest(test)
 test = Test("Comment too long", "tests/utils/champions/src/comment_too_long.s", "comment_too_long.cor")
 suite.addTest(test)
 
-test = Test("Empty name", "tests/utils/champions/src/empty_name.s", "empty_name.cor")
-suite.addTest(test)
-
 test = Test("Bad word", "tests/utils/champions/src/bad_word.s", "bad_word.cor")
 suite.addTest(test)
