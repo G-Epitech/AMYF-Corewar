@@ -22,13 +22,18 @@ char **line_separed_comment)
 static bool parsing_get_name(char **line_wh_comment,
 char **line_wh_space, header_t *new_header)
 {
-    if (my_strcmp("\"\"", line_wh_space[1]) == 0) {
-        my_strcpy(new_header->name, "\0");
-        free_tabs(line_wh_space, line_wh_comment);
-        return true;
-    }
+    int last_word = 0;
+
     if (line_wh_comment[1] == NULL)
         return false;
+    if (line_wh_space[1][0] != '\"')
+        return false;
+    while (line_wh_space[last_word + 1] != NULL)
+        last_word++;
+    if (line_wh_space[last_word][my_strlen(line_wh_space[last_word]) - 1]
+    != '\"') {
+        return false;
+    }
     if (my_strlen(line_wh_comment[1]) > HEADER_NAME_SIZE)
         return false;
     my_strcpy(new_header->name, line_wh_comment[1]);
@@ -39,13 +44,18 @@ char **line_wh_space, header_t *new_header)
 static bool parsing_get_comment(char **line_wh_comment,
 char **line_wh_space, header_t *new_header)
 {
-    if (my_strcmp("\"\"", line_wh_space[1]) == 0) {
-        my_strcpy(new_header->comment, "\0");
-        free_tabs(line_wh_space, line_wh_comment);
-        return true;
-    }
+    int last_word = 0;
+
     if (line_wh_comment[1] == NULL)
         return false;
+    if (line_wh_space[1][0] != '\"')
+        return false;
+    while (line_wh_space[last_word + 1] != NULL)
+        last_word++;
+    if (line_wh_space[last_word][my_strlen(line_wh_space[last_word]) - 1]
+    != '\"') {
+        return false;
+    }
     if (my_strlen(line_wh_comment[1]) > HEADER_COMMENT_SIZE)
         return false;
     my_strcpy(new_header->comment, line_wh_comment[1]);
