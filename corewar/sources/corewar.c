@@ -58,6 +58,12 @@ int main(int ac, char **av)
     if (ac == 3 && my_strcmp(av[1], "-d") == 0)
         return corewar_dessassembler(av[2]);
     arena = arena_init(ac, av);
+    if (!arena)
+        return 84;
+    if (arena->champions->len < 2 || arena->champions->len > 4) {
+        arena_free(arena);
+        return 0;
+    }
     corewar_execute_arena(arena);
     if (arena->dump > 0)
         display_arena(arena);

@@ -13,10 +13,14 @@
 
 static void write_body(arena_t *arena, utils_fighter_t *utils, int position)
 {
-    while (position >= MEM_SIZE)
-        position -= MEM_SIZE;
-    for (unsigned int i = 0; i < utils->body_size; i++)
-        arena->array[arena_get_real_addr(i + position)] = utils->body[i];
+    for (unsigned int i = 0; i < utils->body_size; i++) {
+        if (arena->array[arena_get_real_addr(i + position)] == '\0') {
+            arena->array[arena_get_real_addr(i + position)] = utils->body[i];
+        } else {
+            my_put_error("champion programs overlap.\n");
+            arena->champions->len = -4;
+        }
+    }
 }
 
 static int get_nb_pos(arena_t *arena, utils_fighter_t *utils[4], int array[4])
