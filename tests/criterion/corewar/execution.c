@@ -36,6 +36,7 @@ Test(execution, winner, .init=redirect_all_stdout)
 
     arena = arena_init(ac, av);
     corewar_kill_champion(arena, arena->champions->first->next);
+    arena->last = NODE_DATA_TO_PTR(arena->champions->first->data, champion_fighter_t *);
     cr_assert(corewar_execution_winner(arena) == true);
     arena_free(arena);
 }
@@ -58,6 +59,7 @@ Test(execution, same_winner, .init=redirect_all_stdout)
     char *av[3] = {"corewar/corewar", "../tests/utils/champions/bill.cor", "../tests/utils/champions/bill.cor"};
 
     arena = arena_init(ac, av);
+    arena->last = NODE_DATA_TO_PTR(arena->champions->first->data, champion_fighter_t *);
     cr_assert(corewar_execution_winner(arena) == true);
     arena_free(arena);
 }

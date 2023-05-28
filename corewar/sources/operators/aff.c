@@ -16,11 +16,6 @@ parameter_t params[MAX_ARGS_NUMBER])
 
     if (!arena_get_val(&value, &(params[0]), champion, arena))
         return false;
-    if (value == 42) {
-        my_putchar('*');
-    } else {
-        value %= 256;
-        my_put_nbr(value);
-    }
+    my_putchar(value);
     return true;
 }
