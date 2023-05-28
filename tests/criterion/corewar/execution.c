@@ -28,6 +28,17 @@ Test(execution, basic, .init=redirect_all_stdout)
     arena_free(arena);
 }
 
+Test(execution, basic_all_cmd, .init=redirect_all_stdout)
+{
+    arena_t *arena = NULL;
+    int ac = 3;
+    char *av[3] = {"corewar/corewar", "../tests/utils/champions/pdf.cor", "../tests/utils/champions/all.cor"};
+
+    arena = arena_init(ac, av);
+    corewar_execute_arena(arena);
+    arena_free(arena);
+}
+
 Test(execution, winner, .init=redirect_all_stdout)
 {
     arena_t *arena = NULL;
