@@ -25,6 +25,7 @@ SRC = my_put_nbr.c \
       my_put_error.c \
       my_putnbr_base.c \
       my_revstr.c \
+      my_inttostr.c \
 
 OBJ = $(SRC:.c=.o)
 

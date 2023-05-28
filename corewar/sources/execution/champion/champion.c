@@ -32,7 +32,7 @@ champion_fighter_t *champion)
     int index = (int) command;
     champion_fighter_t *chmp = champion;
 
-    if (op_tab[index].nbr_args > 1)
+    if (op_tab[index].nbr_args > 1 || command == 15)
         return false;
     if (IS_T_DIR(op_tab[index].type[0])) {
         parameters[0].type = T_DIR;

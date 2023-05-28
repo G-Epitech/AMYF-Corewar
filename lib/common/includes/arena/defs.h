@@ -9,6 +9,7 @@
 
 #include "../op/defs.h"
 #include "../list/defs.h"
+#include "../champion/defs.h"
 
 #define NBR_LIVE 40
 #define CYCLE_DELTA 5
@@ -25,4 +26,5 @@ typedef struct s_arena {
     list_t *champions;              // List of champions in the Arena
     int dump;                       // Number of cycle before dump memory
     int live_cycle;                 // Actual live cycle of the champion
+    champion_fighter_t *last;       // Last champion say "live"
 } arena_t;

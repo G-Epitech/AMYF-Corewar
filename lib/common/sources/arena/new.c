@@ -15,12 +15,14 @@ arena_t *arena_new(void)
 
     if (!arena)
         return NULL;
-    my_memset(arena->array, 0, MEM_SIZE);
+    my_memset(arena->array, 0, sizeof(unsigned char) * MEM_SIZE);
     arena->champions = NULL;
     arena->cycle_to_die = CYCLE_TO_DIE;
     arena->nbr_live = 0;
     arena->total_cycle = 1;
     arena->dump = -1;
     arena->live_cycle = 0;
+    arena->champions = NULL;
+    arena->last = NULL;
     return arena;
 }

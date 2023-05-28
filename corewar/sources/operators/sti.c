@@ -27,10 +27,10 @@ int *addition)
 
 static void fill_array(arena_t *arena, int value, int address)
 {
-    arena->array[address] = (value >> 24) & 0xFF;
-    arena->array[address + 1] = (value >> 16) & 0xFF;
-    arena->array[address + 2] = (value >> 8) & 0xFF;
-    arena->array[address + 3] = value & 0xFF;
+    arena->array[arena_get_real_addr(address)] = (value >> 24) & 0xFF;
+    arena->array[arena_get_real_addr(address + 1)] = (value >> 16) & 0xFF;
+    arena->array[arena_get_real_addr(address + 2)] = (value >> 8) & 0xFF;
+    arena->array[arena_get_real_addr(address + 3)] = value & 0xFF;
 }
 
 bool corewar_operators_sti(arena_t *arena, champion_fighter_t *champion,

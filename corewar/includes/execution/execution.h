@@ -73,3 +73,9 @@ champion_fighter_t *champion);
  * @return true if there is a winner, otherwise false
  */
 bool corewar_execution_winner(arena_t *arena);
+
+/**
+ * @brief This function create champion file from .cor.
+ * @param file File .cor to parse
+ */
+int corewar_dessassembler(char *file);

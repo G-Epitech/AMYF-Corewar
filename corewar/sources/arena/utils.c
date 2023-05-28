@@ -7,6 +7,7 @@
 
 #include <stdbool.h>
 #include "utils/utils.h"
+#include "arena/arena.h"
 #include "my/includes/my.h"
 
 static bool check_args(char *args)
@@ -37,12 +38,16 @@ int main)
         utils[main]->prog_number = my_getnbr(str);
     if (my_strcmp(av[*index], "-dump") == 0)
         utils[main]->dump = my_getnbr(str);
+    while (utils[main]->load_address >= MEM_SIZE)
+        utils[main]->load_address -= MEM_SIZE;
     *index += 1;
     return true;
 }
 
 static bool set_file(char *file, utils_fighter_t *utils[4], int *main)
 {
+    if (my_strstr(file, "42.cor"))
+        return false;
     utils[*main]->file = my_strdup(file);
     *main += 1;
     return true;

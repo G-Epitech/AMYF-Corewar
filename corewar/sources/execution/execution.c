@@ -40,13 +40,13 @@ static void champion(arena_t *arena, node_t *tmp)
     } else {
         corewar_execute_champion(arena, ch);
     }
-    if (arena->live_cycle == arena->cycle_to_die)
+    if (arena->live_cycle >= arena->cycle_to_die)
         corewar_kill_champion(arena, tmp);
 }
 
 static void update_variables(arena_t *arena)
 {
-    if (arena->live_cycle == arena->cycle_to_die)
+    if (arena->live_cycle >= arena->cycle_to_die)
         arena->live_cycle = 0;
     arena->total_cycle += 1;
     arena->live_cycle += 1;

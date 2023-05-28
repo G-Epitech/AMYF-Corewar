@@ -44,6 +44,8 @@ _SRC = 		arena/init.c \
 			utils/new.c \
 			utils/sort.c \
 			utils/free.c \
+			\
+			desassembler.c \
 
 _TESTS =	../main.c \
 			parsing.c \
