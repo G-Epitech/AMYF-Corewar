@@ -23,5 +23,6 @@ arena_t *arena_new(void)
     arena->dump = -1;
     arena->live_cycle = 0;
     arena->champions = NULL;
+    arena->last = NULL;
     return arena;
 }

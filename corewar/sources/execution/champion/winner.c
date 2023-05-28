@@ -29,6 +29,8 @@ bool corewar_execution_winner(arena_t *arena)
             return false;
         node = node->next;
     }
+    if (!arena->last)
+        return false;
     display_winner(arena->last);
     return true;
 }

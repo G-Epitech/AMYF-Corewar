@@ -55,6 +55,8 @@ int main(int ac, char **av)
 {
     arena_t *arena = NULL;
 
+    if (ac == 3 && my_strcmp(av[1], "-d") == 0)
+        return corewar_dessassembler(av[2]);
     arena = arena_init(ac, av);
     corewar_execute_arena(arena);
     if (arena->dump > 0)
