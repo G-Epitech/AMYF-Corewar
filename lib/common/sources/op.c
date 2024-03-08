@@ -31,7 +31,7 @@ const op_t op_tab[] = {
     {0, 0, {0}, 0, 0, false}
 };
 
-const op_t op_tab_health[] = {
+const op_t op_tab_old[] = {
     {"live", 1, {T_DIR}, 1, 10, false},
     {"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, true},
     {"st", 2, {T_REG, T_IND | T_REG}, 3, 5, true},
